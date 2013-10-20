@@ -23,6 +23,17 @@ class testApp : public ofBaseApp{
     
         ofxGraph AccelGraph;
     
+        ofxGraphLine AccelXLine;
+        ofxGraphLine AccelYLine;
+        ofxGraphLine AccelZLine;
+    
+        ofxGraphLine* AccelXLinePtr;
+        ofxGraphLine* AccelYLinePtr;
+        ofxGraphLine* AccelZLinePtr;
+    
+
+
+    
         bool bData;
 
     

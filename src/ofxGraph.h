@@ -49,7 +49,8 @@ public:
     void setDataRate(float Hz);
     
     void draw(float x, float y);
-    void addLine(ofPtr<ofxGraphLine> line);
+//    void addLine(ofPtr<ofxGraphLine> line);
+    void addLine(ofxGraphLine* line);
 
     int getNumOfLines();
     
@@ -79,7 +80,9 @@ public:
     float speed;
     
 
-    vector< ofPtr<ofxGraphLine> > graphLinesPtr;
+//    vector< ofPtr<ofxGraphLine> > graphLinesPtr;
+    vector<ofxGraphLine*> graphLinesPtr;
+
     ofPolyline drawLine;
 
     ofEasyCam cam3D;

@@ -1,9 +1,12 @@
 #include "testApp.h"
 
-// better way to use ofPtr ??? 
-ofPtr<ofxGraphLine> AccelXLine(new ofxGraphLine);
-ofPtr<ofxGraphLine> AccelYLine(new ofxGraphLine);
-ofPtr<ofxGraphLine> AccelZLine(new ofxGraphLine);
+// better way to use ofPtr ???
+// maybe we don't need ofPtr for the lines
+// we can just use normal pointer like advanced3d example used pointer for cameras?
+
+//ofPtr<ofxGraphLine> AccelXLine(new ofxGraphLine);
+//ofPtr<ofxGraphLine> AccelYLine(new ofxGraphLine);
+//ofPtr<ofxGraphLine> AccelZLine(new ofxGraphLine);
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -15,17 +18,20 @@ void testApp::setup(){
     AccelGraph.setLineStyle(LINE_ONLY);
     AccelGraph.setTimeScale(1.0);
     
-    AccelXLine->setup("X", ofColor(255,0,0));
-    AccelYLine->setup("Y", ofColor(0,255,0));
-    AccelZLine->setup("Z", ofColor(0,0,255));
+//    AccelXLine->setup("X", ofColor(255,0,0));
+//    AccelYLine->setup("Y", ofColor(0,255,0));
+//    AccelZLine->setup("Z", ofColor(0,0,255));
+    AccelXLine.setup("X", ofColor(255,0,0));
+    AccelYLine.setup("Y", ofColor(0,255,0));
+    AccelZLine.setup("Z", ofColor(0,0,255));
     
-    AccelGraph.addLine(AccelXLine);
-    AccelGraph.addLine(AccelYLine);
-    AccelGraph.addLine(AccelZLine);
+    AccelGraph.addLine(&AccelXLine);
+    AccelGraph.addLine(&AccelYLine);
+    AccelGraph.addLine(&AccelZLine);
 
     bData = false;
     
-    //AccelZLine->setVisible(false);
+//    AccelZLine.setVisible(false);
     
     }
 
@@ -39,17 +45,20 @@ void testApp::update(){
     ztemp = 0.0;
     
     
-    if (bData) {
+//    if (bData) {
         xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
         ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
         ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
         
-    }
+//    }
     
     // fake data into shared data buffer
-    AccelXLine->addData(xtemp);
-    AccelYLine->addData(ytemp);
-    AccelZLine->addData(ztemp);
+//    AccelXLine->addData(xtemp);
+//    AccelYLine->addData(ytemp);
+//    AccelZLine->addData(ztemp);
+    AccelXLine.addData(xtemp);
+    AccelYLine.addData(ytemp);
+    AccelZLine.addData(ztemp);
     
 }
 

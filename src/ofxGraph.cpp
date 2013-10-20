@@ -184,10 +184,13 @@ void ofxGraph::draw(float x, float y){
 // to add instance to vector, what is proper way?
 
 
-void ofxGraph::addLine(ofPtr<ofxGraphLine> line){
+//void ofxGraph::addLine(ofPtr<ofxGraphLine> line){
+//    graphLinesPtr.push_back(line);
+//}
+
+void ofxGraph::addLine(ofxGraphLine* line){
     graphLinesPtr.push_back(line);
 }
-
 
 
 int ofxGraph::getNumOfLines(){
