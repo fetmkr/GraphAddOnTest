@@ -16,7 +16,7 @@ void testApp::setup(){
     AccelGraph.setup("accelerometer", 960, 540);
     AccelGraph.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
     AccelGraph.setLineStyle(LINE_ONLY);
-    AccelGraph.setTimeScale(1.0);
+    AccelGraph.setTimeScale(4.0);
     
 //    AccelXLine->setup("X", ofColor(255,0,0));
 //    AccelYLine->setup("Y", ofColor(0,255,0));
@@ -73,7 +73,7 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
     switch(key){
         case ' ':
-            bData = true;
+            AccelGraph.show3D(true);
             break;
         default:
             break;
@@ -84,7 +84,7 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
     switch(key){
         case ' ':
-            bData = false;
+            AccelGraph.show3D(false);
             break;
         default:
             break;

@@ -29,9 +29,12 @@ void ofxPlot::setup(string name, float width, float height){
     // default zOffset value = 50
     zOffset = 50;
     
-    cam3D.enableOrtho();
-    cam3D.setDistance(200);
+    //cam3D.enableOrtho();
+    //cam3D.setDistance(300);
     //cam3D.tilt(-10);
+    //cam3D.pan(20);
+    
+    legendFont.loadFont("AppleGothic.ttf", 10);
 }
 
 void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){
@@ -74,8 +77,7 @@ void ofxPlot::setDataRate(float Hz){
 }
 
 void ofxPlot::draw(float x, float y){
-    
-//    ofDrawBitmapString("fps:" + ofToString(ofGetFrameRate(),0),ofGetWidth()-80,20);
+        
     xPos = x;
     yPos = y;
     float timeStep;
@@ -86,7 +88,9 @@ void ofxPlot::draw(float x, float y){
     
     int drawIndex = 0;
     
-    
+    //ofCircle(0, 50, 50);
+    //legendFont.drawString("안녕", 50, 50);
+
     
     
     ofPushStyle();
@@ -98,31 +102,41 @@ void ofxPlot::draw(float x, float y){
 
     ofRectangle camView;
     camView = ofRectangle(xPos, yPos, graphWidth, graphHeight);
-    ofEnableDepthTest();
+    //ofEnableDepthTest();
 
-    cam3D.begin(camView);    
     
+    cam3D.begin(camView);
+    
+    // 3D Mode
+    if(b3DMode){
+        ofRotateX(ofRadToDeg(.5));
+        ofRotateY(ofRadToDeg(.5));
+    }
+    
+	// Setup Ortho projection
+	ofSetMatrixMode(OF_MATRIX_PROJECTION);
+    ofMatrix4x4 ortho;
+    ortho.makeOrthoMatrix(-graphWidth/2, graphWidth/2, -graphHeight/2, graphHeight/2, -getNumOfVisibleLines() * zOffset -500, getNumOfVisibleLines() * zOffset +500);
+    ofLoadMatrix(ortho);
+    ofSetMatrixMode(OF_MATRIX_MODELVIEW);
+    
+
     if(gridOption == RECT_GRID_DISPLAY){
         ofPushMatrix();
+        
         // draw Grid
         ofSetColor(this->gridColor);
-//        ofFill();
-//        ofBeginShape();
-//        ofVertex(0, 270, -50);
-//        ofVertex(graphWidth, 270, -50);
-//        ofVertex(graphWidth, 270, 50);
-//        ofVertex(0,270, 50);
-//        ofEndShape();
-        ofLine(0, graphHeight/2, graphWidth, graphHeight/2);
-        ofLine(graphWidth/2, graphHeight, graphWidth/2, 0);
+        ofLine(-graphWidth/2, 0, graphWidth/2, 0);
+        ofLine(0, -graphHeight/2, 0, graphHeight/2);
+        
+
         ofPopMatrix();
     }
 
-           
     ofPushMatrix();
-    ofTranslate(0, graphHeight/2);
+    // Move to the left
+    ofTranslate(-graphWidth/2 , 0);
 
-    
     
     for(int i = 0 ; i < graphLinesPtr.size() ; i++)
     {
@@ -140,7 +154,7 @@ void ofxPlot::draw(float x, float y){
                     drawLine.addVertex(ofPoint(timeStep * NumOfDisplayData - timeStep * j
                                                , i + graphLinesPtr[i]->getElement(j + graphLinesPtr[i]->dataBuffer.size() - 1 - NumOfDisplayData)
                                                , getDrawPosZ(getNumOfVisibleLines(), drawIndex)));
-                      
+                    
                 }
           
                 drawLine.draw();
@@ -150,7 +164,6 @@ void ofxPlot::draw(float x, float y){
             if(lineStyle != LINE_ONLY){
                 
                 // draw points
-                //        ofPushStyle();
                 glPointSize(1.5);
                 glBegin(GL_POINTS);
                 for (int j = 0; j<= NumOfDisplayData; j++) {
@@ -162,7 +175,6 @@ void ofxPlot::draw(float x, float y){
                 }
                 
                 glEnd();
-                //        ofPopStyle();
             }
             
             drawIndex++;
@@ -173,10 +185,14 @@ void ofxPlot::draw(float x, float y){
     drawIndex = 0;
     
     ofPopMatrix();
+
+    
     cam3D.end();
-    ofDisableDepthTest();
+    //ofDisableDepthTest();
     
     ofPopStyle();
+    
+    
     
     
 }
@@ -206,4 +222,13 @@ int ofxPlot::getNumOfVisibleLines(){
     }
     
     return cnt;
+}
+
+
+void ofxPlot::show3D(bool b3D){
+    b3DMode = b3D;
+}
+
+bool ofxPlot::is3D(void){
+    return b3DMode;
 }

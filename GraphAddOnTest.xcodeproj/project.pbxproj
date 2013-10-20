@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67391FAB1813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */; };
 		67C6A893180AC20A00B290AB /* ofxPlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67C6A892180AC20A00B290AB /* ofxPlot.cpp */; };
 		67C6A896180AC23400B290AB /* ofxPlotLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67C6A895180AC23400B290AB /* ofxPlotLine.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -62,6 +63,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		67391FA51813EF1600AB7B64 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
+		67391FA61813EF1600AB7B64 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		67391FA71813EF1600AB7B64 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
+		67391FAA1813EF1600AB7B64 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
 		67C6A891180AC1F600B290AB /* ofxPlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlot.h; sourceTree = "<group>"; };
 		67C6A892180AC20A00B290AB /* ofxPlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPlot.cpp; sourceTree = "<group>"; };
 		67C6A894180AC22200B290AB /* ofxPlotLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlotLine.h; sourceTree = "<group>"; };
@@ -120,9 +126,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67391FA41813EF1600AB7B64 /* ofxTrueTypeFontUC */ = {
+			isa = PBXGroup;
+			children = (
+				67391FA51813EF1600AB7B64 /* install.xml */,
+				67391FA61813EF1600AB7B64 /* License.txt */,
+				67391FA71813EF1600AB7B64 /* README.md */,
+				67391FA81813EF1600AB7B64 /* src */,
+			);
+			name = ofxTrueTypeFontUC;
+			path = ../../../addons/ofxTrueTypeFontUC;
+			sourceTree = "<group>";
+		};
+		67391FA81813EF1600AB7B64 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */,
+				67391FAA1813EF1600AB7B64 /* ofxTrueTypeFontUC.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				67391FA41813EF1600AB7B64 /* ofxTrueTypeFontUC */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -301,6 +329,7 @@
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				67C6A893180AC20A00B290AB /* ofxPlot.cpp in Sources */,
 				67C6A896180AC23400B290AB /* ofxPlotLine.cpp in Sources */,
+				67391FAB1813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

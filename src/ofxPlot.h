@@ -10,6 +10,8 @@
 
 #include "ofMain.h"
 #include "ofxPlotLine.h"
+#include "ofxTrueTypeFontUC.h"
+
 
 enum GridOptionType {
     RECT_DISPLAY_ONLY,
@@ -42,6 +44,9 @@ public:
         
     void showScrollBar(bool bShow);
     
+    void show3D(bool b3D);
+    bool is3D(void);
+    
     void setZOffset(int offset);
     float getDrawPosZ(int NumOfDraw, int index);
 
@@ -65,6 +70,7 @@ public:
     int zOffset;
     
 
+    bool b3DMode;
     
     ofColor rectColor;
     ofColor gridColor;
@@ -85,8 +91,10 @@ public:
 
     ofPolyline drawLine;
 
-    ofEasyCam cam3D;
+    ofCamera cam3D;
     
+    
+    ofxTrueTypeFontUC legendFont;
 
 
 };
