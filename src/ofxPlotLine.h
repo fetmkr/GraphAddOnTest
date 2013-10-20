@@ -1,5 +1,5 @@
 //
-//  ofxGraphLine.h
+//  ofxPlotLine.h
 //  GraphAddOnTest
 //
 //  Created by songhojun on 10/13/13.
@@ -10,10 +10,10 @@
 
 #include "ofMain.h"
 
-class ofxGraphLine {
+class ofxPlotLine {
 public:
-    ofxGraphLine();
-    ~ofxGraphLine();
+    ofxPlotLine();
+    ~ofxPlotLine();
     
     void setup(string name, ofColor color);
     void clear();

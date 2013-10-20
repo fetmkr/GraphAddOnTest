@@ -1,22 +1,22 @@
 //
-//  ofxGraphLine.cpp
+//  ofxPlotLine.cpp
 //  GraphAddOnTest
 //
 //  Created by songhojun on 10/13/13.
 //
 //
 
-#include "ofxGraphLine.h"
+#include "ofxPlotLine.h"
 
-ofxGraphLine::ofxGraphLine(){
+ofxPlotLine::ofxPlotLine(){
     
 }
 
-ofxGraphLine::~ofxGraphLine(){
+ofxPlotLine::~ofxPlotLine(){
     clear();
 }
 
-void ofxGraphLine::setup(string name, ofColor color){
+void ofxPlotLine::setup(string name, ofColor color){
     this->name = name;
     this->color = color;
     BUFFER_SIZE = 2048*8;
@@ -28,7 +28,7 @@ void ofxGraphLine::setup(string name, ofColor color){
     bIsVisible = true;
 }
 
-void ofxGraphLine::clear(){
+void ofxPlotLine::clear(){
 
 }
 
@@ -36,7 +36,7 @@ void ofxGraphLine::clear(){
 
 // add data to circular buffer
 
-void ofxGraphLine::addData(float data){
+void ofxPlotLine::addData(float data){
     
     if(nextIndex >= dataBuffer.size()){
         dataBuffer.push_back(data);
@@ -55,7 +55,7 @@ void ofxGraphLine::addData(float data){
 
 // get data using index from circular buffer
 
-float ofxGraphLine::getElement(int index){
+float ofxPlotLine::getElement(int index){
     if(dataBuffer.size() > 0){
         return dataBuffer[(nextIndex + index) % BUFFER_SIZE];
     }
@@ -64,11 +64,11 @@ float ofxGraphLine::getElement(int index){
     }
 }
 
-void ofxGraphLine::setVisible(bool bShow){
+void ofxPlotLine::setVisible(bool bShow){
     bIsVisible = bShow;
 }
 
-bool ofxGraphLine::isVisible(){
+bool ofxPlotLine::isVisible(){
     return bIsVisible;
 }
 

@@ -1,5 +1,5 @@
 //
-//  ofxGraph.h
+//  ofxPlot.h
 //  GraphAddOnTest
 //
 //  Created by songhojun on 10/13/13.
@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGraphLine.h"
+#include "ofxPlotLine.h"
 
 enum GridOptionType {
     RECT_DISPLAY_ONLY,
@@ -22,10 +22,10 @@ enum LineStyleType {
     LINE_WITH_POINT
 };
 
-class ofxGraph{
+class ofxPlot{
 public:
-    ofxGraph();
-    ~ofxGraph();
+    ofxPlot();
+    ~ofxPlot();
     
     void setup(string name, float width, float height);
     void setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option);
@@ -49,8 +49,8 @@ public:
     void setDataRate(float Hz);
     
     void draw(float x, float y);
-//    void addLine(ofPtr<ofxGraphLine> line);
-    void addLine(ofxGraphLine* line);
+//    void addLine(ofPtr<ofxPlotLine> line);
+    void addLine(ofxPlotLine* line);
 
     int getNumOfLines();
     
@@ -80,8 +80,8 @@ public:
     float speed;
     
 
-//    vector< ofPtr<ofxGraphLine> > graphLinesPtr;
-    vector<ofxGraphLine*> graphLinesPtr;
+//    vector< ofPtr<ofxPlotLine> > graphLinesPtr;
+    vector<ofxPlotLine*> graphLinesPtr;
 
     ofPolyline drawLine;
 

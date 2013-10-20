@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGraph.h"
-#include "ofxGraphLine.h"
+#include "ofxPlot.h"
+#include "ofxPlotLine.h"
 
 class testApp : public ofBaseApp{
 
@@ -21,15 +21,15 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        ofxGraph AccelGraph;
+        ofxPlot AccelGraph;
     
-        ofxGraphLine AccelXLine;
-        ofxGraphLine AccelYLine;
-        ofxGraphLine AccelZLine;
+        ofxPlotLine AccelXLine;
+        ofxPlotLine AccelYLine;
+        ofxPlotLine AccelZLine;
     
-        ofxGraphLine* AccelXLinePtr;
-        ofxGraphLine* AccelYLinePtr;
-        ofxGraphLine* AccelZLinePtr;
+        ofxPlotLine* AccelXLinePtr;
+        ofxPlotLine* AccelYLinePtr;
+        ofxPlotLine* AccelZLinePtr;
     
 
 

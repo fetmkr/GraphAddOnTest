@@ -4,9 +4,9 @@
 // maybe we don't need ofPtr for the lines
 // we can just use normal pointer like advanced3d example used pointer for cameras?
 
-//ofPtr<ofxGraphLine> AccelXLine(new ofxGraphLine);
-//ofPtr<ofxGraphLine> AccelYLine(new ofxGraphLine);
-//ofPtr<ofxGraphLine> AccelZLine(new ofxGraphLine);
+//ofPtr<ofxPlotLine> AccelXLine(new ofxPlotLine);
+//ofPtr<ofxPlotLine> AccelYLine(new ofxPlotLine);
+//ofPtr<ofxPlotLine> AccelZLine(new ofxPlotLine);
 
 //--------------------------------------------------------------
 void testApp::setup(){

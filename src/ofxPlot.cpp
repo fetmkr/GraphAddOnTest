@@ -1,22 +1,22 @@
 //
-//  ofxGraph.cpp
+//  ofxPlot.cpp
 //  GraphAddOnTest
 //
 //  Created by songhojun on 10/13/13.
 //
 //
 
-#include "ofxGraph.h"
+#include "ofxPlot.h"
 
-ofxGraph::ofxGraph(){
+ofxPlot::ofxPlot(){
     
 }
 
-ofxGraph::~ofxGraph(){
+ofxPlot::~ofxPlot(){
     
 }
 
-void ofxGraph::setup(string name, float width, float height){
+void ofxPlot::setup(string name, float width, float height){
     graphName = name;
     graphWidth = width;
     graphHeight = height;
@@ -34,21 +34,21 @@ void ofxGraph::setup(string name, float width, float height){
     //cam3D.tilt(-10);
 }
 
-void ofxGraph::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){
+void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){
     this->rectColor = rectColor;
     this->gridColor = gridColor;
     gridOption = option;
 }
 
-void ofxGraph::setLineStyle(LineStyleType style){
+void ofxPlot::setLineStyle(LineStyleType style){
     lineStyle = style;
 }
 
-void ofxGraph::setZOffset(int offset){
+void ofxPlot::setZOffset(int offset){
     zOffset = offset;
 }
 
-float ofxGraph::getDrawPosZ(int NumOfDraw, int index){
+float ofxPlot::getDrawPosZ(int NumOfDraw, int index){
     float drawPos;
     
     if (NumOfDraw % 2) {
@@ -64,16 +64,16 @@ float ofxGraph::getDrawPosZ(int NumOfDraw, int index){
     return drawPos;
 }
 
-void ofxGraph::setTimeScale(float sec)
+void ofxPlot::setTimeScale(float sec)
 {
     timeScale = sec;
 }
 
-void ofxGraph::setDataRate(float Hz){
+void ofxPlot::setDataRate(float Hz){
     dataRate = Hz;
 }
 
-void ofxGraph::draw(float x, float y){
+void ofxPlot::draw(float x, float y){
     
 //    ofDrawBitmapString("fps:" + ofToString(ofGetFrameRate(),0),ofGetWidth()-80,20);
     xPos = x;
@@ -184,21 +184,21 @@ void ofxGraph::draw(float x, float y){
 // to add instance to vector, what is proper way?
 
 
-//void ofxGraph::addLine(ofPtr<ofxGraphLine> line){
+//void ofxPlot::addLine(ofPtr<ofxPlotLine> line){
 //    graphLinesPtr.push_back(line);
 //}
 
-void ofxGraph::addLine(ofxGraphLine* line){
+void ofxPlot::addLine(ofxPlotLine* line){
     graphLinesPtr.push_back(line);
 }
 
 
-int ofxGraph::getNumOfLines(){
+int ofxPlot::getNumOfLines(){
     return graphLinesPtr.size();
 }
 
 
-int ofxGraph::getNumOfVisibleLines(){
+int ofxPlot::getNumOfVisibleLines(){
     int cnt = 0;
     for (int i = 0; i < graphLinesPtr.size(); i++) {
         if (graphLinesPtr[i]->isVisible())
