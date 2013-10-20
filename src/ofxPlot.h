@@ -91,7 +91,7 @@ public:
 
     ofPolyline drawLine;
 
-    ofCamera cam3D;
+    ofEasyCam cam3D;
     
     
     ofxTrueTypeFontUC legendFont;

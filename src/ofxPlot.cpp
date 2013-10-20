@@ -29,11 +29,7 @@ void ofxPlot::setup(string name, float width, float height){
     // default zOffset value = 50
     zOffset = 50;
     
-    //cam3D.enableOrtho();
-    //cam3D.setDistance(300);
-    //cam3D.tilt(-10);
-    //cam3D.pan(20);
-    
+    cam3D.enableOrtho();
     legendFont.loadFont("AppleGothic.ttf", 10);
 }
 
@@ -87,11 +83,7 @@ void ofxPlot::draw(float x, float y){
     timeStep = graphWidth / NumOfDisplayData;
     
     int drawIndex = 0;
-    
-    //ofCircle(0, 50, 50);
-    //legendFont.drawString("안녕", 50, 50);
-
-    
+        
     
     ofPushStyle();
     
@@ -106,24 +98,30 @@ void ofxPlot::draw(float x, float y){
 
     
     cam3D.begin(camView);
-    
+
+	// Setup Ortho projection
+	ofSetMatrixMode(OF_MATRIX_PROJECTION);
+    ofMatrix4x4 ortho;
+    ortho.makeOrthoMatrix(-graphWidth/2, graphWidth/2, -graphHeight/2, graphHeight/2, - getNumOfVisibleLines() * zOffset -1000, getNumOfVisibleLines() * zOffset +1000);
+    ofLoadMatrix(ortho);
+    ofSetMatrixMode(OF_MATRIX_MODELVIEW);
+
     // 3D Mode
     if(b3DMode){
         ofRotateX(ofRadToDeg(.5));
         ofRotateY(ofRadToDeg(.5));
     }
     
-	// Setup Ortho projection
-	ofSetMatrixMode(OF_MATRIX_PROJECTION);
-    ofMatrix4x4 ortho;
-    ortho.makeOrthoMatrix(-graphWidth/2, graphWidth/2, -graphHeight/2, graphHeight/2, -getNumOfVisibleLines() * zOffset -500, getNumOfVisibleLines() * zOffset +500);
-    ofLoadMatrix(ortho);
-    ofSetMatrixMode(OF_MATRIX_MODELVIEW);
+    ofSetColor(255, 0, 0);
+    //legendFont.drawString("안녕하세요", 50, 50);
+    ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
+    ofDrawBitmapString("Hello World", 50, -10, 50);
+    
     
 
     if(gridOption == RECT_GRID_DISPLAY){
         ofPushMatrix();
-        
+
         // draw Grid
         ofSetColor(this->gridColor);
         ofLine(-graphWidth/2, 0, graphWidth/2, 0);
@@ -185,7 +183,6 @@ void ofxPlot::draw(float x, float y){
     drawIndex = 0;
     
     ofPopMatrix();
-
     
     cam3D.end();
     //ofDisableDepthTest();
@@ -193,6 +190,8 @@ void ofxPlot::draw(float x, float y){
     ofPopStyle();
     
     
+    
+
     
     
 }
