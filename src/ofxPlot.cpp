@@ -30,7 +30,8 @@ void ofxPlot::setup(string name, float width, float height){
     zOffset = 50;
     
     cam3D.enableOrtho();
-    legendFont.loadFont("AppleGothic.ttf", 10);
+    legendFont.loadFont("AppleGothic.ttf", 100, true, true, true);
+
 }
 
 void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){
@@ -112,10 +113,16 @@ void ofxPlot::draw(float x, float y){
         ofRotateY(ofRadToDeg(.5));
     }
     
+    // font testing
+    // ttf font needs to be flipped
+    // bitmap font needs to be of bitmap mode model
+    ofPushMatrix();
+    ofScale(1, -1);
     ofSetColor(255, 0, 0);
-    //legendFont.drawString("안녕하세요", 50, 50);
-    ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
-    ofDrawBitmapString("Hello World", 50, -10, 50);
+    legendFont.drawStringAsShapes("안녕하세요", 50, 50);
+    //ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
+    //ofDrawBitmapString("Hello World", 50, -10, 50);
+    ofPopMatrix();
     
     
 
