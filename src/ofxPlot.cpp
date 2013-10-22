@@ -32,6 +32,8 @@ void ofxPlot::setup(string name, float width, float height){
     cam3D.enableOrtho();
     legendFont.loadFont("AppleGothic.ttf", 100, true, true, true);
 
+    
+    slider.setup(20 , 100, graphWidth);
 }
 
 void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){

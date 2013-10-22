@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "ofxPlotLine.h"
+#include "ofxPlotSlider.h"
 #include "ofxTrueTypeFontUC.h"
 
 
@@ -42,7 +43,7 @@ public:
     void showXValue(int num);
     void showYValue(int num);
         
-    void showScrollBar(bool bShow);
+    void showSlider(bool bShow);
     
     void show3D(bool b3D);
     bool is3D(void);
@@ -91,9 +92,9 @@ public:
 
     ofPolyline drawLine;
 
-    ofEasyCam cam3D;
+    ofCamera cam3D;
     
-    
+    ofxPlotSlider slider;
     ofxTrueTypeFontUC legendFont;
 
 

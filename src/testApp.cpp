@@ -65,10 +65,10 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     ofBackground(0);
-    AccelGraph.draw(20,20);
-    ofDrawBitmapString(ofToString(AccelXLine.getMin()), 50,50);
-    ofDrawBitmapString(ofToString(AccelXLine.getMax()), 50,100);
-    ofDrawBitmapString(ofToString(AccelXLine.getAvg(1000)), 50,150);
+    AccelGraph.draw(20,100);
+    ofDrawBitmapString(ofToString(AccelXLine.getMin()), 50,100);
+    ofDrawBitmapString(ofToString(AccelXLine.getMax()), 50,150);
+    ofDrawBitmapString(ofToString(AccelXLine.getAvg(1000)), 50,200);
 
 
 }
