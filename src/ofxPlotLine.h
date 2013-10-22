@@ -25,6 +25,17 @@ public:
     
     void setVisible(bool bShow);
     bool isVisible();
+    
+    float getMax();
+    void resetMax();
+    
+    float getMin();
+    void resetMin();
+    
+    float getAvg(int NumOfSamples);
+    
+    float maxVal;
+    float minVal;
 
     string name;
     ofColor color;

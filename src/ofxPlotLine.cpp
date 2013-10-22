@@ -26,6 +26,9 @@ void ofxPlotLine::setup(string name, ofColor color){
     dataBuffer.resize(BUFFER_SIZE);
     nextIndex = 0;
     bIsVisible = true;
+    
+    minVal = 0.0;
+    maxVal = 0.0;
 }
 
 void ofxPlotLine::clear(){
@@ -38,6 +41,7 @@ void ofxPlotLine::clear(){
 
 void ofxPlotLine::addData(float data){
     
+    // implementing circular buffer with stl vector
     if(nextIndex >= dataBuffer.size()){
         dataBuffer.push_back(data);
     }
@@ -49,7 +53,18 @@ void ofxPlotLine::addData(float data){
     if (nextIndex >= BUFFER_SIZE) {
         nextIndex = 0;
     }
-    lastData = data;
+    
+//    lastData = data;
+    
+    // update Min
+    if (data <= minVal) {
+        minVal = data;
+    }
+    
+    // update Max
+    if (data >= maxVal){
+        maxVal = data;
+    }    
 }
 
 
@@ -72,7 +87,37 @@ bool ofxPlotLine::isVisible(){
     return bIsVisible;
 }
 
+float ofxPlotLine::getMax(){
+    return maxVal;
+}
 
+
+float ofxPlotLine::getMin(){
+    return minVal;
+}
+
+void ofxPlotLine::resetMax(){
+    maxVal = 0.0;
+}
+
+void ofxPlotLine::resetMin(){
+    minVal = 0.0;
+}
+
+float ofxPlotLine::getAvg(int NumOfSamples){
+    // calculate only the recent average for NumOfSamples
+    
+    double sum = 0;
+    float avg = 0;
+    
+    for (int i = 0; i < NumOfSamples; i++) {
+        sum += getElement(i + dataBuffer.size() - NumOfSamples);
+    }
+    
+    avg = float(sum / NumOfSamples);
+    
+    return avg;
+}
 
 
 
