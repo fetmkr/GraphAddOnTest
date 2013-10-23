@@ -13,12 +13,20 @@ void testApp::setup(){
 
     ofSetVerticalSync(true);
     
-    AccelGraph.setup("accelerometer", 960, 540);
+    AccelGraph.setup("accelerometer", 900, 540);
     AccelGraph.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
-    AccelGraph.setLineStyle(LINE_WITH_POINT);
+    AccelGraph.setLineStyle(LINE_ONLY);
     AccelGraph.setTimeScale(1.0);
     AccelGraph.showTimeValue(true);
-    AccelGraph.showSlider(true);
+    //AccelGraph.showSlider(true);
+    
+    AccelHistoryPlot.setup("accel history", 900, 160);
+    AccelHistoryPlot.setGrid(ofColor(100), ofColor(100), RECT_DISPLAY_ONLY);
+    AccelHistoryPlot.setLineStyle(LINE_ONLY);
+    AccelHistoryPlot.setTimeScale(30.0);
+    AccelHistoryPlot.showTimeValue(true);
+    AccelHistoryPlot.showSlider(true);
+    
     
 //    AccelXLine->setup("X", ofColor(255,0,0));
 //    AccelYLine->setup("Y", ofColor(0,255,0));
@@ -31,7 +39,9 @@ void testApp::setup(){
     AccelGraph.addLine(&AccelYLine);
     AccelGraph.addLine(&AccelZLine);
     
-
+    AccelHistoryPlot.addLine(&AccelXLine);
+    AccelHistoryPlot.addLine(&AccelYLine);
+    AccelHistoryPlot.addLine(&AccelZLine);
     bData = false;
     
 //    AccelZLine.setVisible(false);
@@ -68,7 +78,10 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     ofBackground(0);
-    AccelGraph.draw(20,100);
+    ofSetColor(255, 255, 255,20);
+    ofRect(160, 80, 1600, 900);
+    AccelGraph.draw(200 ,200);
+    AccelHistoryPlot.draw(200, 780);
 //    ofDrawBitmapString(ofToString(AccelXLine.getMin()), 50,100);
 //    ofDrawBitmapString(ofToString(AccelXLine.getMax()), 50,150);
 //    ofDrawBitmapString(ofToString(AccelXLine.getAvg(1000)), 50,200);

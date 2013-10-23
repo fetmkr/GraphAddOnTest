@@ -22,6 +22,7 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         ofxPlot AccelGraph;
+        ofxPlot AccelHistoryPlot;
     
         ofxPlotLine AccelXLine;
         ofxPlotLine AccelYLine;
