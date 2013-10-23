@@ -29,6 +29,7 @@ void ofxPlotLine::setup(string name, ofColor color){
     
     minVal = 0.0;
     maxVal = 0.0;
+    scaleFactor = 1.0;
 }
 
 void ofxPlotLine::clear(){
@@ -117,6 +118,14 @@ float ofxPlotLine::getAvg(int NumOfSamples){
     avg = float(sum / NumOfSamples);
     
     return avg;
+}
+
+void ofxPlotLine::setScale(float scale){
+    scaleFactor = scale;
+}
+
+float ofxPlotLine::getScale(){
+    return scaleFactor;
 }
 
 

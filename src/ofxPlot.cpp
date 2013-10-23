@@ -183,7 +183,7 @@ void ofxPlot::draw(float x, float y){
                     // how can we draw the most recent data - > the last element is the recent one
                     // so draw from the last to the last - numofdisplaydata element 
                     drawLine.addVertex(ofPoint(graphWidth - timeStep * j
-                                               , i + graphLinesPtr[i]->getElement(j + recentIndex)
+                                               , i + graphLinesPtr[i]->getElement(j + recentIndex) * graphLinesPtr[i]->getScale()
                                                , getDrawPosZ(getNumOfVisibleLines(), drawIndex)));
                     
                 }
@@ -200,7 +200,7 @@ void ofxPlot::draw(float x, float y){
                 for (int j = 0; j< NumOfDisplayData; j++) {
                     
                     glVertex3f(graphWidth - timeStep * j
-                               , i + graphLinesPtr[i]->getElement(j + recentIndex)
+                               , i + graphLinesPtr[i]->getElement(j + recentIndex) * graphLinesPtr[i]->getScale()
                                , getDrawPosZ(getNumOfVisibleLines(), drawIndex));
                     
                 }

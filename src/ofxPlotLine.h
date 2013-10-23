@@ -20,6 +20,10 @@ public:
     void draw(ofEventArgs& event);
     
     void addData(float data);
+    void setScale(float scale);
+    float getScale();
+    
+    float scaleFactor;
     
     float getElement(int index);
     

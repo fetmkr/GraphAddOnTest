@@ -30,6 +30,7 @@ void testApp::setup(){
     AccelGraph.addLine(&AccelXLine);
     AccelGraph.addLine(&AccelYLine);
     AccelGraph.addLine(&AccelZLine);
+    
 
     bData = false;
     
@@ -61,7 +62,7 @@ void testApp::update(){
     AccelXLine.addData(xtemp);
     AccelYLine.addData(ytemp);
     AccelZLine.addData(ztemp);
-    
+        
 }
 
 //--------------------------------------------------------------
