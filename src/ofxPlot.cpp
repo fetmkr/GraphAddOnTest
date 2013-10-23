@@ -29,11 +29,14 @@ void ofxPlot::setup(string name, float width, float height){
     // default zOffset value = 50
     zOffset = 50;
     
+    
     cam3D.enableOrtho();
-    legendFont.loadFont("AppleGothic.ttf", 100, true, true, true);
+    
+    timeFont.loadFont("NewMedia Fett.ttf",8, true, true, true);
 
     
-    slider.setup(20 , 100, graphWidth);
+    
+    slider.setup(graphWidth);
 }
 
 void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){
@@ -88,8 +91,13 @@ void ofxPlot::draw(float x, float y){
     int drawIndex = 0;
         
     
+    
+    
+    
     ofPushStyle();
     
+
+
     // draw rect
     ofNoFill();
     ofSetColor(this->rectColor);
@@ -113,18 +121,20 @@ void ofxPlot::draw(float x, float y){
     if(b3DMode){
         ofRotateX(ofRadToDeg(.5));
         ofRotateY(ofRadToDeg(.5));
+        // scale up a little in 3D mode 
+        ofScale(1.3, 1.3);
     }
     
     // font testing
     // ttf font needs to be flipped
     // bitmap font needs to be of bitmap mode model
-    ofPushMatrix();
-    ofScale(1, -1);
-    ofSetColor(255, 0, 0);
-    legendFont.drawStringAsShapes("안녕하세요", 50, 50);
-    //ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
-    //ofDrawBitmapString("Hello World", 50, -10, 50);
-    ofPopMatrix();
+//    ofPushMatrix();
+//    ofScale(1, -1);
+//    ofSetColor(255, 0, 0);
+//    timeFont.drawStringAsShapes("안녕하세요", 0, 0);
+//    //ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
+//    //ofDrawBitmapString("Hello World", 50, -10, 50);
+//    ofPopMatrix();
     
     
 
@@ -134,8 +144,10 @@ void ofxPlot::draw(float x, float y){
         // draw Grid
         ofSetColor(this->gridColor);
         ofLine(-graphWidth/2, 0, graphWidth/2, 0);
-        ofLine(0, -graphHeight/2, 0, graphHeight/2);
-        
+        //ofLine(0, -graphHeight/2, 0, graphHeight/2);
+        ofSetColor(this->gridColor * 0.5);
+        ofLine(-graphWidth/2, graphHeight/4, graphWidth/2, graphHeight/4);
+        ofLine(-graphWidth/2, -graphHeight/4, graphWidth/2, -graphHeight/4);
 
         ofPopMatrix();
     }
@@ -196,6 +208,18 @@ void ofxPlot::draw(float x, float y){
     cam3D.end();
     //ofDisableDepthTest();
     
+    
+    if(bShowTimeVal){
+        // show time code
+        //ofDrawBitmapString(getElapsedTime(0), 20,20);
+        drawTimeValue(0);
+        
+    }
+    
+    if (bShowSlider) {
+        // slider should only be responsive when it's drawn
+        slider.draw(xPos, yPos+graphHeight);
+    }
     ofPopStyle();
     
     
@@ -240,3 +264,70 @@ void ofxPlot::show3D(bool b3D){
 bool ofxPlot::is3D(void){
     return b3DMode;
 }
+
+void ofxPlot::showTimeValue(bool bShow){
+    bShowTimeVal = bShow;
+}
+
+string ofxPlot::getTimeStamp(){
+    string timeStamp;
+    string minStamp;
+    string secStamp;
+    string milliStamp;
+    int min;
+    int sec;
+    int milli;
+    
+    min = int(ofGetElapsedTimeMillis() / 60000);
+    sec = int(ofGetElapsedTimeMillis() / 1000) %60;
+    milli = int(ofGetElapsedTimeMillis()/10 ) % 100;
+    
+    if (min < 10){
+        minStamp ="0"+ofToString(min);
+    }
+    else{
+        minStamp=ofToString(min);
+    }
+    
+    if (sec < 10){
+        secStamp = "0"+ofToString(sec);
+    }
+    else{
+        secStamp = ofToString(sec);
+    }
+    
+    if(milli < 10){
+        milliStamp = "0"+ofToString(milli);
+    }
+    else{
+        milliStamp=ofToString(milli);
+    }
+    
+    timeStamp = minStamp + ":" + secStamp + ":" + milliStamp;
+    
+    return timeStamp;
+}
+
+void ofxPlot::drawTimeValue(float offsetTime){
+    
+    string time[4];
+    
+    for(int i = 0; i < 4; i++) {
+        time[i] = ofToString(int(offsetTime + (timeScale * 1000 / 3) * i)) + " ms";
+        ofRectangle boundingBox = timeFont.getStringBoundingBox(time[i], 0, 0);
+        float x;
+        float y;
+        x = xPos + graphWidth*i/3 - boundingBox.getCenter().x;
+        y= yPos + graphHeight + boundingBox.height*2;
+        ofSetColor(255);
+        timeFont.drawString(ofToString(time[i]), x, y);
+        ofFill();
+        ofSetColor(255, 0, 0);
+        ofCircle(xPos + graphWidth*i/3, yPos + graphHeight, 2);
+    }
+}
+
+void ofxPlot::showSlider(bool bShow){
+    bShowSlider = bShow;
+}
+

@@ -16,7 +16,9 @@ void testApp::setup(){
     AccelGraph.setup("accelerometer", 960, 540);
     AccelGraph.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
     AccelGraph.setLineStyle(LINE_ONLY);
-    AccelGraph.setTimeScale(4.0);
+    AccelGraph.setTimeScale(1.2);
+    AccelGraph.showTimeValue(true);
+    AccelGraph.showSlider(true);
     
 //    AccelXLine->setup("X", ofColor(255,0,0));
 //    AccelYLine->setup("Y", ofColor(0,255,0));
@@ -66,9 +68,9 @@ void testApp::update(){
 void testApp::draw(){
     ofBackground(0);
     AccelGraph.draw(20,100);
-    ofDrawBitmapString(ofToString(AccelXLine.getMin()), 50,100);
-    ofDrawBitmapString(ofToString(AccelXLine.getMax()), 50,150);
-    ofDrawBitmapString(ofToString(AccelXLine.getAvg(1000)), 50,200);
+//    ofDrawBitmapString(ofToString(AccelXLine.getMin()), 50,100);
+//    ofDrawBitmapString(ofToString(AccelXLine.getMax()), 50,150);
+//    ofDrawBitmapString(ofToString(AccelXLine.getAvg(1000)), 50,200);
 
 
 }

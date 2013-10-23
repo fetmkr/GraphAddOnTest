@@ -15,14 +15,14 @@ public:
     ofxPlotSlider();
     ~ofxPlotSlider();
     
-    void draw(ofEventArgs& event);
+    void draw(float x, float y);
     void mouseMoved(ofMouseEventArgs& event);
     void mouseDragged(ofMouseEventArgs& event);
     void mousePressed(ofMouseEventArgs& event);
     void mouseReleased(ofMouseEventArgs& event);
 
     
-    void setup(float x, float y, float width);
+    void setup(float width);
     void clearEvents();
 
     void setBar(ofColor color, float size);
@@ -35,8 +35,8 @@ public:
     ofColor barColor;
     float barCircleRadius;
 
-    float sliderPosX;
-    float sliderPosY;
+    float transX;
+    float transY;
     float sliderWidth;
     float barPosX;
     float barPosY;

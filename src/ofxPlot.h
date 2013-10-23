@@ -34,14 +34,8 @@ public:
     void setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option);
     void setLineStyle(LineStyleType style);
     
-    void setXLegend(string name);
-    void setYLegend(string name);
-    
-    void showXLegend(bool bShow);
-    void showYLegend(bool bShow);
-    
-    void showXValue(int num);
-    void showYValue(int num);
+    void showTimeValue(bool bShow);
+    string getTimeStamp();
         
     void showSlider(bool bShow);
     
@@ -57,7 +51,8 @@ public:
     void draw(float x, float y);
 //    void addLine(ofPtr<ofxPlotLine> line);
     void addLine(ofxPlotLine* line);
-
+    
+    
     int getNumOfLines();
     
     int getNumOfVisibleLines();
@@ -71,6 +66,9 @@ public:
     int zOffset;
     
 
+    bool bShowTimeVal;
+    bool bShowSlider;
+    
     bool b3DMode;
     
     ofColor rectColor;
@@ -88,14 +86,15 @@ public:
     
 
 //    vector< ofPtr<ofxPlotLine> > graphLinesPtr;
+        ofxTrueTypeFontUC timeFont;
+
+private:
     vector<ofxPlotLine*> graphLinesPtr;
-
     ofPolyline drawLine;
-
-    ofCamera cam3D;
-    
     ofxPlotSlider slider;
-    ofxTrueTypeFontUC legendFont;
+    ofCamera cam3D;
+    void drawTimeValue(float offsetTime);
 
-
+    
+    
 };
