@@ -15,8 +15,8 @@ void testApp::setup(){
     
     AccelGraph.setup("accelerometer", 960, 540);
     AccelGraph.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
-    AccelGraph.setLineStyle(LINE_ONLY);
-    AccelGraph.setTimeScale(1.2);
+    AccelGraph.setLineStyle(LINE_WITH_POINT);
+    AccelGraph.setTimeScale(1.0);
     AccelGraph.showTimeValue(true);
     AccelGraph.showSlider(true);
     

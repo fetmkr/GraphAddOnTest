@@ -31,7 +31,7 @@ void ofxPlotSlider::setup(float width){
     sliderWidth = width;
     bHasFocus = false;
     // default bar circle setting 
-    setBar(ofColor(255,0,0), 10.0);
+    setBar(ofColor(255,0,0), 8.0);
 
     
     if(!bWasSetup){
@@ -112,5 +112,9 @@ void ofxPlotSlider::updateBarPos(float _x, float _y){
     }
     
 
+}
+
+float ofxPlotSlider::getPosition(){
+    return barPosX;
 }
 

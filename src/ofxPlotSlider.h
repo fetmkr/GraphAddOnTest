@@ -27,7 +27,7 @@ public:
 
     void setBar(ofColor color, float size);
     
-    float getValue();
+    float getPosition();
     
     bool isInside(float _x, float _y);
     void updateBarPos(float _x, float _y);

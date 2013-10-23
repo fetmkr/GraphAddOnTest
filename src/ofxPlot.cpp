@@ -86,7 +86,8 @@ void ofxPlot::draw(float x, float y){
     int NumOfDisplayData;
     
     NumOfDisplayData = int(timeScale * dataRate);
-    timeStep = graphWidth / NumOfDisplayData;
+    // to fill the plot with N sample we need to divide the width by N-1
+    timeStep = graphWidth / (NumOfDisplayData-1);
     
     int drawIndex = 0;
         
@@ -161,17 +162,28 @@ void ofxPlot::draw(float x, float y){
     {
         if (graphLinesPtr[i]->isVisible()) {
             
+            if (bShowSlider){
+                timeOffset = int(ofMap(slider.getPosition(), 0, graphWidth, 0, graphLinesPtr[i]->dataBuffer.size() - NumOfDisplayData));
+                ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
+//                ofDrawBitmapString(ofToString(timeOffset), 20,40);
+            }
+            else{
+                timeOffset = 0;
+            }
+            
+            int recentIndex = graphLinesPtr[i]->dataBuffer.size() - timeOffset - NumOfDisplayData;
+
             ofSetColor(graphLinesPtr[i]->color);
+            
             if(lineStyle != POINT_ONLY){
                 
                 // draw line
-                // we need to add 1 more point to finish the line nicely
-                for (int j = 0; j< NumOfDisplayData + 1; j++) {
+                for (int j = 0; j< NumOfDisplayData; j++) {
                     
                     // how can we draw the most recent data - > the last element is the recent one
                     // so draw from the last to the last - numofdisplaydata element 
-                    drawLine.addVertex(ofPoint(timeStep * NumOfDisplayData - timeStep * j
-                                               , i + graphLinesPtr[i]->getElement(j + graphLinesPtr[i]->dataBuffer.size() - 1 - NumOfDisplayData)
+                    drawLine.addVertex(ofPoint(graphWidth - timeStep * j
+                                               , i + graphLinesPtr[i]->getElement(j + recentIndex)
                                                , getDrawPosZ(getNumOfVisibleLines(), drawIndex)));
                     
                 }
@@ -183,12 +195,12 @@ void ofxPlot::draw(float x, float y){
             if(lineStyle != LINE_ONLY){
                 
                 // draw points
-                glPointSize(1.5);
+                glPointSize(3);
                 glBegin(GL_POINTS);
-                for (int j = 0; j<= NumOfDisplayData; j++) {
+                for (int j = 0; j< NumOfDisplayData; j++) {
                     
-                    glVertex3f(timeStep * NumOfDisplayData - timeStep * j
-                               , i + graphLinesPtr[i]->getElement(j + graphLinesPtr[i]->dataBuffer.size() - 1 - NumOfDisplayData)
+                    glVertex3f(graphWidth - timeStep * j
+                               , i + graphLinesPtr[i]->getElement(j + recentIndex)
                                , getDrawPosZ(getNumOfVisibleLines(), drawIndex));
                     
                 }
@@ -212,25 +224,27 @@ void ofxPlot::draw(float x, float y){
     if(bShowTimeVal){
         // show time code
         //ofDrawBitmapString(getElapsedTime(0), 20,20);
-        drawTimeValue(0);
+        if (bShowSlider) {
+            drawTimeStamp(timeOffset * 1000 / dataRate);
+        }
+        else{
+            drawMilliTimeValue(0);
+        }
         
     }
     
     if (bShowSlider) {
         // slider should only be responsive when it's drawn
         slider.draw(xPos, yPos+graphHeight);
+//        ofDrawBitmapString(ofToString(slider.getPosition()), 20,20);
+
     }
     ofPopStyle();
-    
-    
-    
-
-    
+       
     
 }
 
 // to add instance to vector, what is proper way?
-
 
 //void ofxPlot::addLine(ofPtr<ofxPlotLine> line){
 //    graphLinesPtr.push_back(line);
@@ -269,7 +283,7 @@ void ofxPlot::showTimeValue(bool bShow){
     bShowTimeVal = bShow;
 }
 
-string ofxPlot::getTimeStamp(){
+string ofxPlot::getTimeStamp(unsigned long long ms){
     string timeStamp;
     string minStamp;
     string secStamp;
@@ -278,9 +292,9 @@ string ofxPlot::getTimeStamp(){
     int sec;
     int milli;
     
-    min = int(ofGetElapsedTimeMillis() / 60000);
-    sec = int(ofGetElapsedTimeMillis() / 1000) %60;
-    milli = int(ofGetElapsedTimeMillis()/10 ) % 100;
+    min = int(ms / 60000);
+    sec = int(ms / 1000) % 60;
+    milli = int(ms / 10 ) % 100;
     
     if (min < 10){
         minStamp ="0"+ofToString(min);
@@ -308,7 +322,7 @@ string ofxPlot::getTimeStamp(){
     return timeStamp;
 }
 
-void ofxPlot::drawTimeValue(float offsetTime){
+void ofxPlot::drawMilliTimeValue(float offsetTime){
     
     string time[4];
     
@@ -325,6 +339,25 @@ void ofxPlot::drawTimeValue(float offsetTime){
         ofSetColor(255, 0, 0);
         ofCircle(xPos + graphWidth*i/3, yPos + graphHeight, 2);
     }
+}
+
+void ofxPlot::drawTimeStamp(float offsetTime){
+    string time[4];
+    
+    for(int i = 0; i < 4; i++) {
+        time[i] = getTimeStamp(offsetTime + (timeScale * 1000 / 3) * i);
+        ofRectangle boundingBox = timeFont.getStringBoundingBox(time[i], 0, 0);
+        float x;
+        float y;
+        x = xPos + graphWidth*i/3 - boundingBox.getCenter().x;
+        y= yPos + graphHeight + boundingBox.height*2;
+        ofSetColor(255);
+        timeFont.drawString(ofToString(time[i]), x, y);
+        ofFill();
+        ofSetColor(255, 0, 0);
+        ofCircle(xPos + graphWidth*i/3, yPos + graphHeight, 2);
+    }
+
 }
 
 void ofxPlot::showSlider(bool bShow){

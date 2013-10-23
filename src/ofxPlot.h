@@ -35,7 +35,7 @@ public:
     void setLineStyle(LineStyleType style);
     
     void showTimeValue(bool bShow);
-    string getTimeStamp();
+    string getTimeStamp(unsigned long long ms);
         
     void showSlider(bool bShow);
     
@@ -64,6 +64,7 @@ public:
     float yPos;
     
     int zOffset;
+    int timeOffset;
     
 
     bool bShowTimeVal;
@@ -93,7 +94,9 @@ private:
     ofPolyline drawLine;
     ofxPlotSlider slider;
     ofCamera cam3D;
-    void drawTimeValue(float offsetTime);
+    void drawMilliTimeValue(float offsetTime);
+    void drawTimeStamp(float offsetTime);
+    
 
     
     
