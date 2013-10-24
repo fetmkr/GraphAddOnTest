@@ -15,7 +15,8 @@ public:
     ofxPlotButton();
     ~ofxPlotButton();
     
-    void setup(float width, float height, bool bToggle);
+    void setup(float width, float height, bool bToggle , bool bDefaultVal);
+    void resize(float width, float height);
     void clearEvents();
     void draw(float x, float y);
     bool isPressed();

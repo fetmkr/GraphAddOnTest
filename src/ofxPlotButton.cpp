@@ -17,13 +17,15 @@ ofxPlotButton::~ofxPlotButton(){
     clearEvents();
 }
 
-void ofxPlotButton::setup(float width, float height, bool bToggle){
+void ofxPlotButton::setup(float width, float height, bool bToggle, bool bDefaultVal){
     buttonWidth = width;
     buttonHeight = height;
-    bToggleButton = bToggle;
-    bHasFocus = false;
     buttonRect = ofRectangle(0, 0, buttonWidth, buttonHeight);
 
+    bToggleButton = bToggle;
+    bIsPressed = bDefaultVal;
+    bHasFocus = false;
+    
     if(!bWasSetup){
         ofRegisterMouseEvents(this);
 //        ofAddListener(ofEvents().mouseMoved, this, &ofxPlotButton::mouseMoved);
@@ -33,6 +35,10 @@ void ofxPlotButton::setup(float width, float height, bool bToggle){
 		bWasSetup = true;
 	}
 }
+
+
+
+
 
 void ofxPlotButton::clearEvents(){
     if(bWasSetup){
@@ -70,6 +76,13 @@ void ofxPlotButton::draw(float x, float y){
     
 }
 
+void ofxPlotButton::resize(float width, float height){
+    buttonWidth = width;
+    buttonHeight = height;
+    buttonRect.setWidth(width);
+    buttonRect.setHeight(height);
+}
+
 bool ofxPlotButton::isPressed(){
     return bIsPressed;
 }
@@ -83,22 +96,32 @@ void ofxPlotButton::mouseDragged(ofMouseEventArgs& event){
 }
 
 void ofxPlotButton::mousePressed(ofMouseEventArgs& event){
-    cout << "teta" << endl;
     bHasFocus = false;
     if(buttonRect.inside(event.x-transX, event.y-transY))
     {
         bHasFocus = true;
-        bIsPressed = true;
+        if (bToggleButton) {
+            bIsPressed = !bIsPressed;
+        }
+        else{
+            bIsPressed = true;
+        }
     }
 }
 
 void ofxPlotButton::mouseReleased(ofMouseEventArgs& event){
     if (bHasFocus) {
-        if (buttonRect.inside(event.x-transX, event.y-transY)) {
+        //if (buttonRect.inside(event.x-transX, event.y-transY)) {
+        if (bToggleButton) {
+        }
+        else{
             bIsPressed = false;
         }
+
+        //}
     }
     bHasFocus = false;
 }
+
 
 

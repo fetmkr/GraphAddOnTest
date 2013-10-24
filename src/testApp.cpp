@@ -169,7 +169,6 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
     switch(key){
         case ' ':
-            AccelGraph.show3D(true);
             break;
         default:
             break;
@@ -180,7 +179,6 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
     switch(key){
         case ' ':
-            AccelGraph.show3D(false);
             break;
         default:
             break;

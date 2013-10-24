@@ -36,6 +36,10 @@ void ofxPlot::setup(string name, float width, float height){
 
     
     slider.setup(graphWidth);
+
+    buttonSize = 20;
+    buttonXOffsetPos = 115;
+    button3DOn.setup(buttonSize, buttonSize, true, false);
 }
 
 void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){
@@ -78,6 +82,10 @@ void ofxPlot::setDataRate(float Hz){
 }
 
 void ofxPlot::draw(float x, float y){
+    
+    b3DMode = button3DOn.isPressed();
+    
+
         
     xPos = x;
     yPos = y;
@@ -239,10 +247,18 @@ void ofxPlot::draw(float x, float y){
     }
     
     if (bShowMenu) {
+        
+        float yOff;
+        yOff = graphHeight / ( 1+ graphLinesPtr.size());
+        
+        button3DOn.draw(xPos + graphWidth + buttonXOffsetPos, yPos + yOff/2);
+
         for (int i = 0; i < graphLinesPtr.size(); i++) {
-            graphLinesPtr[i]->drawButton(xPos + graphWidth + 20 , yPos + i * graphLinesPtr[i]->button.buttonRect.height *1.5);
+            graphLinesPtr[i]->drawButton(xPos + graphWidth + buttonXOffsetPos , yPos + (i+1) * yOff + + yOff/2);
         }
+        
     }
+    
     
     
     ofPopStyle();
@@ -255,6 +271,7 @@ void ofxPlot::draw(float x, float y){
 //}
 
 void ofxPlot::addLine(ofxPlotLine* line){
+    line->button.resize(buttonSize, buttonSize);
     graphLinesPtr.push_back(line);
 }
 
@@ -371,4 +388,17 @@ void ofxPlot::showSlider(bool bShow){
 void ofxPlot::showMenu(bool bShow){
     bShowMenu = bShow;
 }
+
+
+void ofxPlot::setMenuButton(float size ,float xOffset){
+    buttonSize = size;
+    buttonXOffsetPos = xOffset;
+    
+    for (int i = 0; i < graphLinesPtr.size(); i++) {
+        graphLinesPtr[i]->button.resize(buttonSize, buttonSize);
+    }
+    
+    button3DOn.resize(buttonSize, buttonSize);
+}
+
 

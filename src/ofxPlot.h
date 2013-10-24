@@ -42,6 +42,10 @@ public:
     void showMenu(bool bShow);
     bool bShowMenu;
     
+    void setMenuButton(float size, float xOffset);
+    float buttonSize;
+    float buttonXOffsetPos;
+    
     void show3D(bool b3D);
     bool is3D(void);
     
@@ -91,6 +95,7 @@ public:
 
 //    vector< ofPtr<ofxPlotLine> > graphLinesPtr;
         ofxTrueTypeFontUC timeFont;
+    ofxPlotButton button3DOn;
 
 private:
     vector<ofxPlotLine*> graphLinesPtr;
