@@ -9,10 +9,13 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxPlotUtil.h"
 #include "ofxPlotLine.h"
 #include "ofxPlotSlider.h"
 #include "ofxPlotButton.h"
 #include "ofxTrueTypeFontUC.h"
+
+using namespace ofxPlotUtil;
 
 
 enum GridOptionType {
@@ -36,7 +39,7 @@ public:
     void setLineStyle(LineStyleType style);
     
     void showTimeValue(bool bShow);
-    string getTimeStamp(unsigned long long ms);
+    //string getTimeStamp(unsigned long long ms);
         
     void showSlider(bool bShow);
     void showMenu(bool bShow);

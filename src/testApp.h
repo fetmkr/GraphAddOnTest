@@ -3,8 +3,30 @@
 #include "ofMain.h"
 #include "ofxPlot.h"
 #include "ofxPlotLine.h"
-
+#include "ofxPlotUtil.h"
 #include "ofxSvg.h"
+
+using namespace ofxPlotUtil;
+
+enum LightSensorType{
+    SENSOR_TOUCH = 0,
+    SENSOR_MOTION_2D,
+    SENSOR_MOTION_3D,
+    SENSOR_PRESSURE_ALTITUDE,
+    SENSOR_TEMP_HUMIDITY,
+    SENSOR_COLOR,
+    SENSOR_LUX
+};
+
+enum LightDemoType{
+    DEMO_STREET = 0,
+    DEMO_INDOOR = 1
+};
+
+enum LightVisualType {
+    VISUAL_GRAPHIC = 0,
+    VISUAL_SIENCE = 1
+};
 
 class testApp : public ofBaseApp{
 
@@ -23,16 +45,24 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        ofxPlot AccelGraph;
-        ofxPlot AccelHistoryPlot;
+        void drawAnalBG(string name);
+    
+    
+    
+        LightSensorType sensorType;
+        LightDemoType demoType;
+        LightVisualType visualType;
+    
+        ofxPlot MotionSensorPlot;
+        ofxPlot MotionSensorHistoryPlot;
     
         ofxPlotLine AccelXLine;
         ofxPlotLine AccelYLine;
         ofxPlotLine AccelZLine;
     
-        ofxPlotLine* AccelXLinePtr;
-        ofxPlotLine* AccelYLinePtr;
-        ofxPlotLine* AccelZLinePtr;
+        ofxPlotLine GyroXLine;
+        ofxPlotLine GyroYLine;
+        ofxPlotLine GyroZLine;
     
         ofTrueTypeFont analFont;
         ofxSVG etriLogoBlk;

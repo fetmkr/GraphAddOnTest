@@ -16,20 +16,20 @@ void testApp::setup(){
     analFont.loadFont("SimKBRg.ttf", 35);
     etriLogoBlk.load("etri_logo_black.svg");
     
-    AccelGraph.setup("accelerometer", 900, 540);
-    AccelGraph.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
-    AccelGraph.setLineStyle(LINE_ONLY);
-    AccelGraph.setTimeScale(1.0);
-    AccelGraph.showTimeValue(true);
-    AccelGraph.showMenu(true);
+    MotionSensorPlot.setup("accelerometer", 900, 540);
+    MotionSensorPlot.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
+    MotionSensorPlot.setLineStyle(LINE_ONLY);
+    MotionSensorPlot.setTimeScale(1.0);
+    MotionSensorPlot.showTimeValue(true);
+    MotionSensorPlot.showMenu(true);
     //AccelGraph.showSlider(true);
     
-    AccelHistoryPlot.setup("accel history", 900, 160);
-    AccelHistoryPlot.setGrid(ofColor(100), ofColor(100), RECT_DISPLAY_ONLY);
-    AccelHistoryPlot.setLineStyle(LINE_ONLY);
-    AccelHistoryPlot.setTimeScale(30.0);
-    AccelHistoryPlot.showTimeValue(true);
-    AccelHistoryPlot.showSlider(true);
+    MotionSensorHistoryPlot.setup("accel history", 900, 160);
+    MotionSensorHistoryPlot.setGrid(ofColor(100), ofColor(100), RECT_DISPLAY_ONLY);
+    MotionSensorHistoryPlot.setLineStyle(LINE_ONLY);
+    MotionSensorHistoryPlot.setTimeScale(30.0);
+    MotionSensorHistoryPlot.showTimeValue(true);
+    MotionSensorHistoryPlot.showSlider(true);
     
     
 //    AccelXLine->setup("X", ofColor(255,0,0));
@@ -39,13 +39,26 @@ void testApp::setup(){
     AccelYLine.setup("Y", ofColor(0,255,0));
     AccelZLine.setup("Z", ofColor(0,0,255));
     
-    AccelGraph.addLine(&AccelXLine);
-    AccelGraph.addLine(&AccelYLine);
-    AccelGraph.addLine(&AccelZLine);
+    GyroXLine.setup("X", ofColor(255,255,0));
+    GyroYLine.setup("Y", ofColor(0,255,255));
+    GyroZLine.setup("Z", ofColor(255,0,255));
     
-    AccelHistoryPlot.addLine(&AccelXLine);
-    AccelHistoryPlot.addLine(&AccelYLine);
-    AccelHistoryPlot.addLine(&AccelZLine);
+    MotionSensorPlot.addLine(&AccelXLine);
+    MotionSensorPlot.addLine(&AccelYLine);
+    MotionSensorPlot.addLine(&AccelZLine);
+    
+    MotionSensorPlot.addLine(&GyroXLine);
+    MotionSensorPlot.addLine(&GyroYLine);
+    MotionSensorPlot.addLine(&GyroZLine);
+    
+    MotionSensorHistoryPlot.addLine(&AccelXLine);
+    MotionSensorHistoryPlot.addLine(&AccelYLine);
+    MotionSensorHistoryPlot.addLine(&AccelZLine);
+    
+    MotionSensorHistoryPlot.addLine(&GyroXLine);
+    MotionSensorHistoryPlot.addLine(&GyroYLine);
+    MotionSensorHistoryPlot.addLine(&GyroZLine);
+    
     bData = false;
     
 //    AccelZLine.setVisible(false);
@@ -76,7 +89,14 @@ void testApp::update(){
     AccelXLine.addData(xtemp);
     AccelYLine.addData(ytemp);
     AccelZLine.addData(ztemp);
-        
+    GyroXLine.addData(xtemp);
+    GyroYLine.addData(ytemp);
+    GyroZLine.addData(ztemp);
+    
+    
+    
+
+    
 }
 
 //--------------------------------------------------------------
@@ -84,84 +104,34 @@ void testApp::draw(){
     ofBackground(255);
     
     
-    // draw analysis window
-    ofSetColor(0, 0, 0,100);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    ofRect(160, 90, 1600, 900);
-    ofSetColor(255);
-    analFont.drawString("MOTION DATA ANALYSIS", 400, 170);
-    ofSetColor(0);
-    analFont.drawString("GRAPH", 200 +900 + 20 + 5, 170);
-    analFont.drawString("ON TIME", 200 +900 + 20 + 128 + 20 + 5, 170);
-    ofSetColor(255);
-    analFont.drawString(AccelGraph.getTimeStamp(ofGetElapsedTimeMillis()), 200 +900 + 20 + 128 + 20 + 280, 170);
     
-    ofPushMatrix();
-    ofTranslate(200, 125);
-    ofScale(0.8, 0.8);
-    etriLogoBlk.draw();
-    ofPopMatrix();
-    
-    ofNoFill();
-    ofSetColor(0);
-    ofRect(160, 90, 1600, 900);
+    drawAnalBG("MOTION DATA ANALYSIS");
     
     
-    ofFill();
-    ofSetRectMode(OF_RECTMODE_CENTER);
+    switch (sensorType) {
+        case SENSOR_TOUCH:
+            break;
+        case SENSOR_MOTION_2D:
+            break;
+        case SENSOR_MOTION_3D:
+            break;
+        case SENSOR_PRESSURE_ALTITUDE:
+            break;
+        case SENSOR_TEMP_HUMIDITY:
+            break;
+        case SENSOR_COLOR:
+            break;
+        case SENSOR_LUX:
+            break;
+        default:
+            break;
+    }
+  
     
-    //ofSetColor(244, 15, 70);
-    ofSetColor(0,0,0,150);
-    ofRect(160, 90, 7, 7);
-    ofRect(160+1600, 90, 7, 7);
-    ofRect(160, 90+900, 7, 7);
-    ofRect(160+1600, 90+900, 7, 7);
-
-    ofSetColor(0, 0, 0);
-    ofLine(200, 110, 200+900, 110);
-    ofRect(200, 110, 6, 6);
-    ofRect(200+900, 110, 6, 6);
-    
-    ofSetColor(0, 0, 0);
-    ofLine(200 +900 + 20, 110, 200 +900 + 20 + 128, 110);
-    ofRect(200 +900 + 20, 110, 6, 6);
-    ofRect(200 +900 + 20 + 128, 110, 6, 6);
-    
-    ofSetColor(100);
-    ofLine(200 +900 + 20, 200, 200 +900 + 20 + 128, 200);
-    ofRect(200 +900 + 20, 200, 4, 4);
-    ofRect(200 +900 + 20 + 128, 200, 4, 4);
-    
-    ofLine(200 +900 + 20, 780, 200 +900 + 20 + 128, 780);
-    ofRect(200 +900 + 20, 780, 4, 4);
-    ofRect(200 +900 + 20 + 128, 780, 4, 4);
 
     
-    ofSetColor(0, 0, 0);
-    ofLine(200 +900 + 20 + 128 + 20, 110, 200 +900 + 20 + 128 + 20 +460, 110);
-    ofRect(200 +900 + 20 + 128 + 20, 110, 6, 6);
-    ofRect(200 +900 + 20 + 128 + 20 +460, 110, 6, 6);
-    
-    ofSetColor(100);
-    ofLine(200 +900 + 20 + 128 + 20, 200, 200 +900 + 20 + 128 + 20 +460, 200);
-    ofRect(200 +900 + 20 + 128 + 20, 200, 4, 4);
-    ofRect(200 +900 + 20 + 128 + 20 +460, 200, 4, 4);
-    
-    ofSetRectMode(OF_RECTMODE_CORNER);
-
-    
-    AccelGraph.draw(200 ,200);
-    AccelHistoryPlot.draw(200, 780);
-    
-    
-    
-    
-    
-    
-//    ofDrawBitmapString(ofToString(AccelXLine.getMin()), 50,100);
-//    ofDrawBitmapString(ofToString(AccelXLine.getMax()), 50,150);
-//    ofDrawBitmapString(ofToString(AccelXLine.getAvg(1000)), 50,200);
-
+    MotionSensorPlot.draw(200 ,200);
+    MotionSensorHistoryPlot.draw(200, 780);
 
 }
 
@@ -218,4 +188,74 @@ void testApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+
+
+void testApp::drawAnalBG(string name){
+    // draw analysis window
+    ofSetColor(0, 0, 0,100);
+    ofSetRectMode(OF_RECTMODE_CORNER);
+    ofRect(160, 90, 1600, 900);
+    ofSetColor(255);
+    analFont.drawString(name, 400, 170);
+    ofSetColor(0);
+    analFont.drawString("GRAPH", 200 +900 + 20 + 5, 170);
+    analFont.drawString("ON TIME", 200 +900 + 20 + 128 + 20 + 5, 170);
+    ofSetColor(255);
+    analFont.drawString(getTimeStamp(ofGetElapsedTimeMillis()), 200 +900 + 20 + 128 + 20 + 280, 170);
+    
+    ofPushMatrix();
+    ofTranslate(200, 125);
+    ofScale(0.8, 0.8);
+    etriLogoBlk.draw();
+    ofPopMatrix();
+    
+    ofNoFill();
+    ofSetColor(0);
+    ofRect(160, 90, 1600, 900);
+    
+    
+    ofFill();
+    ofSetRectMode(OF_RECTMODE_CENTER);
+    
+    //ofSetColor(244, 15, 70);
+    ofSetColor(0,0,0,150);
+    ofRect(160, 90, 7, 7);
+    ofRect(160+1600, 90, 7, 7);
+    ofRect(160, 90+900, 7, 7);
+    ofRect(160+1600, 90+900, 7, 7);
+    
+    ofSetColor(0, 0, 0);
+    ofLine(200, 110, 200+900, 110);
+    ofRect(200, 110, 6, 6);
+    ofRect(200+900, 110, 6, 6);
+    
+    ofSetColor(0, 0, 0);
+    ofLine(200 +900 + 20, 110, 200 +900 + 20 + 128, 110);
+    ofRect(200 +900 + 20, 110, 6, 6);
+    ofRect(200 +900 + 20 + 128, 110, 6, 6);
+    
+    ofSetColor(100);
+    ofLine(200 +900 + 20, 200, 200 +900 + 20 + 128, 200);
+    ofRect(200 +900 + 20, 200, 4, 4);
+    ofRect(200 +900 + 20 + 128, 200, 4, 4);
+    
+    ofLine(200 +900 + 20, 780, 200 +900 + 20 + 128, 780);
+    ofRect(200 +900 + 20, 780, 4, 4);
+    ofRect(200 +900 + 20 + 128, 780, 4, 4);
+    
+    
+    ofSetColor(0, 0, 0);
+    ofLine(200 +900 + 20 + 128 + 20, 110, 200 +900 + 20 + 128 + 20 +460, 110);
+    ofRect(200 +900 + 20 + 128 + 20, 110, 6, 6);
+    ofRect(200 +900 + 20 + 128 + 20 +460, 110, 6, 6);
+    
+    ofSetColor(100);
+    ofLine(200 +900 + 20 + 128 + 20, 200, 200 +900 + 20 + 128 + 20 +460, 200);
+    ofRect(200 +900 + 20 + 128 + 20, 200, 4, 4);
+    ofRect(200 +900 + 20 + 128 + 20 +460, 200, 4, 4);
+    
+    ofSetRectMode(OF_RECTMODE_CORNER);
+    
 }
