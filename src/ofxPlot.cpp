@@ -37,7 +37,7 @@ void ofxPlot::setup(string name, float width, float height){
     
     slider.setup(graphWidth);
 
-    buttonSize = 20;
+    buttonSize = 15;
     buttonXOffsetPos = 115;
     button3DOn.setup(buttonSize, buttonSize, true, false);
 }
@@ -147,16 +147,21 @@ void ofxPlot::draw(float x, float y){
     
 
     if(gridOption == RECT_GRID_DISPLAY){
-        ofPushMatrix();
-        // draw Grid
-        ofSetColor(this->gridColor);
-        ofLine(-graphWidth/2, 0, graphWidth/2, 0);
-        //ofLine(0, -graphHeight/2, 0, graphHeight/2);
-        ofSetColor(this->gridColor * 0.5);
-        ofLine(-graphWidth/2, graphHeight/4, graphWidth/2, graphHeight/4);
-        ofLine(-graphWidth/2, -graphHeight/4, graphWidth/2, -graphHeight/4);
-
-        ofPopMatrix();
+        if(!b3DMode){
+            ofPushMatrix();
+            // draw Grid
+            ofSetColor(this->gridColor);
+            ofLine(-graphWidth/2, 0, graphWidth/2, 0);
+            
+            //ofLine(0, -graphHeight/2, 0, graphHeight/2);
+            
+            ofSetColor(this->gridColor * 0.5);
+            ofLine(-graphWidth/2, graphHeight/4, graphWidth/2, graphHeight/4);
+            ofLine(-graphWidth/2, -graphHeight/4, graphWidth/2, -graphHeight/4);
+            
+            
+            ofPopMatrix();
+        }
     }
 
     ofPushMatrix();
