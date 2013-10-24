@@ -77,9 +77,9 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofBackground(0);
-    ofSetColor(255, 255, 255,20);
-    ofRect(160, 80, 1600, 900);
+    ofBackground(255);
+    ofSetColor(0, 0, 0,100);
+    ofRect(160, 90, 1600, 900);
     AccelGraph.draw(200 ,200);
     AccelHistoryPlot.draw(200, 780);
 //    ofDrawBitmapString(ofToString(AccelXLine.getMin()), 50,100);
