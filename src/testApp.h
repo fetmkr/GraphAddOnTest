@@ -53,6 +53,11 @@ class testApp : public ofBaseApp{
         LightDemoType demoType;
         LightVisualType visualType;
     
+    
+        ofImage compassImg;
+        ofImage compassBGImg;
+    
+    
         ofxPlot MotionSensorPlot;
         ofxPlot MotionSensorHistoryPlot;
     
@@ -64,7 +69,16 @@ class testApp : public ofBaseApp{
         ofxPlotLine GyroYLine;
         ofxPlotLine GyroZLine;
     
+    
+    
+    
+    
+    
+    
         ofTrueTypeFont analFont;
+        ofTrueTypeFont numberFont;
+        ofTrueTypeFont textFont;
+    
         ofxSVG etriLogoBlk;
     
         bool bData;

@@ -14,6 +14,17 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     
     analFont.loadFont("SimKBRg.ttf", 35);
+    numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
+    textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
+    
+    compassImg.loadImage("motion2D/compass.png");
+    compassImg.setImageType(OF_IMAGE_COLOR_ALPHA);
+    compassImg.setAnchorPoint(compassImg.getWidth()/2, compassImg.getHeight()/2);
+    
+    compassBGImg.loadImage("motion2D/motion2DBG.png");
+    compassBGImg.setImageType(OF_IMAGE_COLOR_ALPHA);
+    //compassBGImg.setAnchorPoint(compassBGImg.getWidth()/2, compassBGImg.getHeight()/2);
+    
     etriLogoBlk.load("etri_logo_black.svg");
     
     MotionSensorPlot.setup("accelerometer", 900, 540);
@@ -22,7 +33,6 @@ void testApp::setup(){
     MotionSensorPlot.setTimeScale(1.0);
     MotionSensorPlot.showTimeValue(true);
     MotionSensorPlot.showMenu(true);
-    //AccelGraph.showSlider(true);
     
     MotionSensorHistoryPlot.setup("accel history", 900, 160);
     MotionSensorHistoryPlot.setGrid(ofColor(100), ofColor(100), RECT_DISPLAY_ONLY);
@@ -31,10 +41,7 @@ void testApp::setup(){
     MotionSensorHistoryPlot.showTimeValue(true);
     MotionSensorHistoryPlot.showSlider(true);
     
-    
-//    AccelXLine->setup("X", ofColor(255,0,0));
-//    AccelYLine->setup("Y", ofColor(0,255,0));
-//    AccelZLine->setup("Z", ofColor(0,0,255));
+
     AccelXLine.setup("X", ofColor(255,0,0));
     AccelYLine.setup("Y", ofColor(0,255,0));
     AccelZLine.setup("Z", ofColor(0,0,255));
@@ -59,9 +66,7 @@ void testApp::setup(){
     MotionSensorHistoryPlot.addLine(&GyroYLine);
     MotionSensorHistoryPlot.addLine(&GyroZLine);
     
-    bData = false;
-    
-//    AccelZLine.setVisible(false);
+    sensorType = SENSOR_MOTION_2D;
     
     }
 
@@ -74,18 +79,10 @@ void testApp::update(){
     ytemp = 0.0;
     ztemp = 0.0;
     
-    
-//    if (bData) {
-        xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
-        ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
-        ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
-        
-//    }
-    
-    // fake data into shared data buffer
-//    AccelXLine->addData(xtemp);
-//    AccelYLine->addData(ytemp);
-//    AccelZLine->addData(ztemp);
+    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
+    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
+    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
+
     AccelXLine.addData(xtemp);
     AccelYLine.addData(ytemp);
     AccelZLine.addData(ztemp);
@@ -93,25 +90,90 @@ void testApp::update(){
     GyroYLine.addData(ytemp);
     GyroZLine.addData(ztemp);
     
-    
-    
-
-    
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     ofBackground(255);
-    
-    
-    
-    drawAnalBG("MOTION DATA ANALYSIS");
-    
+
     
     switch (sensorType) {
         case SENSOR_TOUCH:
             break;
         case SENSOR_MOTION_2D:
+            if (visualType == VISUAL_GRAPHIC) {
+                
+            }
+            ofPushStyle();
+            
+            // paint white to prevent the images from tinting
+            ofSetColor(255, 255, 255);
+            
+            compassBGImg.draw(0, 0);
+            
+            ofPushMatrix();
+            ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+            ofRotateZ(int(ofGetElapsedTimeMillis()/30)%360); // convert data value to rotation value
+            compassImg.draw(0, 0);
+            ofPopMatrix();
+            
+            ofSetCircleResolution(80);
+
+            // draw center circle
+            ofPushMatrix();
+            ofTranslate(20, 20); // convert data value to coordinate
+            ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+            ofSetColor(5, 5, 229);
+            ofCircle(0, 0, 75);
+            ofSetColor(255, 255, 255);
+            ofSetLineWidth(1);
+            ofLine(-18, 0, 18, 0);
+            ofRotateZ(90);
+            ofLine(-18, 0, 18, 0);
+            ofPopMatrix();
+            
+
+            // draw left circle
+            ofPushMatrix();
+            ofTranslate(570, 490);
+            ofRotateZ(-30); // convert data value to rotataion
+            ofSetColor(5, 5, 229);
+            ofCircle(0, 0, 45);
+            ofSetLineWidth(1);
+            ofSetColor(244, 15, 70);
+            ofLine(-45, 0, 45, 0);
+            ofPopMatrix();
+            
+            // draw right circle
+            ofPushMatrix();
+            ofTranslate(1350, 490);
+            ofRotateZ(30); // convert data value to rotataion
+            ofSetColor(5, 5, 229);
+            ofCircle(0, 0, 45);
+            ofSetLineWidth(1);
+            ofSetColor(244, 15, 70);
+            ofLine(-45, 0, 45, 0);
+            ofPopMatrix();
+            
+            // draw center cross
+            ofPushMatrix();
+            ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+            ofSetLineWidth(1);
+            ofSetColor(244, 15, 70);
+            ofLine(-75, 0, 75, 0);
+            ofRotateZ(90);
+            ofLine(-75, 0, 75, 0);
+            ofPopMatrix();
+            
+            ofPopStyle();
+            
+            
+            if (visualType == VISUAL_SIENCE){
+                drawAnalBG("MOTION DATA ANALYSIS");
+                MotionSensorPlot.draw(200 ,200);
+                MotionSensorHistoryPlot.draw(200, 780);
+            }
+            
             break;
         case SENSOR_MOTION_3D:
             break;
@@ -129,9 +191,7 @@ void testApp::draw(){
   
     
 
-    
-    MotionSensorPlot.draw(200 ,200);
-    MotionSensorHistoryPlot.draw(200, 780);
+
 
 }
 
@@ -139,6 +199,7 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
     switch(key){
         case ' ':
+            visualType = VISUAL_SIENCE;
             break;
         default:
             break;
@@ -149,6 +210,7 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
     switch(key){
         case ' ':
+            visualType = VISUAL_GRAPHIC;
             break;
         default:
             break;
@@ -194,7 +256,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 void testApp::drawAnalBG(string name){
     // draw analysis window
-    ofSetColor(0, 0, 0,100);
+    ofSetColor(0, 0, 0,200);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(160, 90, 1600, 900);
     ofSetColor(255);
