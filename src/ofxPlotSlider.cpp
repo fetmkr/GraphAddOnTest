@@ -18,10 +18,11 @@ ofxPlotSlider::~ofxPlotSlider(){
 
 void ofxPlotSlider::clearEvents(){
     if(bWasSetup){
-		ofRemoveListener(ofEvents().mouseMoved, this, &ofxPlotSlider::mouseMoved);
-		ofRemoveListener(ofEvents().mousePressed, this, &ofxPlotSlider::mousePressed);
-		ofRemoveListener(ofEvents().mouseReleased, this, &ofxPlotSlider::mouseReleased);
-		ofRemoveListener(ofEvents().mouseDragged, this, &ofxPlotSlider::mouseDragged);
+        ofUnregisterMouseEvents(this);
+//		ofRemoveListener(ofEvents().mouseMoved, this, &ofxPlotSlider::mouseMoved);
+//		ofRemoveListener(ofEvents().mousePressed, this, &ofxPlotSlider::mousePressed);
+//		ofRemoveListener(ofEvents().mouseReleased, this, &ofxPlotSlider::mouseReleased);
+//		ofRemoveListener(ofEvents().mouseDragged, this, &ofxPlotSlider::mouseDragged);
 	}
 	bWasSetup = false;
 }
@@ -35,10 +36,11 @@ void ofxPlotSlider::setup(float width){
 
     
     if(!bWasSetup){
-		ofAddListener(ofEvents().mouseMoved, this, &ofxPlotSlider::mouseMoved);
-		ofAddListener(ofEvents().mousePressed, this, &ofxPlotSlider::mousePressed);
-		ofAddListener(ofEvents().mouseReleased, this, &ofxPlotSlider::mouseReleased);
-		ofAddListener(ofEvents().mouseDragged, this, &ofxPlotSlider::mouseDragged);
+        ofRegisterMouseEvents(this);
+//		ofAddListener(ofEvents().mouseMoved, this, &ofxPlotSlider::mouseMoved);
+//		ofAddListener(ofEvents().mousePressed, this, &ofxPlotSlider::mousePressed);
+//		ofAddListener(ofEvents().mouseReleased, this, &ofxPlotSlider::mouseReleased);
+//		ofAddListener(ofEvents().mouseDragged, this, &ofxPlotSlider::mouseDragged);
 		bWasSetup = true;
 	}
 }
@@ -75,6 +77,7 @@ void ofxPlotSlider::mouseDragged(ofMouseEventArgs& event){
 }
 
 void ofxPlotSlider::mousePressed(ofMouseEventArgs& event){
+
     bHasFocus = false;
     if(isInside(event.x-transX, event.y-transY))
     {

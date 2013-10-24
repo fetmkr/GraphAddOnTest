@@ -30,6 +30,8 @@ void ofxPlotLine::setup(string name, ofColor color){
     minVal = 0.0;
     maxVal = 0.0;
     scaleFactor = 1.0;
+    
+    button.setup(50, 50, true);
 }
 
 void ofxPlotLine::clear(){
@@ -128,5 +130,8 @@ float ofxPlotLine::getScale(){
     return scaleFactor;
 }
 
+void ofxPlotLine::drawButton(float x, float y){
+    button.draw(x, y);
+}
 
 

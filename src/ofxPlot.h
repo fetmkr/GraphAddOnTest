@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "ofxPlotLine.h"
 #include "ofxPlotSlider.h"
+#include "ofxPlotButton.h"
 #include "ofxTrueTypeFontUC.h"
 
 
@@ -38,6 +39,8 @@ public:
     string getTimeStamp(unsigned long long ms);
         
     void showSlider(bool bShow);
+    void showMenu(bool bShow);
+    bool bShowMenu;
     
     void show3D(bool b3D);
     bool is3D(void);

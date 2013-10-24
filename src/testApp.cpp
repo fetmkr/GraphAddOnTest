@@ -21,6 +21,7 @@ void testApp::setup(){
     AccelGraph.setLineStyle(LINE_ONLY);
     AccelGraph.setTimeScale(1.0);
     AccelGraph.showTimeValue(true);
+    AccelGraph.showMenu(true);
     //AccelGraph.showSlider(true);
     
     AccelHistoryPlot.setup("accel history", 900, 160);

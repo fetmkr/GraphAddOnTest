@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxPlotButton.h"
 
 class ofxPlotLine {
 public:
@@ -18,6 +19,7 @@ public:
     void setup(string name, ofColor color);
     void clear();
     void draw(ofEventArgs& event);
+    void drawButton(float x, float y);
     
     void addData(float data);
     void setScale(float scale);
@@ -49,5 +51,7 @@ public:
     int BUFFER_SIZE;
     int nextIndex;
     vector<float> dataBuffer;
+    
+    ofxPlotButton button;
     
 };

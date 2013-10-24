@@ -35,7 +35,6 @@ void ofxPlot::setup(string name, float width, float height){
     timeFont.loadFont("NewMedia Fett.ttf",8, true, true, true);
 
     
-    
     slider.setup(graphWidth);
 }
 
@@ -141,7 +140,6 @@ void ofxPlot::draw(float x, float y){
 
     if(gridOption == RECT_GRID_DISPLAY){
         ofPushMatrix();
-
         // draw Grid
         ofSetColor(this->gridColor);
         ofLine(-graphWidth/2, 0, graphWidth/2, 0);
@@ -239,9 +237,15 @@ void ofxPlot::draw(float x, float y){
 //        ofDrawBitmapString(ofToString(slider.getPosition()), 20,20);
 
     }
-    ofPopStyle();
-       
     
+    if (bShowMenu) {
+        for (int i = 0; i < graphLinesPtr.size(); i++) {
+            graphLinesPtr[i]->drawButton(xPos + graphWidth + 20 , yPos + i * graphLinesPtr[i]->button.buttonRect.height *1.5);
+        }
+    }
+    
+    
+    ofPopStyle();
 }
 
 // to add instance to vector, what is proper way?
@@ -317,7 +321,7 @@ string ofxPlot::getTimeStamp(unsigned long long ms){
         milliStamp=ofToString(milli);
     }
     
-    timeStamp = minStamp + ":" + secStamp + ":" + milliStamp;
+    timeStamp = minStamp + ":" + secStamp + "." + milliStamp;
     
     return timeStamp;
 }
@@ -362,5 +366,9 @@ void ofxPlot::drawTimeStamp(float offsetTime){
 
 void ofxPlot::showSlider(bool bShow){
     bShowSlider = bShow;
+}
+
+void ofxPlot::showMenu(bool bShow){
+    bShowMenu = bShow;
 }
 
