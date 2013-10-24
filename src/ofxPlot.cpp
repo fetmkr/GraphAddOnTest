@@ -97,7 +97,7 @@ void ofxPlot::draw(float x, float y){
     
     ofPushStyle();
     
-
+    
 
     // draw rect
     ofNoFill();

@@ -4,6 +4,8 @@
 #include "ofxPlot.h"
 #include "ofxPlotLine.h"
 
+#include "ofxSvg.h"
+
 class testApp : public ofBaseApp{
 
 	public:
@@ -32,8 +34,8 @@ class testApp : public ofBaseApp{
         ofxPlotLine* AccelYLinePtr;
         ofxPlotLine* AccelZLinePtr;
     
-
-
+        ofTrueTypeFont analFont;
+        ofxSVG etriLogoBlk;
     
         bool bData;
 
