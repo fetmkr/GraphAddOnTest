@@ -2,7 +2,8 @@
 
 #include "ofMain.h"
 #include "ETRILighting.h"
-#include "MotionSensor.h"
+#include "MotionSensor2D.h"
+#include "MotionSensor3D.h"
 
 class testApp : public ofBaseApp{
 
@@ -25,5 +26,6 @@ class testApp : public ofBaseApp{
         LightDemoType demoType;
         LightVisualType visualType;
     
-        MotionSensor motionSensor;
+        MotionSensor2D motionSensor2D;
+        MotionSensor3D motionSensor3D;
 };

@@ -1,22 +1,22 @@
 //
-//  MotionSensor.cpp
+//  MotionSensor2D.cpp
 //  GraphAddOnTest
 //
 //  Created by songhojun on 10/25/13.
 //
 //
 
-#include "MotionSensor.h"
+#include "MotionSensor2D.h"
 
-MotionSensor::MotionSensor(){
+MotionSensor2D::MotionSensor2D(){
     
 }
 
-MotionSensor::~MotionSensor(){
+MotionSensor2D::~MotionSensor2D(){
     
 }
 
-void MotionSensor::setup(){
+void MotionSensor2D::setup(){
     Sensor::setup();
     numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
     textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
@@ -42,7 +42,8 @@ void MotionSensor::setup(){
     MotionSensorHistoryPlot.setTimeScale(30.0);
     MotionSensorHistoryPlot.showTimeValue(true);
     MotionSensorHistoryPlot.showSlider(true);
-    
+    MotionSensorHistoryPlot.showMenu(true);
+
     
     AccelXLine.setup("X", ofColor(255,0,0));
     AccelYLine.setup("Y", ofColor(0,255,0));
@@ -70,7 +71,7 @@ void MotionSensor::setup(){
 
 }
 
-void MotionSensor::draw(LightSensorType sensorType, LightVisualType visualType){
+void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {
         
     }
@@ -136,7 +137,6 @@ void MotionSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     ofPopMatrix();
     
     ofPopStyle();
-    
     
     if (visualType == VISUAL_SIENCE){
         drawAnalBG("MOTION DATA ANALYSIS");

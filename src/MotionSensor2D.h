@@ -1,5 +1,5 @@
 //
-//  MotionSensor.h
+//  MotionSensor2D.h
 //  GraphAddOnTest
 //
 //  Created by songhojun on 10/25/13.
@@ -11,12 +11,11 @@
 #include "Sensor.h"
 
 
-
-class MotionSensor : public Sensor{
+class MotionSensor2D : public Sensor{
     
 public:
-    MotionSensor();
-    ~MotionSensor();
+    MotionSensor2D();
+    ~MotionSensor2D();
 
     void setup();
     void draw(LightSensorType sensorType, LightVisualType visualType);
@@ -37,5 +36,4 @@ public:
 
     ofTrueTypeFont numberFont;
     ofTrueTypeFont textFont;
-
 };
