@@ -82,9 +82,9 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
     cam.end();
     
     // draw camera viewport
-    ofNoFill();
-    ofSetColor(0);
-    ofRect(viewport);
+//    ofNoFill();
+//    ofSetColor(0);
+//    ofRect(viewport);
     
     ofPopStyle();
         

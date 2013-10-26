@@ -44,31 +44,12 @@ void MotionSensor2D::setup(){
     MotionSensorHistoryPlot.showSlider(true);
     MotionSensorHistoryPlot.showMenu(true);
 
-    
-    AccelXLine.setup("X", ofColor(255,0,0));
-    AccelYLine.setup("Y", ofColor(0,255,0));
-    AccelZLine.setup("Z", ofColor(0,0,255));
-    
-    GyroXLine.setup("X", ofColor(255,255,0));
-    GyroYLine.setup("Y", ofColor(0,255,255));
-    GyroZLine.setup("Z", ofColor(255,0,255));
-    
-    MotionSensorPlot.addLine(&AccelXLine);
-    MotionSensorPlot.addLine(&AccelYLine);
-    MotionSensorPlot.addLine(&AccelZLine);
-    
-    MotionSensorPlot.addLine(&GyroXLine);
-    MotionSensorPlot.addLine(&GyroYLine);
-    MotionSensorPlot.addLine(&GyroZLine);
-    
-    MotionSensorHistoryPlot.addLine(&AccelXLine);
-    MotionSensorHistoryPlot.addLine(&AccelYLine);
-    MotionSensorHistoryPlot.addLine(&AccelZLine);
-    
-    MotionSensorHistoryPlot.addLine(&GyroXLine);
-    MotionSensorHistoryPlot.addLine(&GyroYLine);
-    MotionSensorHistoryPlot.addLine(&GyroZLine);
 
+}
+
+void MotionSensor2D::addLine(ofxPlotLine* line){
+    MotionSensorPlot.addLine(line);
+    MotionSensorHistoryPlot.addLine(line);
 }
 
 void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType){

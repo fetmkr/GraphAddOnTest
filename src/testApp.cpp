@@ -12,9 +12,30 @@
 void testApp::setup(){
 
     ofSetVerticalSync(true);
+    AccelXLine.setup("X", ofColor(255,0,0));
+    AccelYLine.setup("Y", ofColor(0,255,0));
+    AccelZLine.setup("Z", ofColor(0,0,255));
+    GyroXLine.setup("X", ofColor(255,255,0));
+    GyroYLine.setup("Y", ofColor(0,255,255));
+    GyroZLine.setup("Z", ofColor(255,0,255));
+    
+
+    // setup before add the lines
+    // otherwise the button will not be shown
     motionSensor2D.setup();
-    motionSensor3D.setup();
-    sensorType = SENSOR_MOTION_3D;
+    
+    motionSensor2D.addLine(&AccelXLine);
+    motionSensor2D.addLine(&AccelYLine);
+    motionSensor2D.addLine(&AccelZLine);
+    motionSensor2D.addLine(&GyroXLine);
+    motionSensor2D.addLine(&GyroYLine);
+    motionSensor2D.addLine(&GyroZLine);
+
+    
+    
+
+   // motionSensor3D.setup();
+    sensorType = SENSOR_MOTION_2D;
     
     }
 
@@ -31,12 +52,12 @@ void testApp::update(){
     ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
     ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
 
-    motionSensor2D.AccelXLine.addData(xtemp);
-    motionSensor2D.AccelYLine.addData(ytemp);
-    motionSensor2D.AccelZLine.addData(ztemp);
-    motionSensor2D.GyroXLine.addData(xtemp);
-    motionSensor2D.GyroYLine.addData(ytemp);
-    motionSensor2D.GyroZLine.addData(ztemp);
+    AccelXLine.addData(xtemp);
+    AccelYLine.addData(ytemp);
+    AccelZLine.addData(ztemp);
+    GyroXLine.addData(xtemp);
+    GyroYLine.addData(ytemp);
+    GyroZLine.addData(ztemp);
     
 }
 

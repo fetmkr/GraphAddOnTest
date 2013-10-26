@@ -19,6 +19,7 @@ public:
 
     void setup();
     void draw(LightSensorType sensorType, LightVisualType visualType);
+    void addLine(ofxPlotLine* line);
 
     ofImage compassImg;
     ofImage compassBGImg;
@@ -27,12 +28,7 @@ public:
     ofxPlot MotionSensorPlot;
     ofxPlot MotionSensorHistoryPlot;
 
-    ofxPlotLine AccelXLine;
-    ofxPlotLine AccelYLine;
-    ofxPlotLine AccelZLine;
-    ofxPlotLine GyroXLine;
-    ofxPlotLine GyroYLine;
-    ofxPlotLine GyroZLine;
+
 
     ofTrueTypeFont numberFont;
     ofTrueTypeFont textFont;

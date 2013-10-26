@@ -26,6 +26,13 @@ class testApp : public ofBaseApp{
         LightDemoType demoType;
         LightVisualType visualType;
     
+        ofxPlotLine AccelXLine;
+        ofxPlotLine AccelYLine;
+        ofxPlotLine AccelZLine;
+        ofxPlotLine GyroXLine;
+        ofxPlotLine GyroYLine;
+        ofxPlotLine GyroZLine;
+    
         MotionSensor2D motionSensor2D;
         MotionSensor3D motionSensor3D;
 };
