@@ -21,9 +21,13 @@ public:
     void setup();
     void draw(LightSensorType sensorType, LightVisualType visualType);
     
+    ofImage motion3DBGImg;
+
+    
     ofxAssimpModelLoader compass3D;
+    ofxAssimpModelLoader crossModel;
     ofRectangle viewport;
-    ofEasyCam cam;
+    ofCamera cam;
 
     
     
