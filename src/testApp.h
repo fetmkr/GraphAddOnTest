@@ -6,6 +6,7 @@
 #include "MotionSensor3D.h"
 #include "PressAltSensor.h"
 #include "TouchSensor.h"
+#include "ColorSensor.h"
 
 class testApp : public ofBaseApp{
 
@@ -39,4 +40,5 @@ class testApp : public ofBaseApp{
         MotionSensor3D motionSensor3D;
         PressAltSensor pressAltSensor;
         TouchSensor touchSensor;
+        ColorSensor colorSensor;
 };

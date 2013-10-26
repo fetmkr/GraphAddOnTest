@@ -26,6 +26,7 @@ void testApp::setup(){
     motionSensor3D.setup();
     pressAltSensor.setup();
     touchSensor.setup();
+    colorSensor.setup();
     
     motionSensor2D.addLine(&AccelXLine);
     motionSensor2D.addLine(&AccelYLine);
@@ -41,7 +42,7 @@ void testApp::setup(){
     motionSensor3D.addLine(&GyroYLine);
     motionSensor3D.addLine(&GyroZLine);
 
-    sensorType = SENSOR_MOTION_2D;
+    sensorType = SENSOR_TOUCH;
     
 }
 
@@ -87,6 +88,7 @@ void testApp::draw(){
         case SENSOR_TEMP_HUMIDITY:
             break;
         case SENSOR_COLOR:
+            colorSensor.draw(sensorType, visualType);
             break;
         case SENSOR_LUX:
             break;
@@ -101,22 +103,20 @@ void testApp::keyPressed(int key){
         case ' ':
             visualType = VISUAL_SIENCE;
             break;
-        case 'q':
+        case 'w':
             sensorType = SENSOR_MOTION_2D;
             break;
-        case 'w':
+        case 'e':
             sensorType = SENSOR_MOTION_3D;
             break;
-        case 'e':
+        case 'r':
             sensorType = SENSOR_PRESSURE_ALTITUDE;
             break;
-        case 'r':
+        case 'q':
             sensorType = SENSOR_TOUCH;
             break;
-        case 'l':
-            if(sensorType == SENSOR_TOUCH){
-                touchSensor.drawCCWArrow(true, 500);
-            }
+        case 't':
+            sensorType = SENSOR_COLOR;
             break;
         default:
             break;

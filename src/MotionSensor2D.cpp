@@ -38,7 +38,7 @@ void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType
     drawBGImg(0, 0);
     
     ofPushMatrix();
-    ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+    ofTranslate(ofGetWindowWidth()/2, 490);
     ofRotateZ(int(ofGetElapsedTimeMillis()/30)%360); // convert data value to rotation value
     compassImg.draw(0, 0);
     ofPopMatrix();
@@ -48,7 +48,7 @@ void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType
     // draw center circle
     ofPushMatrix();
     ofTranslate(20, 20); // convert data value to coordinate
-    ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+    ofTranslate(ofGetWindowWidth()/2, 490);
     ofSetColor(5, 5, 229);
     ofCircle(0, 0, 75);
     ofSetColor(255, 255, 255);
@@ -83,7 +83,7 @@ void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType
     
     // draw center cross
     ofPushMatrix();
-    ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+    ofTranslate(ofGetWindowWidth()/2, 490);
     ofSetLineWidth(1);
     ofSetColor(244, 15, 70);
     ofLine(-75, 0, 75, 0);
