@@ -4,6 +4,8 @@
 #include "ETRILighting.h"
 #include "MotionSensor2D.h"
 #include "MotionSensor3D.h"
+#include "PressAltSensor.h"
+#include "TouchSensor.h"
 
 class testApp : public ofBaseApp{
 
@@ -35,4 +37,6 @@ class testApp : public ofBaseApp{
     
         MotionSensor2D motionSensor2D;
         MotionSensor3D motionSensor3D;
+        PressAltSensor pressAltSensor;
+        TouchSensor touchSensor;
 };

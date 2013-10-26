@@ -18,8 +18,8 @@ MotionSensor3D::~MotionSensor3D(){
 
 void MotionSensor3D::setup(){
     Sensor::setup();
-    motion3DBGImg.loadImage("motion3D/motion3DBG.png");
-    motion3DBGImg.setImageType(OF_IMAGE_COLOR_ALPHA);
+    setBGImg("motion3D/motion3DBG.png");
+
     
 
     compass3D.loadModel("motion3D/motion3d.dae", true);
@@ -32,7 +32,7 @@ void MotionSensor3D::setup(){
     
     viewport = ofRectangle((ofGetWindowWidth()-500.0)/2, (ofGetWindowHeight()-500.0)/2 -30, 500, 500);
     //cam.setupPerspective();
-    // how to set z position ?? 
+    // how to set z position properly?? 
     cam.setPosition(0, 0, 500);
 }
 
@@ -40,12 +40,11 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
     if (visualType == VISUAL_GRAPHIC) {
         
     }
-    ofSetColor(255, 255, 255);
-    motion3DBGImg.draw(0, 0);
 
     
     ofPushStyle();
-
+    ofSetColor(255, 255, 255);
+    drawBGImg(0, 0);
     cam.begin(viewport);
     ofEnableDepthTest();
 
@@ -55,7 +54,7 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
     ofRotateX(ofRadToDeg(.5));
     
     glShadeModel(GL_SMOOTH); //some model / light stuff
-    //    light.enable();
+//    light.enable(); ofLight is not working for diffuse lighting of the model
     
     glEnable(GL_LIGHTING);
     glEnable(GL_NORMALIZE);
@@ -77,8 +76,13 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
     compass3D.drawFaces();
     ofPopMatrix();
     
-    
+    ofDisableSeparateSpecularLight();
     ofDisableDepthTest();
+    
+    // disable the lighting or it will affect the rests of the drawing
+    glDisable(GL_LIGHT0);
+    glDisable(GL_NORMALIZE);
+    glDisable(GL_LIGHTING);
     cam.end();
     
     // draw camera viewport
@@ -89,6 +93,8 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
     ofPopStyle();
         
     if (visualType == VISUAL_SIENCE){
+        drawAnalBG("MOTION DATA ANALYSIS 3D");
+        drawPlots();
 
     }
     

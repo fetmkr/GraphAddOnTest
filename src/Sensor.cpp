@@ -38,6 +38,24 @@ void Sensor::setup(){
     longPlot.showMenu(true);
     
 }
+void Sensor::setBGImg(string path){
+    BGImg.loadImage(path);
+    BGImg.setImageType(OF_IMAGE_COLOR_ALPHA);
+}
+
+void Sensor::drawBGImg(float x, float y){
+    BGImg.draw(x, y);
+}
+
+void Sensor::drawPlots(){
+    shortPlot.draw(200 ,200);
+    longPlot.draw(200, 780);
+}
+
+void Sensor::addLine(ofxPlotLine* line){
+    shortPlot.addLine(line);
+    longPlot.addLine(line);
+}
 
 void Sensor::drawAnalBG(string name){
     // draw analysis window

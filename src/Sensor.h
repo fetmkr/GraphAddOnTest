@@ -19,11 +19,18 @@ public:
 
 
     void setup();
-    
+    void setBGImg(string path);
+    void drawBGImg(float x, float y);
     void drawAnalBG(string name);
+    
+    void addLine(ofxPlotLine* line);
+    void drawPlots();
+
     ofTrueTypeFont analFont;
     ofxSVG etriLogoBlk;
 
+    ofImage BGImg;
+    
     ofTrueTypeFont numberFont;
     ofTrueTypeFont textFont;
     

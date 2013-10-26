@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671B3F19181BDD0000CCF71C /* PressAltSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F17181BDCFF00CCF71C /* PressAltSensor.cpp */; };
+		671B3F1C181BE9D900CCF71C /* TempHumidSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F1A181BE9D900CCF71C /* TempHumidSensor.cpp */; };
+		671B3F1F181BEA1000CCF71C /* ColorSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F1D181BEA0F00CCF71C /* ColorSensor.cpp */; };
+		671B3F22181BEA1900CCF71C /* LuxSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F20181BEA1900CCF71C /* LuxSensor.cpp */; };
+		671B3F25181BEE6F00CCF71C /* TouchSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F23181BEE6F00CCF71C /* TouchSensor.cpp */; };
 		67391FAB1813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */; };
 		6751362A1818E448007EC293 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136211818E448007EC293 /* src_colors.cpp */; };
 		6751362B1818E448007EC293 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136221818E448007EC293 /* svgtiny.cpp */; };
@@ -79,6 +84,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		671B3F17181BDCFF00CCF71C /* PressAltSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PressAltSensor.cpp; sourceTree = "<group>"; };
+		671B3F18181BDCFF00CCF71C /* PressAltSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PressAltSensor.h; sourceTree = "<group>"; };
+		671B3F1A181BE9D900CCF71C /* TempHumidSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TempHumidSensor.cpp; sourceTree = "<group>"; };
+		671B3F1B181BE9D900CCF71C /* TempHumidSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempHumidSensor.h; sourceTree = "<group>"; };
+		671B3F1D181BEA0F00CCF71C /* ColorSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorSensor.cpp; sourceTree = "<group>"; };
+		671B3F1E181BEA0F00CCF71C /* ColorSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSensor.h; sourceTree = "<group>"; };
+		671B3F20181BEA1900CCF71C /* LuxSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuxSensor.cpp; sourceTree = "<group>"; };
+		671B3F21181BEA1900CCF71C /* LuxSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuxSensor.h; sourceTree = "<group>"; };
+		671B3F23181BEE6F00CCF71C /* TouchSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchSensor.cpp; sourceTree = "<group>"; };
+		671B3F24181BEE6F00CCF71C /* TouchSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchSensor.h; sourceTree = "<group>"; };
 		67391FA51813EF1600AB7B64 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		67391FA61813EF1600AB7B64 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
 		67391FA71813EF1600AB7B64 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -484,6 +499,16 @@
 				675136551819A068007EC293 /* Sensor.cpp */,
 				67CC897D181AC245002AC1A4 /* MotionSensor3D.h */,
 				67CC897E181AC253002AC1A4 /* MotionSensor3D.cpp */,
+				671B3F17181BDCFF00CCF71C /* PressAltSensor.cpp */,
+				671B3F18181BDCFF00CCF71C /* PressAltSensor.h */,
+				671B3F1A181BE9D900CCF71C /* TempHumidSensor.cpp */,
+				671B3F1B181BE9D900CCF71C /* TempHumidSensor.h */,
+				671B3F1D181BEA0F00CCF71C /* ColorSensor.cpp */,
+				671B3F1E181BEA0F00CCF71C /* ColorSensor.h */,
+				671B3F20181BEA1900CCF71C /* LuxSensor.cpp */,
+				671B3F21181BEA1900CCF71C /* LuxSensor.h */,
+				671B3F23181BEE6F00CCF71C /* TouchSensor.cpp */,
+				671B3F24181BEE6F00CCF71C /* TouchSensor.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -604,6 +629,11 @@
 				67CC897B181AC0BC002AC1A4 /* ofxAssimpModelLoader.cpp in Sources */,
 				67CC897C181AC0BC002AC1A4 /* ofxAssimpTexture.cpp in Sources */,
 				67CC897F181AC253002AC1A4 /* MotionSensor3D.cpp in Sources */,
+				671B3F19181BDD0000CCF71C /* PressAltSensor.cpp in Sources */,
+				671B3F1C181BE9D900CCF71C /* TempHumidSensor.cpp in Sources */,
+				671B3F1F181BEA1000CCF71C /* ColorSensor.cpp in Sources */,
+				671B3F22181BEA1900CCF71C /* LuxSensor.cpp in Sources */,
+				671B3F25181BEE6F00CCF71C /* TouchSensor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

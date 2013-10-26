@@ -18,22 +18,13 @@ MotionSensor2D::~MotionSensor2D(){
 
 void MotionSensor2D::setup(){
     Sensor::setup();
-
+    setBGImg("motion2D/motion2DBG.png");
     
     compassImg.loadImage("motion2D/compass.png");
     compassImg.setImageType(OF_IMAGE_COLOR_ALPHA);
     compassImg.setAnchorPoint(compassImg.getWidth()/2, compassImg.getHeight()/2);
-    
-    compassBGImg.loadImage("motion2D/motion2DBG.png");
-    compassBGImg.setImageType(OF_IMAGE_COLOR_ALPHA);
-    //compassBGImg.setAnchorPoint(compassBGImg.getWidth()/2, compassBGImg.getHeight()/2);
-
 }
 
-void MotionSensor2D::addLine(ofxPlotLine* line){
-    shortPlot.addLine(line);
-    longPlot.addLine(line);
-}
 
 void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {
@@ -44,7 +35,7 @@ void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType
     // paint white to prevent the images from tinting
     ofSetColor(255, 255, 255);
     
-    compassBGImg.draw(0, 0);
+    drawBGImg(0, 0);
     
     ofPushMatrix();
     ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
@@ -103,9 +94,8 @@ void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType
     ofPopStyle();
     
     if (visualType == VISUAL_SIENCE){
-        drawAnalBG("MOTION DATA ANALYSIS");
-        shortPlot.draw(200 ,200);
-        longPlot.draw(200, 780);
+        drawAnalBG("MOTION DATA ANALYSIS 2D");
+        drawPlots();
     }
 
 }

@@ -12,17 +12,20 @@
 void testApp::setup(){
 
     ofSetVerticalSync(true);
+    
     AccelXLine.setup("X", ofColor(255,0,0));
     AccelYLine.setup("Y", ofColor(0,255,0));
     AccelZLine.setup("Z", ofColor(0,0,255));
     GyroXLine.setup("X", ofColor(255,255,0));
     GyroYLine.setup("Y", ofColor(0,255,255));
     GyroZLine.setup("Z", ofColor(255,0,255));
-    
 
     // setup before add the lines
     // otherwise the button will not be shown
     motionSensor2D.setup();
+    motionSensor3D.setup();
+    pressAltSensor.setup();
+    touchSensor.setup();
     
     motionSensor2D.addLine(&AccelXLine);
     motionSensor2D.addLine(&AccelYLine);
@@ -30,14 +33,17 @@ void testApp::setup(){
     motionSensor2D.addLine(&GyroXLine);
     motionSensor2D.addLine(&GyroYLine);
     motionSensor2D.addLine(&GyroZLine);
-
     
-    
+    motionSensor3D.addLine(&AccelXLine);
+    motionSensor3D.addLine(&AccelYLine);
+    motionSensor3D.addLine(&AccelZLine);
+    motionSensor3D.addLine(&GyroXLine);
+    motionSensor3D.addLine(&GyroYLine);
+    motionSensor3D.addLine(&GyroZLine);
 
-   // motionSensor3D.setup();
     sensorType = SENSOR_MOTION_2D;
     
-    }
+}
 
 //--------------------------------------------------------------
 void testApp::update(){
@@ -65,9 +71,9 @@ void testApp::update(){
 void testApp::draw(){
     ofBackground(255);
 
-    
     switch (sensorType) {
         case SENSOR_TOUCH:
+            touchSensor.draw(sensorType, visualType);
             break;
         case SENSOR_MOTION_2D:
             motionSensor2D.draw(sensorType,visualType);
@@ -76,6 +82,7 @@ void testApp::draw(){
             motionSensor3D.draw(sensorType, visualType);
             break;
         case SENSOR_PRESSURE_ALTITUDE:
+            pressAltSensor.draw(sensorType, visualType);
             break;
         case SENSOR_TEMP_HUMIDITY:
             break;
@@ -93,6 +100,18 @@ void testApp::keyPressed(int key){
     switch(key){
         case ' ':
             visualType = VISUAL_SIENCE;
+            break;
+        case 'q':
+            sensorType = SENSOR_MOTION_2D;
+            break;
+        case 'w':
+            sensorType = SENSOR_MOTION_3D;
+            break;
+        case 'e':
+            sensorType = SENSOR_PRESSURE_ALTITUDE;
+            break;
+        case 'r':
+            sensorType = SENSOR_TOUCH;
             break;
         default:
             break;

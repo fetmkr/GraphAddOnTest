@@ -1,25 +1,22 @@
 //
-//  MotionSensor2D.h
+//  PressAltSensor.h
 //  GraphAddOnTest
 //
-//  Created by songhojun on 10/25/13.
+//  Created by songhojun on 10/26/13.
 //
 //
 
-#pragma once
 #include "ETRILighting.h"
 #include "Sensor.h"
 
-
-class MotionSensor2D : public Sensor{
+class PressAltSensor : public Sensor {
     
 public:
-    MotionSensor2D();
-    ~MotionSensor2D();
-
+    PressAltSensor();
+    ~PressAltSensor();
+    
     void setup();
     void draw(LightSensorType sensorType, LightVisualType visualType);
-
-    ofImage compassImg;
     
+    ofImage arrowImg;
 };
