@@ -18,9 +18,12 @@ public:
     void setup();
     void draw(LightSensorType sensorType, LightVisualType visualType);
 
+    void drawSlice(int num, bool bShow);
+
     ofImage touchRingImg;
     ofImage cwArrowImg;
     ofImage ccwArrowImg;
 
+    int NumOfSlice;
     ofxVectorGraphics ringSlice;
 };
