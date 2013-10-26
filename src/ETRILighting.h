@@ -14,6 +14,7 @@
 #include "ofxPlot.h"
 #include "ofxPlotLine.h"
 #include "ofxVectorGraphics.h"
+#include "ofxTimer.h"
 
 
 using namespace ofxPlotUtil;

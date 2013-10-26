@@ -14,6 +14,7 @@
 		671B3F25181BEE6F00CCF71C /* TouchSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F23181BEE6F00CCF71C /* TouchSensor.cpp */; };
 		671B3F30181C12F200CCF71C /* CreEPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2A181C12F200CCF71C /* CreEPS.cpp */; };
 		671B3F31181C12F200CCF71C /* ofxVectorGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2E181C12F200CCF71C /* ofxVectorGraphics.cpp */; };
+		671B3F37181C216900CCF71C /* ofxTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F35181C216900CCF71C /* ofxTimer.cpp */; };
 		67391FAB1813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */; };
 		6751362A1818E448007EC293 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136211818E448007EC293 /* src_colors.cpp */; };
 		6751362B1818E448007EC293 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136221818E448007EC293 /* svgtiny.cpp */; };
@@ -101,6 +102,8 @@
 		671B3F2C181C12F200CCF71C /* CreEPS_Types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CreEPS_Types.hpp; sourceTree = "<group>"; };
 		671B3F2E181C12F200CCF71C /* ofxVectorGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVectorGraphics.cpp; sourceTree = "<group>"; };
 		671B3F2F181C12F200CCF71C /* ofxVectorGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVectorGraphics.h; sourceTree = "<group>"; };
+		671B3F35181C216900CCF71C /* ofxTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimer.cpp; sourceTree = "<group>"; };
+		671B3F36181C216900CCF71C /* ofxTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimer.h; sourceTree = "<group>"; };
 		67391FA51813EF1600AB7B64 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		67391FA61813EF1600AB7B64 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
 		67391FA71813EF1600AB7B64 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -258,6 +261,24 @@
 			children = (
 				671B3F2E181C12F200CCF71C /* ofxVectorGraphics.cpp */,
 				671B3F2F181C12F200CCF71C /* ofxVectorGraphics.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		671B3F33181C216900CCF71C /* ofxTimer */ = {
+			isa = PBXGroup;
+			children = (
+				671B3F34181C216900CCF71C /* src */,
+			);
+			name = ofxTimer;
+			path = ../../../addons/ofxTimer;
+			sourceTree = "<group>";
+		};
+		671B3F34181C216900CCF71C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				671B3F35181C216900CCF71C /* ofxTimer.cpp */,
+				671B3F36181C216900CCF71C /* ofxTimer.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -445,6 +466,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				671B3F33181C216900CCF71C /* ofxTimer */,
 				671B3F28181C12F200CCF71C /* ofxVectorGraphics */,
 				67CC8941181AC0BC002AC1A4 /* ofxAssimpModelLoader */,
 				6751361D1818E448007EC293 /* ofxSvg */,
@@ -673,6 +695,7 @@
 				671B3F25181BEE6F00CCF71C /* TouchSensor.cpp in Sources */,
 				671B3F30181C12F200CCF71C /* CreEPS.cpp in Sources */,
 				671B3F31181C12F200CCF71C /* ofxVectorGraphics.cpp in Sources */,
+				671B3F37181C216900CCF71C /* ofxTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,8 @@ public:
     void draw(LightSensorType sensorType, LightVisualType visualType);
 
     void drawSlice(int num, bool bShow);
+    void drawCWArrow(bool bShow, float msTime);
+    void drawCCWArrow(bool bShow, float msTime);
 
     ofImage touchRingImg;
     ofImage cwArrowImg;
@@ -26,4 +28,10 @@ public:
 
     int NumOfSlice;
     ofxVectorGraphics ringSlice;
+
+    ofxTimer cwArrowTimer;
+    ofxTimer ccwArrowTimer;
+
+    bool bCWShow;
+    bool bCCWShow;
 };

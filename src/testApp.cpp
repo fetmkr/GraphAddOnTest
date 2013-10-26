@@ -113,6 +113,11 @@ void testApp::keyPressed(int key){
         case 'r':
             sensorType = SENSOR_TOUCH;
             break;
+        case 'l':
+            if(sensorType == SENSOR_TOUCH){
+                touchSensor.drawCCWArrow(true, 500);
+            }
+            break;
         default:
             break;
     }

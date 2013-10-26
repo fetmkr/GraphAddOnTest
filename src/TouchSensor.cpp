@@ -34,10 +34,11 @@ void TouchSensor::setup(){
     NumOfSlice = 16;
     ringSlice.fill();
     
-
-
-
-
+    cwArrowTimer.setup(500, false);
+    ccwArrowTimer.setup(500, false);
+    
+    bCWShow = false;
+    bCCWShow = false;
 }
 
 void TouchSensor::draw(LightSensorType sensorType, LightVisualType visualType){
@@ -60,13 +61,31 @@ void TouchSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     touchRingImg.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
     ofPopMatrix();
     
-    ofPushMatrix();
-    cwArrowImg.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
-    ofPopMatrix();
+    if (bCWShow) {
+
+        if(cwArrowTimer.isTimerFinished()){
+            bCWShow = false;
+        }
+        else{
+            ofPushMatrix();
+            cwArrowImg.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+            ofPopMatrix();
+        }
+    }
     
-    ofPushMatrix();
-    ccwArrowImg.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
-    ofPopMatrix();
+    if (bCCWShow) {
+        
+        if(ccwArrowTimer.isTimerFinished()){
+            bCCWShow = false;
+        }
+        else{
+            ofPushMatrix();
+            ccwArrowImg.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+            ofPopMatrix();
+        }
+    }
+
+
     
     ofPushMatrix();
     ofSetColor(5, 5, 229);
@@ -89,12 +108,26 @@ void TouchSensor::drawSlice(int num, bool bShow){
     if (num <0) {
         num = 0;
     }
-    if (num > 15) {
-        num = 15;
+    if (num > NumOfSlice - 1) {
+        num = NumOfSlice - 1;
     }
     if (bShow) {
-        ringSlice.arc(0, 0, 225, -90-11.25 + (360.0/NumOfSlice) *num, 360.0/NumOfSlice);
+        ringSlice.arc(0, 0, 225, -90-11.25 + (360.0/NumOfSlice) * num, 360.0/NumOfSlice);
     }
    
+}
+
+void TouchSensor::drawCWArrow(bool bShow, float msTime){
+    cwArrowTimer.reset();
+    cwArrowTimer.setTimer(msTime);
+    cwArrowTimer.startTimer();
+    bCWShow = bShow;
+}
+
+void TouchSensor::drawCCWArrow(bool bShow, float msTime){
+    ccwArrowTimer.reset();
+    ccwArrowTimer.setTimer(msTime);
+    ccwArrowTimer.startTimer();
+    bCCWShow = bShow;
 }
 
