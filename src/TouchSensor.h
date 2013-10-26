@@ -21,4 +21,6 @@ public:
     ofImage touchRingImg;
     ofImage cwArrowImg;
     ofImage ccwArrowImg;
+
+    ofxVectorGraphics ringSlice;
 };

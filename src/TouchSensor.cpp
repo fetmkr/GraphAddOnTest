@@ -29,6 +29,12 @@ void TouchSensor::setup(){
     ccwArrowImg.loadImage("touchSensor/ccwArrow.png");
     ccwArrowImg.setImageType(OF_IMAGE_COLOR_ALPHA);
     ccwArrowImg.setAnchorPoint(ccwArrowImg.getWidth()/2, ccwArrowImg.getHeight()/2);
+    //ring.arc(ofGetWindowWidth()/2, ofGetWindowHeight()/2, 225, 225, -11.25, 11.25,80);
+    ringSlice.fill();
+    
+
+
+
 }
 
 void TouchSensor::draw(LightSensorType sensorType, LightVisualType visualType){
@@ -38,7 +44,15 @@ void TouchSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     
     ofPushStyle();
     ofSetColor(255, 255, 255);
+    
+    ofPushMatrix();
+    ofSetColor(255, 0, 0);
+    ofFill();
+    ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
+    ringSlice.arc(0, 0, 225, -90-11.25, 22.5);
+    ofPopMatrix();
 
+    ofSetColor(255, 255, 255);
     ofPushMatrix();
     touchRingImg.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
     ofPopMatrix();

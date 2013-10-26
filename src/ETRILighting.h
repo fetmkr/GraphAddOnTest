@@ -13,6 +13,7 @@
 #include "ofxPlotUtil.h"
 #include "ofxPlot.h"
 #include "ofxPlotLine.h"
+#include "ofxVectorGraphics.h"
 
 
 using namespace ofxPlotUtil;
