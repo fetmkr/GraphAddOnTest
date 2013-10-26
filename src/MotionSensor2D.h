@@ -25,11 +25,9 @@ public:
     ofImage compassBGImg;
 
 
-    ofxPlot MotionSensorPlot;
-    ofxPlot MotionSensorHistoryPlot;
 
 
 
-    ofTrueTypeFont numberFont;
-    ofTrueTypeFont textFont;
+
+
 };

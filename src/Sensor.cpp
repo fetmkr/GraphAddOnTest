@@ -19,6 +19,24 @@ Sensor::~Sensor(){
 void Sensor::setup(){
     analFont.loadFont("SimKBRg.ttf", 35);
     etriLogoBlk.load("etri_logo_black.svg");
+    numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
+    textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
+    
+    shortPlot.setup("short plot", 900, 540);
+    shortPlot.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
+    shortPlot.setLineStyle(LINE_ONLY);
+    shortPlot.setTimeScale(1.0);
+    shortPlot.showTimeValue(true);
+    shortPlot.showMenu(true);
+    
+    longPlot.setup("long plot", 900, 160);
+    longPlot.setGrid(ofColor(100), ofColor(100), RECT_DISPLAY_ONLY);
+    longPlot.setLineStyle(LINE_ONLY);
+    longPlot.setTimeScale(30.0);
+    longPlot.showTimeValue(true);
+    longPlot.showSlider(true);
+    longPlot.showMenu(true);
+    
 }
 
 void Sensor::drawAnalBG(string name){

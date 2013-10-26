@@ -24,4 +24,9 @@ public:
     ofTrueTypeFont analFont;
     ofxSVG etriLogoBlk;
 
+    ofTrueTypeFont numberFont;
+    ofTrueTypeFont textFont;
+    
+    ofxPlot shortPlot;
+    ofxPlot longPlot;
 };

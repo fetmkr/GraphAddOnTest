@@ -18,8 +18,7 @@ MotionSensor2D::~MotionSensor2D(){
 
 void MotionSensor2D::setup(){
     Sensor::setup();
-    numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
-    textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
+
     
     compassImg.loadImage("motion2D/compass.png");
     compassImg.setImageType(OF_IMAGE_COLOR_ALPHA);
@@ -28,28 +27,12 @@ void MotionSensor2D::setup(){
     compassBGImg.loadImage("motion2D/motion2DBG.png");
     compassBGImg.setImageType(OF_IMAGE_COLOR_ALPHA);
     //compassBGImg.setAnchorPoint(compassBGImg.getWidth()/2, compassBGImg.getHeight()/2);
-    
-    MotionSensorPlot.setup("accelerometer", 900, 540);
-    MotionSensorPlot.setGrid(ofColor(100), ofColor(100), RECT_GRID_DISPLAY);
-    MotionSensorPlot.setLineStyle(LINE_ONLY);
-    MotionSensorPlot.setTimeScale(1.0);
-    MotionSensorPlot.showTimeValue(true);
-    MotionSensorPlot.showMenu(true);
-    
-    MotionSensorHistoryPlot.setup("accel history", 900, 160);
-    MotionSensorHistoryPlot.setGrid(ofColor(100), ofColor(100), RECT_DISPLAY_ONLY);
-    MotionSensorHistoryPlot.setLineStyle(LINE_ONLY);
-    MotionSensorHistoryPlot.setTimeScale(30.0);
-    MotionSensorHistoryPlot.showTimeValue(true);
-    MotionSensorHistoryPlot.showSlider(true);
-    MotionSensorHistoryPlot.showMenu(true);
-
 
 }
 
 void MotionSensor2D::addLine(ofxPlotLine* line){
-    MotionSensorPlot.addLine(line);
-    MotionSensorHistoryPlot.addLine(line);
+    shortPlot.addLine(line);
+    longPlot.addLine(line);
 }
 
 void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType){
@@ -121,8 +104,8 @@ void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType
     
     if (visualType == VISUAL_SIENCE){
         drawAnalBG("MOTION DATA ANALYSIS");
-        MotionSensorPlot.draw(200 ,200);
-        MotionSensorHistoryPlot.draw(200, 780);
+        shortPlot.draw(200 ,200);
+        longPlot.draw(200, 780);
     }
 
 }
