@@ -13,7 +13,7 @@
 #include "ofxPlotLine.h"
 #include "ofxPlotSlider.h"
 #include "ofxPlotButton.h"
-#include "ofxTrueTypeFontUC.h"
+//#include "ofxTrueTypeFontUC.h"
 
 using namespace ofxPlotUtil;
 
@@ -97,7 +97,7 @@ public:
     
 
 //    vector< ofPtr<ofxPlotLine> > graphLinesPtr;
-        ofxTrueTypeFontUC timeFont;
+        ofTrueTypeFont timeFont;
     ofxPlotButton button3DOn;
 
 private:

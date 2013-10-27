@@ -27,6 +27,7 @@ void Sensor::setup(){
     shortPlot.setLineStyle(LINE_ONLY);
     shortPlot.setTimeScale(1.0);
     shortPlot.showTimeValue(true);
+    shortPlot.showSlider(false);
     shortPlot.showMenu(true);
     
     longPlot.setup("long plot", 900, 160);
