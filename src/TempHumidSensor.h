@@ -6,5 +6,7 @@
 //
 //
 
+#pragma once
+
 #include "ETRILighting.h"
 #include "Sensor.h"

@@ -12,6 +12,15 @@
 void testApp::setup(){
 
     ofSetVerticalSync(true);
+#ifdef _WIN32
+    // Turn on vertical screen sync under Windows.
+    // (I.e. it uses the WGL_EXT_swap_control extension)
+    typedef BOOL (WINAPI *PFNWGLSWAPINTERVALEXTPROC)(int interval);
+    PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT = NULL;
+    wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
+    if(wglSwapIntervalEXT)
+        wglSwapIntervalEXT(1);
+#endif
     
     AccelXLine.setup("X", ofColor(255,0,0));
     AccelYLine.setup("Y", ofColor(0,255,0));

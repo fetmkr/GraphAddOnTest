@@ -6,8 +6,11 @@
 //
 //
 
+#pragma once
+
 #include "ETRILighting.h"
 #include "Sensor.h"
+#include "ofxDAQButton.h"
 
 class ColorSensor : public Sensor {
     
@@ -22,5 +25,7 @@ public:
     ofImage colorPicker;
     void setupColorPicker(int width, int height);
     ofColor pickColor(int x, int y);
-
+    ofColor getCompColor(ofColor c);
+    
+    ofxDAQButton button;
 };
