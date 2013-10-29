@@ -15,6 +15,14 @@ enum ButtonShapeType{
     BUTTON_SHAPE_CIRCLE = 1
 };
 
+enum ButtonDragType{
+    BUTTON_DRAG_NONE = 0,
+    BUTTON_DRAG_LEFT= 1,
+    BUTTON_DRAG_RIGHT = 2,
+    BUTTON_DRAG_UP = 3,
+    BUTTON_DRAG_DOWN = 4
+};
+
 class ofxDAQButton {
 public:
     ofxDAQButton();
@@ -34,10 +42,14 @@ public:
     bool bShowButton;
     
     bool isPressed();
+    ButtonDragType getDragType();
+    ButtonDragType dragType;
     
     ofVec2f getMouseXY();
     float mouseX;
     float mouseY;
+    float startMouseX;
+    float startMouseY;
     
     void mouseMoved(ofMouseEventArgs& event);
     void mouseDragged(ofMouseEventArgs& event);
@@ -63,6 +75,7 @@ public:
     bool bWasSetup;
     bool bHasFocus;
     bool bIsPressed;
+    bool bIsDragged;
     
     ofRectangle buttonRect;
     

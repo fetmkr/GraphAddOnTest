@@ -32,10 +32,19 @@ void ofxDAQButton::setup(float width, float height, bool bToggle, bool bDefaultV
     bToggleButton = bToggle;
     bIsPressed = bDefaultVal;
     bHasFocus = false;
+    bIsPressed = false;
+    bIsDragged = false;
+    dragType = BUTTON_DRAG_NONE;
     
     // default color
     pressedColor = ofColor(0);
     releasedColor = ofColor(0);
+    
+    // default mouse XY
+    mouseX = -1000.0;
+    mouseY = -1000.0;
+    startMouseX = -1000;
+    startMouseY = -1000;
     
     bShowButton = true;
     
@@ -131,18 +140,48 @@ bool ofxDAQButton::isPressed(){
 void ofxDAQButton::mouseMoved(ofMouseEventArgs& event){
     bHasFocus = false;
     if(IsInside(event.x, event.y) && !bIsPressed){
+
+        
         mouseX = event.x;
         mouseY = event.y;
     }
 }
 
 void ofxDAQButton::mouseDragged(ofMouseEventArgs& event){
-    
+    if(bHasFocus){
+        if(IsInside(event.x, event.y))
+            
+        {
+            // evaluate drag value
+            if(event.x - startMouseX > 0){
+                //cout << "To the Right" << endl;
+                dragType = BUTTON_DRAG_RIGHT;
+            }
+            else{
+                //cout << "To the Left" << endl;
+                dragType = BUTTON_DRAG_LEFT;
+            }
+            
+            if(event.y - startMouseY < 0){
+                //cout << "To Up" << endl;
+                dragType = BUTTON_DRAG_UP;
+            }
+            else{
+                //cout << "To Down" << endl;
+                dragType = BUTTON_DRAG_DOWN;
+            }
+            
+            startMouseY = event.y;
+            startMouseX = event.x;
+            
+            bIsDragged = true;
+
+        }
+    }
 }
 
 void ofxDAQButton::mousePressed(ofMouseEventArgs& event){
     bHasFocus = false;
-//    if(buttonRect.inside(event.x-transX, event.y-transY))
     if(IsInside(event.x, event.y))
 
     {
@@ -155,19 +194,26 @@ void ofxDAQButton::mousePressed(ofMouseEventArgs& event){
         else{
             bIsPressed = true;
         }
+        
+        startMouseX = event.x;
+        startMouseY = event.y;
     }
 }
 
 void ofxDAQButton::mouseReleased(ofMouseEventArgs& event){
-    if (bHasFocus) {
-        //if (buttonRect.inside(event.x-transX, event.y-transY)) {
+    if (bHasFocus) {        
+        if(IsInside(event.x, event.y) && !bIsPressed){
+            mouseX = event.x;
+            mouseY = event.y;
+        }
+        
         if (bToggleButton) {
         }
         else{
             bIsPressed = false;
         }
-        
-        //}
+        bIsDragged = false;
+        dragType = BUTTON_DRAG_NONE;
     }
     bHasFocus = false;
 }
@@ -193,4 +239,9 @@ void ofxDAQButton::showButton(bool bShow){
 
 ofVec2f ofxDAQButton::getMouseXY(){
     return ofVec2f(mouseX, mouseY);
+}
+
+
+ButtonDragType ofxDAQButton::getDragType(){
+    return dragType;
 }

@@ -36,6 +36,7 @@ void testApp::setup(){
     pressAltSensor.setup();
     touchSensor.setup();
     colorSensor.setup();
+    luxSensor.setup();
     
     motionSensor2D.addLine(&AccelXLine);
     motionSensor2D.addLine(&AccelYLine);
@@ -100,6 +101,7 @@ void testApp::draw(){
             colorSensor.draw(sensorType, visualType);
             break;
         case SENSOR_LUX:
+            luxSensor.draw(sensorType, visualType);
             break;
         default:
             break;
@@ -126,6 +128,9 @@ void testApp::keyPressed(int key){
             break;
         case 't':
             sensorType = SENSOR_COLOR;
+            break;
+        case 'y':
+            sensorType = SENSOR_LUX;
             break;
         default:
             break;

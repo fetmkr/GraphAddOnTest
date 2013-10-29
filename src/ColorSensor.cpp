@@ -33,7 +33,7 @@ void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     
     ofPushStyle();
     ofSetColor(255, 255, 255);
-    ofSetColor(255, 0, 0);
+    ofSetColor(255, 0, 0); // change the color based on data
     ofRect(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
     ofSetColor(255, 255, 255);
     ofPushMatrix();
@@ -44,7 +44,7 @@ void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     ofPushMatrix();
     button.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
     if (button.isPressed()) {
-        cout << "pressed" << endl;
+        //cout << "pressed" << endl;
         button.setPressedColor(pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2));
         button.setReleasedColor(pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2));
         button.showButton(true);
@@ -60,7 +60,7 @@ void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
         ofRectRounded(button.getMouseXY().x, button.getMouseXY().y, 25, 25, 3);
         //ofRect(button.getMouseXY().x, button.getMouseXY().y, 30, 30);
         ofSetRectMode(OF_RECTMODE_CORNER);
-        cout << "not pressed" << endl;
+        //cout << "not pressed" << endl;
     }
     ofPopMatrix();
    
