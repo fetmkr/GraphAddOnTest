@@ -21,6 +21,8 @@ public:
     float dragPosY;
 
     float lightIntensity;
-    void updateLightIntensity(bool bUpDn);
+    float prevLightLevel;
+    bool bDragStarted;
+    void updateLightIntensity(float val);
     
 };

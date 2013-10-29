@@ -21,6 +21,8 @@ void LuxSensor::setup(){
     button.setup(500, 500, true, false,BUTTON_SHAPE_CIRCLE);
     button.showButton(false);
     lightIntensity = 0.0;
+    prevLightLevel = 0.0;
+    bDragStarted = false;
 
 }
 
@@ -31,7 +33,7 @@ void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     
     ofPushStyle();
     ofSetColor(255, 255, 255);
-    ofSetColor(255, 255, 255); // change the color based on data
+    ofSetColor(100, 100, 100); // change the color based on data
     ofRect(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
     
     
@@ -42,17 +44,26 @@ void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     ofSetColor(255, 255, 255);
     ofPushMatrix();
     button.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
-    if (button.bIsDragged) {
-        if (button.getDragType() == BUTTON_DRAG_UP){
-            updateLightIntensity(true);
+    if (button.isDragged()) {
+        if (bDragStarted) {
+            lightIntensity = prevLightLevel;
+            bDragStarted = false;
         }
         else{
-            updateLightIntensity(false);
+            updateLightIntensity(button.getDragAmout().y);
         }
+//        if (button.getDragType() == BUTTON_DRAG_UP){
+//            updateLightIntensity(true);
+//        }
+//        else if (button.getDragType() == BUTTON_DRAG_DOWN) {
+//            updateLightIntensity(false);
+//        }
+        //cout << button.getDragAmout().y << endl;
     }
     else
     {
-        
+//        prevLightLevel = lightIntensity;
+//        bDragStarted = true;
     }
     ofPopMatrix();
     
@@ -64,18 +75,7 @@ void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     }
 }
 
-void LuxSensor::updateLightIntensity(bool bUpDn){
-    if(bUpDn){
-      lightIntensity+=1.0;
-    }
-    else {
-       lightIntensity-=1.0;
-    }
-    
-    if (lightIntensity >255.0) {
-        lightIntensity = 255.0;
-    }
-    if (lightIntensity <0){
-        lightIntensity = 0.0;
-    }
+void LuxSensor::updateLightIntensity(float val){
+    lightIntensity = ofMap(val/2.0, -ofGetWindowHeight(), ofGetWindowHeight(), 0.0, 255.0, true);
+    //lightIntensity = ofClamp(lightIntensity, 0, 255);
 }

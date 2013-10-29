@@ -44,6 +44,12 @@ public:
     bool isPressed();
     ButtonDragType getDragType();
     ButtonDragType dragType;
+    float dragStep;
+    ofVec2f getDragAmout();
+    bool isDragged();
+    
+    float dragX;
+    float dragY;
     
     ofVec2f getMouseXY();
     float mouseX;

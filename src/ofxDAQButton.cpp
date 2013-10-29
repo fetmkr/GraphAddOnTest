@@ -46,6 +46,11 @@ void ofxDAQButton::setup(float width, float height, bool bToggle, bool bDefaultV
     startMouseX = -1000;
     startMouseY = -1000;
     
+    dragStep = 3.0;
+    
+    dragX = 0.0;
+    dragY = 0.0;
+    
     bShowButton = true;
     
     if(!bWasSetup){
@@ -141,7 +146,6 @@ void ofxDAQButton::mouseMoved(ofMouseEventArgs& event){
     bHasFocus = false;
     if(IsInside(event.x, event.y) && !bIsPressed){
 
-        
         mouseX = event.x;
         mouseY = event.y;
     }
@@ -149,35 +153,56 @@ void ofxDAQButton::mouseMoved(ofMouseEventArgs& event){
 
 void ofxDAQButton::mouseDragged(ofMouseEventArgs& event){
     if(bHasFocus){
-        if(IsInside(event.x, event.y))
-            
-        {
-            // evaluate drag value
-            if(event.x - startMouseX > 0){
-                //cout << "To the Right" << endl;
-                dragType = BUTTON_DRAG_RIGHT;
-            }
-            else{
-                //cout << "To the Left" << endl;
-                dragType = BUTTON_DRAG_LEFT;
-            }
-            
-            if(event.y - startMouseY < 0){
-                //cout << "To Up" << endl;
-                dragType = BUTTON_DRAG_UP;
-            }
-            else{
-                //cout << "To Down" << endl;
-                dragType = BUTTON_DRAG_DOWN;
-            }
-            
-            startMouseY = event.y;
-            startMouseX = event.x;
-            
-            bIsDragged = true;
+//        if(IsInside(event.x, event.y))
+//            
+//        {
+//            
+//            // evaluate drag value
+//            if(event.x - startMouseX > dragStep){
+//                cout << "right" <<endl;
+//                dragType = BUTTON_DRAG_RIGHT;
+//                startMouseX = event.x;
+//            } else if(event.x - startMouseX  < -dragStep){
+//                cout << "left" <<endl;
+//                dragType = BUTTON_DRAG_LEFT;
+//                startMouseX = event.x;
+//            }
+//            else{
+//                cout << "LR none" <<endl;
+//                dragType = BUTTON_DRAG_NONE;
+//            }
+//
+//            
+//            //cout<<event.y - startMouseY<<endl;
+//            if(event.y - startMouseY < -dragStep){
+//                cout<<event.y - startMouseY<<endl;
+//                cout << "up" <<endl;
+//                dragType = BUTTON_DRAG_UP;
+//                startMouseY = event.y;
+//                
+//            } else if(event.y - startMouseY > dragStep){
+//                cout << "dn" <<endl;
+//                dragType = BUTTON_DRAG_DOWN;
+//                startMouseY = event.y;
+//            }
+//            else{
+//                cout << "UD none" <<endl;
+//                dragType = BUTTON_DRAG_NONE;
+//            }
+//            
+//
+//
+//            bIsDragged = true;
+//
+//        }
+        dragX = event.x - startMouseX;
+        dragY = event.y - startMouseY;
 
-        }
+
+        bIsDragged = true;
     }
+    
+        
 }
 
 void ofxDAQButton::mousePressed(ofMouseEventArgs& event){
@@ -197,6 +222,8 @@ void ofxDAQButton::mousePressed(ofMouseEventArgs& event){
         
         startMouseX = event.x;
         startMouseY = event.y;
+
+
     }
 }
 
@@ -213,7 +240,9 @@ void ofxDAQButton::mouseReleased(ofMouseEventArgs& event){
             bIsPressed = false;
         }
         bIsDragged = false;
-        dragType = BUTTON_DRAG_NONE;
+        dragX = 0.0;
+        dragY = 0.0;
+        //dragType = BUTTON_DRAG_NONE;
     }
     bHasFocus = false;
 }
@@ -244,4 +273,12 @@ ofVec2f ofxDAQButton::getMouseXY(){
 
 ButtonDragType ofxDAQButton::getDragType(){
     return dragType;
+}
+
+ofVec2f ofxDAQButton::getDragAmout(){
+    return ofVec2f(dragX, dragY);
+}
+
+bool ofxDAQButton::isDragged(){
+    return bIsDragged;
 }
