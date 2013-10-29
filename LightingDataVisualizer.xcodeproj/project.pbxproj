@@ -15,7 +15,6 @@
 		671B3F30181C12F200CCF71C /* CreEPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2A181C12F200CCF71C /* CreEPS.cpp */; };
 		671B3F31181C12F200CCF71C /* ofxVectorGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2E181C12F200CCF71C /* ofxVectorGraphics.cpp */; };
 		671B3F37181C216900CCF71C /* ofxTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F35181C216900CCF71C /* ofxTimer.cpp */; };
-		67391FAB1813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */; };
 		6751362A1818E448007EC293 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136211818E448007EC293 /* src_colors.cpp */; };
 		6751362B1818E448007EC293 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136221818E448007EC293 /* svgtiny.cpp */; };
 		6751362C1818E448007EC293 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136241818E448007EC293 /* svgtiny_gradient.cpp */; };
@@ -104,11 +103,6 @@
 		671B3F2F181C12F200CCF71C /* ofxVectorGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVectorGraphics.h; sourceTree = "<group>"; };
 		671B3F35181C216900CCF71C /* ofxTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimer.cpp; sourceTree = "<group>"; };
 		671B3F36181C216900CCF71C /* ofxTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimer.h; sourceTree = "<group>"; };
-		67391FA51813EF1600AB7B64 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
-		67391FA61813EF1600AB7B64 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
-		67391FA71813EF1600AB7B64 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTrueTypeFontUC.cpp; sourceTree = "<group>"; };
-		67391FAA1813EF1600AB7B64 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrueTypeFontUC.h; sourceTree = "<group>"; };
 		675136211818E448007EC293 /* src_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = src_colors.cpp; sourceTree = "<group>"; };
 		675136221818E448007EC293 /* svgtiny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny.cpp; sourceTree = "<group>"; };
 		675136231818E448007EC293 /* svgtiny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny.h; sourceTree = "<group>"; };
@@ -283,27 +277,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		67391FA41813EF1600AB7B64 /* ofxTrueTypeFontUC */ = {
-			isa = PBXGroup;
-			children = (
-				67391FA51813EF1600AB7B64 /* install.xml */,
-				67391FA61813EF1600AB7B64 /* License.txt */,
-				67391FA71813EF1600AB7B64 /* README.md */,
-				67391FA81813EF1600AB7B64 /* src */,
-			);
-			name = ofxTrueTypeFontUC;
-			path = ../../../addons/ofxTrueTypeFontUC;
-			sourceTree = "<group>";
-		};
-		67391FA81813EF1600AB7B64 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				67391FA91813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp */,
-				67391FAA1813EF1600AB7B64 /* ofxTrueTypeFontUC.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		6751361D1818E448007EC293 /* ofxSvg */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,7 +443,6 @@
 				671B3F28181C12F200CCF71C /* ofxVectorGraphics */,
 				67CC8941181AC0BC002AC1A4 /* ofxAssimpModelLoader */,
 				6751361D1818E448007EC293 /* ofxSvg */,
-				67391FA41813EF1600AB7B64 /* ofxTrueTypeFontUC */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -584,9 +556,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* GraphAddOnTest */ = {
+		E4B69B5A0A3A1756003C02F2 /* LightingDataVisualizer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "GraphAddOnTest" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "LightingDataVisualizer" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -598,7 +570,7 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = GraphAddOnTest;
+			name = LightingDataVisualizer;
 			productName = myOFApp;
 			productReference = E4B69B5B0A3A1756003C02F2 /* GraphAddOnTestDebug.app */;
 			productType = "com.apple.product-type.application";
@@ -611,7 +583,7 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "GraphAddOnTest" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "LightingDataVisualizer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -632,7 +604,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* GraphAddOnTest */,
+				E4B69B5A0A3A1756003C02F2 /* LightingDataVisualizer */,
 			);
 		};
 /* End PBXProject section */
@@ -672,7 +644,6 @@
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				67C6A893180AC20A00B290AB /* ofxPlot.cpp in Sources */,
 				67C6A896180AC23400B290AB /* ofxPlotLine.cpp in Sources */,
-				67391FAB1813EF1600AB7B64 /* ofxTrueTypeFontUC.cpp in Sources */,
 				67CDA0D918165479003FF7EE /* ofxPlotSlider.cpp in Sources */,
 				6751362A1818E448007EC293 /* src_colors.cpp in Sources */,
 				6751362B1818E448007EC293 /* svgtiny.cpp in Sources */,
@@ -853,7 +824,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				PRODUCT_NAME = LightingDataVisualizerDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -939,7 +910,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LightingDataVisualizer;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -947,7 +918,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "GraphAddOnTest" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "LightingDataVisualizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -956,7 +927,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "GraphAddOnTest" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "LightingDataVisualizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
