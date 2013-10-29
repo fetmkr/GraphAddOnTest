@@ -130,6 +130,10 @@ bool ofxDAQButton::isPressed(){
 
 void ofxDAQButton::mouseMoved(ofMouseEventArgs& event){
     bHasFocus = false;
+    if(IsInside(event.x, event.y) && !bIsPressed){
+        mouseX = event.x;
+        mouseY = event.y;
+    }
 }
 
 void ofxDAQButton::mouseDragged(ofMouseEventArgs& event){
@@ -146,8 +150,7 @@ void ofxDAQButton::mousePressed(ofMouseEventArgs& event){
         bHasFocus = true;
         if (bToggleButton) {
             bIsPressed = !bIsPressed;
-            mouseX = event.x;
-            mouseY = event.y;
+
         }
         else{
             bIsPressed = true;
