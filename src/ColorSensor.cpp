@@ -23,7 +23,7 @@ void ColorSensor::setup(){
     colorPicker.setAnchorPoint(colorPicker.getWidth()/2, colorPicker.getHeight()/2);
     //setupColorPicker(600, 600);
     button.setup(500, 500, true, false,BUTTON_SHAPE_CIRCLE);
-    button.showButton(false);
+    button.showButton(false ,false);
 }
 
 void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
@@ -45,15 +45,19 @@ void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     button.draw(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
     if (button.isPressed()) {
         //cout << "pressed" << endl;
-        button.setPressedColor(pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2));
-        button.setReleasedColor(pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2));
-        button.showButton(true);
+//        button.setPressedColor(pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2));
+//        button.setReleasedColor(pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2));
+        button.setPressedColor(selectedColor);
+        button.setReleasedColor(selectedColor);
+        
+        button.showButton(true, true);
 
         
     }
     else
     {
-        button.showButton(false);
+        button.showButton(false,false);
+        selectedColor = pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2);
         ofSetColor(0, 0, 0);
         ofNoFill();
         ofSetRectMode(OF_RECTMODE_CENTER);

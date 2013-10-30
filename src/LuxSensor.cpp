@@ -19,7 +19,7 @@ LuxSensor::~LuxSensor(){
 void LuxSensor::setup(){
     Sensor::setup();
     button.setup(500, 500, true, false,BUTTON_SHAPE_CIRCLE);
-    button.showButton(false);
+    button.showButton(false , false);
     lightIntensity = 0.0;
     prevLightLevel = 0.0;
     bDragStarted = false;

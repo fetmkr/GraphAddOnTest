@@ -27,5 +27,7 @@ public:
     ofColor pickColor(int x, int y);
     ofColor getCompColor(ofColor c);
     
+    ofColor selectedColor;
+    
     ofxDAQButton button;
 };

@@ -34,12 +34,17 @@ public:
     void draw(float x, float y);
     void setPressedColor(ofColor c);
     void setReleasedColor(ofColor c);
+    
+    bool bShowPressed;
+    bool bShowReleased;
+    
+
+    
     void showPressed();
     void showReleased();
     
     
-    void showButton(bool bShow);
-    bool bShowButton;
+    void showButton(bool bPressShow, bool bReleaseShow);
     
     bool isPressed();
     ButtonDragType getDragType();

@@ -34,7 +34,10 @@ void ofxDAQButton::setup(float width, float height, bool bToggle, bool bDefaultV
     bHasFocus = false;
     bIsPressed = false;
     bIsDragged = false;
+    bShowPressed = true;
+    bShowReleased = true;
     dragType = BUTTON_DRAG_NONE;
+    
     
     bIsMoveInside = false;
     
@@ -53,7 +56,6 @@ void ofxDAQButton::setup(float width, float height, bool bToggle, bool bDefaultV
     dragX = 0.0;
     dragY = 0.0;
     
-    bShowButton = true;
     
     if(!bWasSetup){
         ofRegisterMouseEvents(this);
@@ -89,15 +91,17 @@ void ofxDAQButton::draw(float x, float y){
     ofTranslate(transX, transY);
     
     ofSetColor(255, 255, 255);    
-    if (bShowButton) {
-        ofSetCircleResolution(80);
 
-        if(bIsPressed){
+    ofSetCircleResolution(80);
+
+    if(bIsPressed){
+        if (bShowPressed) {
             showPressed();
         }
-        
-        showReleased();
     }
+    
+    if(bShowReleased) showReleased();
+    
 
     ofPopMatrix();
     ofPopStyle();
@@ -146,7 +150,7 @@ bool ofxDAQButton::isPressed(){
 
 void ofxDAQButton::mouseMoved(ofMouseEventArgs& event){
     bHasFocus = false;
-    if(IsInside(event.x, event.y) && !bIsPressed){
+    if(IsInside(event.x, event.y)){
 
         mouseX = event.x;
         mouseY = event.y;
@@ -268,8 +272,9 @@ bool ofxDAQButton::IsInside(float x, float y){
     return false;
 }
 
-void ofxDAQButton::showButton(bool bShow){
-    bShowButton = bShow;
+void ofxDAQButton::showButton(bool bPressShow, bool bReleaseShow){
+    bShowPressed = bPressShow;
+    bShowReleased = bReleaseShow;
 }
 
 ofVec2f ofxDAQButton::getMouseXY(){
@@ -292,3 +297,4 @@ bool ofxDAQButton::isDragged(){
 bool ofxDAQButton::isMoveInside(){
     return bIsMoveInside;
 }
+
