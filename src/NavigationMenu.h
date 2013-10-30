@@ -33,6 +33,16 @@ public:
     ofxDAQButton streeDemoButton;
     ofxDAQButton indoorDemoButton;
     
+    
+    ofImage touchIcon;
+    ofImage motionIcon;
+    ofImage pressAltIcon;
+    ofImage tempHumidIcon;
+    ofImage colorLuxIcon;
+    
+    ofImage streetDemoIcon;
+    ofImage indoorDemoIcon;
+    
     LightSensorType sensorType;
     LightDemoType demoType;
     

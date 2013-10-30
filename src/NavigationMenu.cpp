@@ -35,6 +35,15 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     streeDemoButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
     indoorDemoButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
     
+    touchIcon.loadImage("menu/touchIcon.png");
+    motionIcon.loadImage("menu/motionIcon.png");
+    pressAltIcon.loadImage("menu/ressAltIcon.png");
+    tempHumidIcon.loadImage("menu/tempHumidIcon.png");
+    colorLuxIcon.loadImage("menu/colorLuxIcon.png");
+    
+    streetDemoIcon.loadImage("menu/streetDemoIcon.png");
+    indoorDemoIcon.loadImage("menu/indoorDemoIcon.png");
+    
     //default
     sensorType = SENSOR_TOUCH;
     
