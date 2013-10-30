@@ -44,8 +44,12 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     pressAltButton.showButton(true, false);
     tempHumidButton.showButton(true, false);
     colorLuxButton.showButton(true, false);
-    streeDemoButton.showButton(true, false);
+    
     indoorDemoButton.showButton(true, false);
+//    indoorDemoButton.setPressedColor(ofColor(0,255,0));
+    streeDemoButton.showButton(true, false);
+//    streeDemoButton.setPressedColor(ofColor(255,0,0));
+
     dataButton.showButton(true, false);
     
     
@@ -98,6 +102,8 @@ void NavigationMenu::draw(float x, float y){
         tempHumidButton.draw(0, y + (menuWidth) * 3);
         colorLuxButton.draw(0, y + (menuWidth) * 4);
         
+        indoorDemoButton.draw(0, menuHeight + y - menuWidth *3);
+        streeDemoButton.draw(0, menuHeight + y - menuWidth*2);
         
         dataButton.draw(0, menuHeight + y - menuWidth);
         
@@ -108,8 +114,10 @@ void NavigationMenu::draw(float x, float y){
         tempHumidIcon.draw(0, y + (menuWidth) * 3);
         colorLuxIcon.draw(0, y + (menuWidth) * 4);
         
-        streeDemoButton.draw(0, y + (menuWidth+20) * 5);
-        indoorDemoButton.draw(0, y + (menuWidth+20) * 6);
+        
+        indoorDemoIcon.draw(0, menuHeight + y - menuWidth*3);
+        streetDemoIcon.draw(0, menuHeight + y - menuWidth*2);
+        
         
         dataIcon.draw(0, menuHeight + y - menuWidth);
     }

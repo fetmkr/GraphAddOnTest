@@ -36,7 +36,7 @@ void Sensor::setup(){
     longPlot.setTimeScale(30.0);
     longPlot.showTimeValue(true);
     longPlot.showSlider(true);
-    longPlot.showMenu(true);
+    //longPlot.showMenu(true);
     
 }
 void Sensor::setBGImg(string path){
