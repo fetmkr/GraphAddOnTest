@@ -54,6 +54,7 @@ void testApp::setup(){
 
     sensorType = SENSOR_TOUCH;
     
+    
 }
 
 //--------------------------------------------------------------
@@ -112,26 +113,43 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
     switch(key){
         case ' ':
-            visualType = VISUAL_SIENCE;
+            if (visualType == VISUAL_GRAPHIC) {
+                visualType = VISUAL_SIENCE;
+            }
+            else{
+                visualType = VISUAL_GRAPHIC;
+            }
+            
             break;
         case 'w':
             sensorType = SENSOR_MOTION_2D;
+            visualType = VISUAL_GRAPHIC;
             break;
         case 'e':
             sensorType = SENSOR_MOTION_3D;
+            visualType = VISUAL_GRAPHIC;
             break;
         case 'r':
             sensorType = SENSOR_PRESSURE_ALTITUDE;
+            visualType = VISUAL_GRAPHIC;
             break;
         case 'q':
             sensorType = SENSOR_TOUCH;
+            visualType = VISUAL_GRAPHIC;
             break;
         case 't':
             sensorType = SENSOR_COLOR;
+            visualType = VISUAL_GRAPHIC;
             break;
         case 'y':
             sensorType = SENSOR_LUX;
+            visualType = VISUAL_GRAPHIC;
             break;
+        case 'f':
+
+            ofToggleFullscreen();
+            break;
+
         default:
             break;
     }
@@ -141,7 +159,6 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
     switch(key){
         case ' ':
-            visualType = VISUAL_GRAPHIC;
             break;
         default:
             break;
