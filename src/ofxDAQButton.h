@@ -97,5 +97,7 @@ public:
     
     bool IsInside(float x, float y);
     
+    ofEvent<bool> pressEvent;
+    
     //    void addSound(string filename);
 };

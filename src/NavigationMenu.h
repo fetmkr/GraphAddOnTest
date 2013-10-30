@@ -18,6 +18,7 @@ public:
     ~NavigationMenu();
     
     void setup(float w, float h, ofColor c);
+    void reset();
     void draw(float x, float y);
     
     void drawLRButton(float x, float y);
@@ -56,4 +57,5 @@ public:
     float menuHeight;
     
     ofEvent<LightSensorType> sensorTypeChanged;
+    void pressEventHandler(bool &bPress);
 };

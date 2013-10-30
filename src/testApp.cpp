@@ -98,16 +98,10 @@ void testApp::draw(){
         case SENSOR_MOTION_2D:
             motionSensor2D.draw(sensorType,visualType);
             naviMenu.drawLRButton(960, 908);
-            if (naviMenu.bToggle == false){
-                sensorType = SENSOR_MOTION_3D;
-            }
             break;
         case SENSOR_MOTION_3D:
             motionSensor3D.draw(sensorType, visualType);
             naviMenu.drawLRButton(960, 908);
-            if (naviMenu.bToggle == true){
-                sensorType = SENSOR_MOTION_2D;
-            }
             break;
         case SENSOR_PRESSURE_ALTITUDE:
             pressAltSensor.draw(sensorType, visualType);
@@ -118,17 +112,11 @@ void testApp::draw(){
         case SENSOR_COLOR:
             colorSensor.draw(sensorType, visualType);
             naviMenu.drawLRButton(960, 908);
-            if (naviMenu.bToggle == false){
-                sensorType = SENSOR_LUX;
-            }
             break;
         case SENSOR_LUX:
             luxSensor.draw(sensorType, visualType);
             naviMenu.drawLRButton(960, 908);
-            if (naviMenu.bToggle == true){
-                sensorType = SENSOR_COLOR;
-                colorSensor.reset();
-            }
+
             break;
         default:
             break;
@@ -194,11 +182,39 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 void testApp::changeScene(LightSensorType &scene){
     visualType = VISUAL_GRAPHIC;
     sensorType = scene;
-    if(sensorType == SENSOR_COLOR){
-        // for resetting button status 
-        colorSensor.reset();
+    
+    
+    switch (sensorType) {
+        case SENSOR_TOUCH:
+            break;
+        case SENSOR_MOTION_2D:
+//            if (naviMenu.bToggle == false){
+//                sensorType = SENSOR_MOTION_3D;
+//            }
+            break;
+        case SENSOR_MOTION_3D:
+//            if (naviMenu.bToggle == true){
+//                sensorType = SENSOR_MOTION_2D;
+//            }
+            break;
+        case SENSOR_PRESSURE_ALTITUDE:
+            break;
+        case SENSOR_TEMP_HUMIDITY:
+            break;
+        case SENSOR_COLOR:
+            colorSensor.reset();
+//            if (naviMenu.bToggle == false){
+//                sensorType = SENSOR_LUX;
+//            }
+            break;
+        case SENSOR_LUX:
+//            if (naviMenu.bToggle == true){
+//                sensorType = SENSOR_COLOR;
+//            }
+            break;
+        default:
+            break;
     }
+
     
-    
-    cout<< "test"<< endl;
 }

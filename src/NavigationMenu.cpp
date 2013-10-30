@@ -60,13 +60,18 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     
     toggleButton.setup(50, 50, true, true, BUTTON_SHAPE_CIRCLE);
     toggleButton.showButton(false, false);
-    bToggle = true;
+    ofAddListener(toggleButton.pressEvent, this, &NavigationMenu::pressEventHandler);
     
+    bToggle = true;
 
     //default
     sensorType = SENSOR_TOUCH;
     
     
+}
+
+void NavigationMenu::reset(){
+    toggleButton.setPressed(true);
 }
 
 void NavigationMenu::draw(float x, float y){
@@ -105,6 +110,7 @@ void NavigationMenu::draw(float x, float y){
         ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     else if (motionButton.isPressed()){
+        toggleButton.setPressed(true);
         sensorType = SENSOR_MOTION_2D;
         ofNotifyEvent(sensorTypeChanged, sensorType);
     }
@@ -117,18 +123,13 @@ void NavigationMenu::draw(float x, float y){
         ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     else if (colorLuxButton.isPressed()){
+        toggleButton.setPressed(true);
         sensorType = SENSOR_COLOR;
         ofNotifyEvent(sensorTypeChanged, sensorType);
     }
 
-
     
-    if(toggleButton.isPressed()){
-        bToggle = true;
-    }
-    else{
-        bToggle = false;
-    }
+
     
         
     ofPopMatrix();
@@ -144,17 +145,17 @@ void NavigationMenu::drawLRButton(float x, float y){
     ofSetCircleResolution(80);
 
     ofNoFill();
-    ofCircle(x-20, y, 10);
-    ofCircle(x+20, y, 10);
+    ofCircle(x-15, y, 10);
+    ofCircle(x+15, y, 10);
     
     ofFill();
     ofPushMatrix();
     toggleButton.draw(x, y);
-    if (bToggle) {
-        ofCircle(x-20, y, 10);
+    if (toggleButton.isPressed()) {
+        ofCircle(x-15, y, 10);
     }
     else{
-        ofCircle(x+20, y, 10);
+        ofCircle(x+15, y, 10);
     }
 
     
@@ -164,4 +165,27 @@ void NavigationMenu::drawLRButton(float x, float y){
 
 LightSensorType NavigationMenu::getSensorType(){
     return sensorType;
+}
+
+void NavigationMenu::pressEventHandler(bool &bPress){
+    if(toggleButton.isPressed()){
+        bToggle = true;
+        if (sensorType == SENSOR_MOTION_3D){
+            sensorType = SENSOR_MOTION_2D;
+        }
+        else if(sensorType == SENSOR_LUX){
+            sensorType = SENSOR_COLOR;
+        }
+    }
+    else{
+        bToggle = false;
+        if (sensorType == SENSOR_MOTION_2D){
+            sensorType = SENSOR_MOTION_3D;
+        }
+        else if(sensorType == SENSOR_COLOR){
+            sensorType = SENSOR_LUX;
+        }
+    }
+    ofNotifyEvent(sensorTypeChanged, sensorType);
+    cout << "t test" << endl;
 }

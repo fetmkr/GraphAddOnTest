@@ -223,11 +223,12 @@ void ofxDAQButton::mousePressed(ofMouseEventArgs& event){
         bHasFocus = true;
         if (bToggleButton) {
             bIsPressed = !bIsPressed;
-
+            
         }
         else{
             bIsPressed = true;
         }
+        ofNotifyEvent(pressEvent, bIsPressed);
         
         startMouseX = event.x;
         startMouseY = event.y;
