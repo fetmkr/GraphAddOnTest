@@ -58,6 +58,7 @@ void testApp::setup(){
     
     naviMenu.setup(80, 900, ofColor(0,0,0,200));
     ofAddListener(naviMenu.sensorTypeChanged, this, &testApp::changeScene);
+
     
     sensorType = SENSOR_TOUCH;
     
@@ -96,9 +97,17 @@ void testApp::draw(){
             break;
         case SENSOR_MOTION_2D:
             motionSensor2D.draw(sensorType,visualType);
+            naviMenu.drawLRButton(960, 908);
+            if (naviMenu.bToggle == false){
+                sensorType = SENSOR_MOTION_3D;
+            }
             break;
         case SENSOR_MOTION_3D:
             motionSensor3D.draw(sensorType, visualType);
+            naviMenu.drawLRButton(960, 908);
+            if (naviMenu.bToggle == true){
+                sensorType = SENSOR_MOTION_2D;
+            }
             break;
         case SENSOR_PRESSURE_ALTITUDE:
             pressAltSensor.draw(sensorType, visualType);
@@ -108,9 +117,18 @@ void testApp::draw(){
             break;
         case SENSOR_COLOR:
             colorSensor.draw(sensorType, visualType);
+            naviMenu.drawLRButton(960, 908);
+            if (naviMenu.bToggle == false){
+                sensorType = SENSOR_LUX;
+            }
             break;
         case SENSOR_LUX:
             luxSensor.draw(sensorType, visualType);
+            naviMenu.drawLRButton(960, 908);
+            if (naviMenu.bToggle == true){
+                sensorType = SENSOR_COLOR;
+                colorSensor.reset();
+            }
             break;
         default:
             break;
@@ -177,7 +195,10 @@ void testApp::changeScene(LightSensorType &scene){
     visualType = VISUAL_GRAPHIC;
     sensorType = scene;
     if(sensorType == SENSOR_COLOR){
+        // for resetting button status 
         colorSensor.reset();
     }
+    
+    
     cout<< "test"<< endl;
 }

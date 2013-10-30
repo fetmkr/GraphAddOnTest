@@ -32,7 +32,6 @@ void ofxDAQButton::setup(float width, float height, bool bToggle, bool bDefaultV
     bToggleButton = bToggle;
     bIsPressed = bDefaultVal;
     bHasFocus = false;
-    bIsPressed = false;
     bIsDragged = false;
     bShowPressed = true;
     bShowReleased = true;

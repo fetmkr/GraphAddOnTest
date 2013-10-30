@@ -56,8 +56,16 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     streetDemoIcon.loadImage("menu/streetDemoIcon.png");
     indoorDemoIcon.loadImage("menu/indoorDemoIcon.png");
     
+    
+    
+    toggleButton.setup(50, 50, true, true, BUTTON_SHAPE_CIRCLE);
+    toggleButton.showButton(false, false);
+    bToggle = true;
+    
+
     //default
     sensorType = SENSOR_TOUCH;
+    
     
 }
 
@@ -115,11 +123,44 @@ void NavigationMenu::draw(float x, float y){
 
 
     
+    if(toggleButton.isPressed()){
+        bToggle = true;
+    }
+    else{
+        bToggle = false;
+    }
     
+        
     ofPopMatrix();
     ofPopStyle();
 }
 
+void NavigationMenu::drawLRButton(float x, float y){
+    
+
+    ofPushStyle();
+    ofSetColor(255, 255, 255);
+    ofSetColor(0, 0, 255);
+    ofSetCircleResolution(80);
+
+    ofNoFill();
+    ofCircle(x-20, y, 10);
+    ofCircle(x+20, y, 10);
+    
+    ofFill();
+    ofPushMatrix();
+    toggleButton.draw(x, y);
+    if (bToggle) {
+        ofCircle(x-20, y, 10);
+    }
+    else{
+        ofCircle(x+20, y, 10);
+    }
+
+    
+    ofPopMatrix();
+    ofPopStyle();
+}
 
 LightSensorType NavigationMenu::getSensorType(){
     return sensorType;

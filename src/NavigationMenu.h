@@ -20,6 +20,8 @@ public:
     void setup(float w, float h, ofColor c);
     void draw(float x, float y);
     
+    void drawLRButton(float x, float y);
+    
     ofRectangle menuRect;
     ofColor menuColor;
     ofxDAQButton menuButton;
@@ -33,6 +35,8 @@ public:
     ofxDAQButton streeDemoButton;
     ofxDAQButton indoorDemoButton;
     
+    ofxDAQButton toggleButton;
+    bool bToggle;
     
     ofImage touchIcon;
     ofImage motionIcon;
