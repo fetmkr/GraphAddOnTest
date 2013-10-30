@@ -27,6 +27,7 @@ public:
     void drawPlots();
 
     ofTrueTypeFont analFont;
+    
     ofxSVG etriLogoBlk;
 
     ofImage BGImg;

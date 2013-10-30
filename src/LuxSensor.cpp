@@ -59,11 +59,13 @@ void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
 //            updateLightIntensity(false);
 //        }
         //cout << button.getDragAmout().y << endl;
+        ofRectangle strBox = analFont.getStringBoundingBox(ofToString(int(lightIntensity)), 0, 0);
+        analFont.drawString(ofToString(int(lightIntensity)), ofGetWindowWidth()/2-strBox.getWidth()/2, ofGetWindowHeight()/2);
     }
     else
     {
-//        prevLightLevel = lightIntensity;
-//        bDragStarted = true;
+        prevLightLevel = lightIntensity;
+        bDragStarted = true;
     }
     ofPopMatrix();
     
@@ -76,6 +78,7 @@ void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
 }
 
 void LuxSensor::updateLightIntensity(float val){
-    lightIntensity = ofMap(val/2.0, -ofGetWindowHeight(), ofGetWindowHeight(), 0.0, 255.0, true);
-    //lightIntensity = ofClamp(lightIntensity, 0, 255);
+    lightIntensity = prevLightLevel + (-1.0)*(val / 2.0); // the val is divided by two for higher resolution;
+    lightIntensity = ofClamp(lightIntensity, 0.0, 255.0);
+//    cout << lightIntensity << endl;
 }
