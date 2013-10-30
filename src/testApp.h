@@ -30,6 +30,8 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         void changeScene(LightSensorType &scene);
+        void changeMode(LightVisualType &mode);
+
 
         LightSensorType sensorType;
         LightDemoType demoType;

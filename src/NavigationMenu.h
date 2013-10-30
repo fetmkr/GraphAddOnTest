@@ -36,6 +36,8 @@ public:
     ofxDAQButton streeDemoButton;
     ofxDAQButton indoorDemoButton;
     
+    ofxDAQButton dataButton;
+    
     ofxDAQButton toggleButton;
     bool bToggle;
     
@@ -48,7 +50,10 @@ public:
     ofImage streetDemoIcon;
     ofImage indoorDemoIcon;
     
+    ofImage dataIcon;
+    
     LightSensorType sensorType;
+    LightVisualType visualType;
     LightDemoType demoType;
     
     LightSensorType getSensorType();
@@ -57,5 +62,6 @@ public:
     float menuHeight;
     
     ofEvent<LightSensorType> sensorTypeChanged;
+    ofEvent<LightVisualType> visualTypeChanged;
     void pressEventHandler(bool &bPress);
 };

@@ -58,7 +58,7 @@ void testApp::setup(){
     
     naviMenu.setup(80, 900, ofColor(0,0,0,200));
     ofAddListener(naviMenu.sensorTypeChanged, this, &testApp::changeScene);
-
+    ofAddListener(naviMenu.visualTypeChanged, this, &testApp::changeMode);
     
     sensorType = SENSOR_TOUCH;
     
@@ -180,7 +180,6 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 }
 
 void testApp::changeScene(LightSensorType &scene){
-    visualType = VISUAL_GRAPHIC;
     sensorType = scene;
     
     
@@ -217,4 +216,8 @@ void testApp::changeScene(LightSensorType &scene){
     }
 
     
+}
+
+void testApp::changeMode(LightVisualType &mode){
+    visualType = mode;
 }

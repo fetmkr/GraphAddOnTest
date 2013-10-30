@@ -32,10 +32,11 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     tempHumidButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
     colorLuxButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
     
-    
-    
     streeDemoButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
     indoorDemoButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
+    
+    dataButton.setup(menuWidth, menuWidth, true, false, BUTTON_SHAPE_RECT);
+    ofAddListener(dataButton.pressEvent, this, &NavigationMenu::pressEventHandler);
     
     
     touchButton.showButton(true, false);
@@ -45,6 +46,7 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     colorLuxButton.showButton(true, false);
     streeDemoButton.showButton(true, false);
     indoorDemoButton.showButton(true, false);
+    dataButton.showButton(true, false);
     
     
     touchIcon.loadImage("menu/touchIcon.png");
@@ -55,6 +57,8 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     
     streetDemoIcon.loadImage("menu/streetDemoIcon.png");
     indoorDemoIcon.loadImage("menu/indoorDemoIcon.png");
+    
+    dataIcon.loadImage("menu/dataIcon.png");
     
     
     
@@ -94,6 +98,9 @@ void NavigationMenu::draw(float x, float y){
         tempHumidButton.draw(0, y + (menuWidth) * 3);
         colorLuxButton.draw(0, y + (menuWidth) * 4);
         
+        
+        dataButton.draw(0, menuHeight + y - menuWidth);
+        
         ofSetColor(255, 255, 255);
         touchIcon.draw(0, y);
         motionIcon.draw(0, y+menuWidth);
@@ -103,6 +110,8 @@ void NavigationMenu::draw(float x, float y){
         
         streeDemoButton.draw(0, y + (menuWidth+20) * 5);
         indoorDemoButton.draw(0, y + (menuWidth+20) * 6);
+        
+        dataIcon.draw(0, menuHeight + y - menuWidth);
     }
     
     if (touchButton.isPressed()) {
@@ -176,6 +185,7 @@ void NavigationMenu::pressEventHandler(bool &bPress){
         else if(sensorType == SENSOR_LUX){
             sensorType = SENSOR_COLOR;
         }
+        ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     else{
         bToggle = false;
@@ -185,7 +195,18 @@ void NavigationMenu::pressEventHandler(bool &bPress){
         else if(sensorType == SENSOR_COLOR){
             sensorType = SENSOR_LUX;
         }
+        ofNotifyEvent(sensorTypeChanged, sensorType);
     }
-    ofNotifyEvent(sensorTypeChanged, sensorType);
+    
+    
+    if(dataButton.isPressed()){
+        visualType = VISUAL_SIENCE;
+        ofNotifyEvent(visualTypeChanged, visualType);
+    }
+    else{
+        visualType = VISUAL_GRAPHIC;
+        ofNotifyEvent(visualTypeChanged, visualType);
+    }
+    
     cout << "t test" << endl;
 }
