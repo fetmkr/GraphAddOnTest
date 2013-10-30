@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ETRILighting.h"
+#include "ofxDAQButton.h"
 #include "MotionSensor2D.h"
 #include "MotionSensor3D.h"
 #include "PressAltSensor.h"
@@ -9,6 +10,7 @@
 #include "ColorSensor.h"
 #include "LuxSensor.h"
 #include "TempHumidSensor.h"
+#include "NavigationMenu.h"
 
 class testApp : public ofBaseApp{
 
@@ -45,5 +47,7 @@ class testApp : public ofBaseApp{
         ColorSensor colorSensor;
         LuxSensor luxSensor;
         TempHumidSensor tempHumidSensor;
+    
+        NavigationMenu naviMenu;
     
 };

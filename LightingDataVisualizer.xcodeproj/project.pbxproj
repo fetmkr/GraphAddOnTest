@@ -34,6 +34,7 @@
 		67CC897C181AC0BC002AC1A4 /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67CC8975181AC0BC002AC1A4 /* ofxAssimpTexture.cpp */; };
 		67CC897F181AC253002AC1A4 /* MotionSensor3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67CC897E181AC253002AC1A4 /* MotionSensor3D.cpp */; };
 		67CDA0D918165479003FF7EE /* ofxPlotSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67CDA0D818165479003FF7EE /* ofxPlotSlider.cpp */; };
+		67F799741820FC4B0028C43C /* NavigationMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67F799721820FC4A0028C43C /* NavigationMenu.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -179,6 +180,8 @@
 		67CC897E181AC253002AC1A4 /* MotionSensor3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MotionSensor3D.cpp; sourceTree = "<group>"; };
 		67CDA0D718165464003FF7EE /* ofxPlotSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlotSlider.h; sourceTree = "<group>"; };
 		67CDA0D818165479003FF7EE /* ofxPlotSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPlotSlider.cpp; sourceTree = "<group>"; };
+		67F799721820FC4A0028C43C /* NavigationMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NavigationMenu.cpp; sourceTree = "<group>"; };
+		67F799731820FC4A0028C43C /* NavigationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationMenu.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -545,6 +548,8 @@
 				671B3F24181BEE6F00CCF71C /* TouchSensor.h */,
 				670B8319181F914800382C60 /* ofxDAQButton.cpp */,
 				670B831A181F914800382C60 /* ofxDAQButton.h */,
+				67F799721820FC4A0028C43C /* NavigationMenu.cpp */,
+				67F799731820FC4A0028C43C /* NavigationMenu.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -673,6 +678,7 @@
 				671B3F31181C12F200CCF71C /* ofxVectorGraphics.cpp in Sources */,
 				671B3F37181C216900CCF71C /* ofxTimer.cpp in Sources */,
 				670B831B181F914900382C60 /* ofxDAQButton.cpp in Sources */,
+				67F799741820FC4B0028C43C /* NavigationMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,6 +48,9 @@ public:
     ofVec2f getDragAmout();
     bool isDragged();
     
+    bool bIsMoveInside;
+    bool isMoveInside();
+    
     float dragX;
     float dragY;
     

@@ -36,6 +36,8 @@ void ofxDAQButton::setup(float width, float height, bool bToggle, bool bDefaultV
     bIsDragged = false;
     dragType = BUTTON_DRAG_NONE;
     
+    bIsMoveInside = false;
+    
     // default color
     pressedColor = ofColor(0);
     releasedColor = ofColor(0);
@@ -148,6 +150,10 @@ void ofxDAQButton::mouseMoved(ofMouseEventArgs& event){
 
         mouseX = event.x;
         mouseY = event.y;
+        bIsMoveInside = true;
+    }
+    else{
+        bIsMoveInside = false;
     }
 }
 
@@ -281,4 +287,8 @@ ofVec2f ofxDAQButton::getDragAmout(){
 
 bool ofxDAQButton::isDragged(){
     return bIsDragged;
+}
+
+bool ofxDAQButton::isMoveInside(){
+    return bIsMoveInside;
 }

@@ -39,6 +39,8 @@ void testApp::setup(){
     luxSensor.setup();
     tempHumidSensor.setup();
     
+    naviMenu.setup(80, 900, ofColor(0,0,0,200));
+    
     motionSensor2D.addLine(&AccelXLine);
     motionSensor2D.addLine(&AccelYLine);
     motionSensor2D.addLine(&AccelZLine);
@@ -84,7 +86,7 @@ void testApp::update(){
 void testApp::draw(){
     ofBackground(255);
 
-    switch (sensorType) {
+    switch (naviMenu.getSensorType()) {
         case SENSOR_TOUCH:
             touchSensor.draw(sensorType, visualType);
             break;
@@ -109,6 +111,8 @@ void testApp::draw(){
         default:
             break;
     }
+    
+    naviMenu.draw(0, 90);
 }
 
 //--------------------------------------------------------------
