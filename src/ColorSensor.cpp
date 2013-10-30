@@ -25,6 +25,9 @@ void ColorSensor::setup(){
     button.setup(500, 500, true, false,BUTTON_SHAPE_CIRCLE);
     button.showButton(false ,false);
 }
+void ColorSensor::reset(){
+    button.setPressed(false);
+}
 
 void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {

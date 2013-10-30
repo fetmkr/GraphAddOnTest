@@ -94,20 +94,27 @@ void NavigationMenu::draw(float x, float y){
     
     if (touchButton.isPressed()) {
         sensorType = SENSOR_TOUCH;
+        ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     else if (motionButton.isPressed()){
         sensorType = SENSOR_MOTION_2D;
+        ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     else if (pressAltButton.isPressed()){
         sensorType = SENSOR_PRESSURE_ALTITUDE;
+        ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     else if (tempHumidButton.isPressed()){
         sensorType = SENSOR_TEMP_HUMIDITY;
+        ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     else if (colorLuxButton.isPressed()){
         sensorType = SENSOR_COLOR;
+        ofNotifyEvent(sensorTypeChanged, sensorType);
     }
 
+
+    
     
     ofPopMatrix();
     ofPopStyle();

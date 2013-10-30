@@ -298,3 +298,6 @@ bool ofxDAQButton::isMoveInside(){
     return bIsMoveInside;
 }
 
+void ofxDAQButton::setPressed(bool bSet){
+    bIsPressed = bSet;
+}

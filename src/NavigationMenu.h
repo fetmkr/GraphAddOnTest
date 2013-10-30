@@ -50,4 +50,6 @@ public:
     
     float menuWidth;
     float menuHeight;
+    
+    ofEvent<LightSensorType> sensorTypeChanged;
 };

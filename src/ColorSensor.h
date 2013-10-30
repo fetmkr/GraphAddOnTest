@@ -20,6 +20,7 @@ public:
     ~ColorSensor();
 
     void setup();
+    void reset();
     void draw(LightSensorType sensorType, LightVisualType visualType);
 
     ofImage colorPicker;

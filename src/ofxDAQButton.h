@@ -46,6 +46,8 @@ public:
     
     void showButton(bool bPressShow, bool bReleaseShow);
     
+    void setPressed(bool bSet);
+    
     bool isPressed();
     ButtonDragType getDragType();
     ButtonDragType dragType;

@@ -39,7 +39,7 @@ void testApp::setup(){
     luxSensor.setup();
     tempHumidSensor.setup();
     
-    naviMenu.setup(80, 900, ofColor(0,0,0,200));
+    
     
     motionSensor2D.addLine(&AccelXLine);
     motionSensor2D.addLine(&AccelYLine);
@@ -55,8 +55,11 @@ void testApp::setup(){
     motionSensor3D.addLine(&GyroYLine);
     motionSensor3D.addLine(&GyroZLine);
 
-    sensorType = SENSOR_TOUCH;
     
+    naviMenu.setup(80, 900, ofColor(0,0,0,200));
+    ofAddListener(naviMenu.sensorTypeChanged, this, &testApp::changeScene);
+    
+    sensorType = SENSOR_TOUCH;
     
 }
 
@@ -86,7 +89,8 @@ void testApp::update(){
 void testApp::draw(){
     ofBackground(255);
 
-    switch (naviMenu.getSensorType()) {
+//    switch (naviMenu.getSensorType()) {
+    switch (sensorType) {
         case SENSOR_TOUCH:
             touchSensor.draw(sensorType, visualType);
             break;
@@ -208,3 +212,11 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+void testApp::changeScene(LightSensorType &scene){
+    visualType = VISUAL_GRAPHIC;
+    sensorType = scene;
+    if(sensorType == SENSOR_COLOR){
+        colorSensor.reset();
+    }
+    cout<< "test"<< endl;
+}
