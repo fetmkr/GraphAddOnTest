@@ -8,6 +8,7 @@
 #include "TouchSensor.h"
 #include "ColorSensor.h"
 #include "LuxSensor.h"
+#include "TempHumidSensor.h"
 
 class testApp : public ofBaseApp{
 
@@ -43,5 +44,6 @@ class testApp : public ofBaseApp{
         TouchSensor touchSensor;
         ColorSensor colorSensor;
         LuxSensor luxSensor;
+        TempHumidSensor tempHumidSensor;
     
 };

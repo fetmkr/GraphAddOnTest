@@ -37,6 +37,7 @@ void testApp::setup(){
     touchSensor.setup();
     colorSensor.setup();
     luxSensor.setup();
+    tempHumidSensor.setup();
     
     motionSensor2D.addLine(&AccelXLine);
     motionSensor2D.addLine(&AccelYLine);
@@ -97,6 +98,7 @@ void testApp::draw(){
             pressAltSensor.draw(sensorType, visualType);
             break;
         case SENSOR_TEMP_HUMIDITY:
+            tempHumidSensor.draw(sensorType, visualType);
             break;
         case SENSOR_COLOR:
             colorSensor.draw(sensorType, visualType);
@@ -119,7 +121,6 @@ void testApp::keyPressed(int key){
             else{
                 visualType = VISUAL_GRAPHIC;
             }
-            
             break;
         case 'w':
             sensorType = SENSOR_MOTION_2D;
@@ -138,15 +139,18 @@ void testApp::keyPressed(int key){
             visualType = VISUAL_GRAPHIC;
             break;
         case 't':
-            sensorType = SENSOR_COLOR;
+            sensorType = SENSOR_TEMP_HUMIDITY;
             visualType = VISUAL_GRAPHIC;
             break;
         case 'y':
+            sensorType = SENSOR_COLOR;
+            visualType = VISUAL_GRAPHIC;
+            break;
+        case 'u':
             sensorType = SENSOR_LUX;
             visualType = VISUAL_GRAPHIC;
             break;
         case 'f':
-
             ofToggleFullscreen();
             break;
 

@@ -10,3 +10,15 @@
 
 #include "ETRILighting.h"
 #include "Sensor.h"
+
+class TempHumidSensor : public Sensor {
+public:
+    TempHumidSensor();
+    ~TempHumidSensor();
+    void setup();
+    void draw(LightSensorType sensorType, LightVisualType visualType);
+    
+    void drawBar(float x, float y, float w, float val, ofColor c);
+    
+    ofImage gageImg;
+};
