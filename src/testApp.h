@@ -11,6 +11,7 @@
 #include "LuxSensor.h"
 #include "TempHumidSensor.h"
 #include "NavigationMenu.h"
+#include "ofxNetwork.h"
 
 class testApp : public ofBaseApp{
 
@@ -53,5 +54,6 @@ class testApp : public ofBaseApp{
         TempHumidSensor tempHumidSensor;
     
         NavigationMenu naviMenu;
-    
+        ofxTCPServer TCP;
+        vector <string> storeText;
 };

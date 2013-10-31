@@ -16,6 +16,10 @@
 		671B3F30181C12F200CCF71C /* CreEPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2A181C12F200CCF71C /* CreEPS.cpp */; };
 		671B3F31181C12F200CCF71C /* ofxVectorGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2E181C12F200CCF71C /* ofxVectorGraphics.cpp */; };
 		671B3F37181C216900CCF71C /* ofxTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F35181C216900CCF71C /* ofxTimer.cpp */; };
+		6747D8B1182296D2005A37A6 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6747D8A9182296D2005A37A6 /* ofxTCPClient.cpp */; };
+		6747D8B2182296D2005A37A6 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6747D8AB182296D2005A37A6 /* ofxTCPManager.cpp */; };
+		6747D8B3182296D2005A37A6 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6747D8AD182296D2005A37A6 /* ofxTCPServer.cpp */; };
+		6747D8B4182296D2005A37A6 /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6747D8AF182296D2005A37A6 /* ofxUDPManager.cpp */; };
 		6751364318192035007EC293 /* ofxPlotButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364218192035007EC293 /* ofxPlotButton.cpp */; };
 		6751364918196B3B007EC293 /* ofxPlotUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364818196B3B007EC293 /* ofxPlotUtil.cpp */; };
 		6751364F181999F5007EC293 /* MotionSensor2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364E181999F5007EC293 /* MotionSensor2D.cpp */; };
@@ -103,6 +107,17 @@
 		671B3F2F181C12F200CCF71C /* ofxVectorGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVectorGraphics.h; sourceTree = "<group>"; };
 		671B3F35181C216900CCF71C /* ofxTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimer.cpp; sourceTree = "<group>"; };
 		671B3F36181C216900CCF71C /* ofxTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimer.h; sourceTree = "<group>"; };
+		6747D8A5182296D2005A37A6 /* Instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Instructions.txt; sourceTree = "<group>"; };
+		6747D8A7182296D2005A37A6 /* ofxNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetwork.h; sourceTree = "<group>"; };
+		6747D8A8182296D2005A37A6 /* ofxNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetworkUtils.h; sourceTree = "<group>"; };
+		6747D8A9182296D2005A37A6 /* ofxTCPClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPClient.cpp; sourceTree = "<group>"; };
+		6747D8AA182296D2005A37A6 /* ofxTCPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPClient.h; sourceTree = "<group>"; };
+		6747D8AB182296D2005A37A6 /* ofxTCPManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPManager.cpp; sourceTree = "<group>"; };
+		6747D8AC182296D2005A37A6 /* ofxTCPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPManager.h; sourceTree = "<group>"; };
+		6747D8AD182296D2005A37A6 /* ofxTCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPServer.cpp; sourceTree = "<group>"; };
+		6747D8AE182296D2005A37A6 /* ofxTCPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPServer.h; sourceTree = "<group>"; };
+		6747D8AF182296D2005A37A6 /* ofxUDPManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxUDPManager.cpp; sourceTree = "<group>"; };
+		6747D8B0182296D2005A37A6 /* ofxUDPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUDPManager.h; sourceTree = "<group>"; };
 		6751364118192025007EC293 /* ofxPlotButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlotButton.h; sourceTree = "<group>"; };
 		6751364218192035007EC293 /* ofxPlotButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPlotButton.cpp; sourceTree = "<group>"; };
 		6751364718196B2C007EC293 /* ofxPlotUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlotUtil.h; sourceTree = "<group>"; };
@@ -270,6 +285,41 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		6747D8A3182296D2005A37A6 /* ofxNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				6747D8A4182296D2005A37A6 /* docs */,
+				6747D8A6182296D2005A37A6 /* src */,
+			);
+			name = ofxNetwork;
+			path = ../../../addons/ofxNetwork;
+			sourceTree = "<group>";
+		};
+		6747D8A4182296D2005A37A6 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				6747D8A5182296D2005A37A6 /* Instructions.txt */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		6747D8A6182296D2005A37A6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6747D8A7182296D2005A37A6 /* ofxNetwork.h */,
+				6747D8A8182296D2005A37A6 /* ofxNetworkUtils.h */,
+				6747D8A9182296D2005A37A6 /* ofxTCPClient.cpp */,
+				6747D8AA182296D2005A37A6 /* ofxTCPClient.h */,
+				6747D8AB182296D2005A37A6 /* ofxTCPManager.cpp */,
+				6747D8AC182296D2005A37A6 /* ofxTCPManager.h */,
+				6747D8AD182296D2005A37A6 /* ofxTCPServer.cpp */,
+				6747D8AE182296D2005A37A6 /* ofxTCPServer.h */,
+				6747D8AF182296D2005A37A6 /* ofxUDPManager.cpp */,
+				6747D8B0182296D2005A37A6 /* ofxUDPManager.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		67CC8941181AC0BC002AC1A4 /* ofxAssimpModelLoader */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +434,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				6747D8A3182296D2005A37A6 /* ofxNetwork */,
 				671B3F33181C216900CCF71C /* ofxTimer */,
 				671B3F28181C12F200CCF71C /* ofxVectorGraphics */,
 				67CC8941181AC0BC002AC1A4 /* ofxAssimpModelLoader */,
@@ -612,6 +663,10 @@
 				671B3F37181C216900CCF71C /* ofxTimer.cpp in Sources */,
 				670B831B181F914900382C60 /* ofxDAQButton.cpp in Sources */,
 				67F799741820FC4B0028C43C /* NavigationMenu.cpp in Sources */,
+				6747D8B1182296D2005A37A6 /* ofxTCPClient.cpp in Sources */,
+				6747D8B2182296D2005A37A6 /* ofxTCPManager.cpp in Sources */,
+				6747D8B3182296D2005A37A6 /* ofxTCPServer.cpp in Sources */,
+				6747D8B4182296D2005A37A6 /* ofxUDPManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

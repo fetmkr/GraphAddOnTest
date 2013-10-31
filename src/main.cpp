@@ -1,8 +1,15 @@
 #include "ofMain.h"
 #include "testApp.h"
-
+// GLUT window setup
+//#include "ofAppGlutWindow.h"
 //========================================================================
 int main( ){
+
+    // GLUT window setup
+//    ofAppGlutWindow window;
+//    ofSetupOpenGL(&window, 1920,1080, OF_WINDOW);
+    
+    // GLFW window setup by default
 	ofSetupOpenGL(1920,1080,OF_WINDOW);			// <-------- setup the GL context
 
 	// this kicks off the running of my app

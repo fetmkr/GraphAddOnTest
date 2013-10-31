@@ -22,6 +22,15 @@ void testApp::setup(){
         wglSwapIntervalEXT(1);
 #endif
     
+    
+    // TCP Server Setup
+    // setup the server to listen on 11999
+	TCP.setup(11999);
+    
+    // Optionally set the delimiter to something else.
+    // The delimter in the client and the server have to be the same, default being [/TCP]
+	TCP.setMessageDelimiter("\n");
+    
     AccelXLine.setup("X", ofColor(255,0,0));
     AccelYLine.setup("Y", ofColor(0,255,0));
     AccelZLine.setup("Z", ofColor(0,0,255));
@@ -67,6 +76,15 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
+    //for each client lets send them a message letting them know what port they are connected on
+	for(int i = 0; i < TCP.getLastID(); i++){
+		if( !TCP.isClientConnected(i) )continue;
+        
+		TCP.send(i, "hello client - you are connected on port - "+ofToString(TCP.getClientPort(i)) );
+	}
+    
+    
+
     // fake data
     float xtemp, ytemp,ztemp;
     xtemp = 0.0;
@@ -123,6 +141,46 @@ void testApp::draw(){
     }
     
     naviMenu.draw(0, 90);
+    
+    
+    ofPushStyle();
+    for(unsigned int i = 0; i < (unsigned int)TCP.getLastID(); i++){
+        
+		if( !TCP.isClientConnected(i) )continue;
+        
+		//give each client its own color
+		//ofSetColor(255 - i*30, 255 - i * 20, 100 + i*40);
+        ofSetColor(0);
+        
+		//calculate where to draw the text
+		int xPos = 15;
+		int yPos = 80 + (12 * i * 4);
+        
+		//get the ip and port of the client
+		string port = ofToString( TCP.getClientPort(i) );
+		string ip   = TCP.getClientIP(i);
+		string info = "client "+ofToString(i)+" -connected from "+ip+" on port: "+port;
+        
+        
+		//if we don't have a string allocated yet
+		//lets create one
+		if(i >= storeText.size() ){
+			storeText.push_back( string() );
+		}
+        
+		//we only want to update the text we have recieved there is data
+		string str = TCP.receive(i);
+        
+		if(str.length() > 0){
+			storeText[i] = str;
+		}
+        
+		//draw the info text and the received text bellow it
+		ofDrawBitmapString(info, xPos, yPos);
+		ofDrawBitmapString(storeText[i], 25, yPos + 20);
+        
+	}
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
