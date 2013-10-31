@@ -60,7 +60,9 @@ void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     else
     {
         button.showButton(false,false);
-        selectedColor = pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2);
+        if(button.bIsMoveInside){
+            selectedColor = pickColor(button.getMouseXY().x - (ofGetWindowWidth()-colorPicker.getWidth())/2, button.getMouseXY().y -(ofGetWindowHeight()- colorPicker.getHeight())/2);
+        }
         ofSetColor(0, 0, 0);
         ofNoFill();
         ofSetRectMode(OF_RECTMODE_CENTER);
