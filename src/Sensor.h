@@ -24,9 +24,16 @@ public:
     void drawAnalBG(string name);
     
     void addLine(ofxPlotLine* line);
+    
+    map<string, int> lineGroup;
+    void addGroup(string name);
+    void addLineToGroup(string name, ofxPlotLine* line);
+    void drawDataGroup(float x, float y, int index);
+    
     void drawPlots();
 
     ofTrueTypeFont analFont;
+    ofTrueTypeFont groupFont;
     
     ofImage etriLogoBlk;
 
@@ -37,4 +44,8 @@ public:
     
     ofxPlot shortPlot;
     ofxPlot longPlot;
+    
+    int NumOfGroups;
+    
+    vector<ofxPlotLine*> linesPtr;
 };

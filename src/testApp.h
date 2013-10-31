@@ -30,6 +30,9 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
+    
+        void setupPlots();
+    
         void changeScene(LightSensorType &scene);
         void changeMode(LightVisualType &mode);
 
@@ -38,12 +41,29 @@ class testApp : public ofBaseApp{
         LightDemoType demoType;
         LightVisualType visualType;
     
+        ofxPlotLine touchProxiLine;
+        ofxPlotLine touchPressLine;
+        ofxPlotLine touchWheelLine;
+        ofxPlotLine touchGestureLine;
+        ofxPlotLine touchSleepLine;
+    
         ofxPlotLine AccelXLine;
         ofxPlotLine AccelYLine;
         ofxPlotLine AccelZLine;
         ofxPlotLine GyroXLine;
         ofxPlotLine GyroYLine;
         ofxPlotLine GyroZLine;
+        ofxPlotLine compassLine;
+    
+        ofxPlotLine pressureLine;
+        ofxPlotLine altLine;
+        
+        ofxPlotLine ambTempLine;
+        ofxPlotLine objTempLine;
+        ofxPlotLine humidityLine;
+        
+        ofxPlotLine colorLine;
+        ofxPlotLine luxLine;
     
         MotionSensor2D motionSensor2D;
         MotionSensor3D motionSensor3D;

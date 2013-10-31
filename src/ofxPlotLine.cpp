@@ -32,6 +32,7 @@ void ofxPlotLine::setup(string name, ofColor color){
     scaleFactor = 1.0;
     
     button.setup(50, 50, true, true);
+    groupIndex = 0;
 }
 
 void ofxPlotLine::clear(){
@@ -135,4 +136,12 @@ void ofxPlotLine::drawButton(float x, float y){
     setVisible(button.isPressed());
 }
 
+
+void ofxPlotLine::setGroupIndex(int index){
+    groupIndex = index;
+}
+
+int ofxPlotLine::getGroupIndex(){
+    return groupIndex;
+}
 

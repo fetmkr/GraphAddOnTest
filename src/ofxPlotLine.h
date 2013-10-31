@@ -54,4 +54,8 @@ public:
     
     ofxPlotButton button;
     
+    int groupIndex;
+    void setGroupIndex(int index);
+    int getGroupIndex();
+
 };

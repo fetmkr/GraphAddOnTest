@@ -31,38 +31,9 @@ void testApp::setup(){
     // The delimter in the client and the server have to be the same, default being [/TCP]
 	TCP.setMessageDelimiter("\n");
     
-    AccelXLine.setup("X", ofColor(255,0,0));
-    AccelYLine.setup("Y", ofColor(0,255,0));
-    AccelZLine.setup("Z", ofColor(0,0,255));
-    GyroXLine.setup("X", ofColor(255,255,0));
-    GyroYLine.setup("Y", ofColor(0,255,255));
-    GyroZLine.setup("Z", ofColor(255,0,255));
-
-    // setup before add the lines
-    // otherwise the button will not be shown
-    motionSensor2D.setup();
-    motionSensor3D.setup();
-    pressAltSensor.setup();
-    touchSensor.setup();
-    colorSensor.setup();
-    luxSensor.setup();
-    tempHumidSensor.setup();
+   
+    setupPlots();
     
-    
-    
-    motionSensor2D.addLine(&AccelXLine);
-    motionSensor2D.addLine(&AccelYLine);
-    motionSensor2D.addLine(&AccelZLine);
-    motionSensor2D.addLine(&GyroXLine);
-    motionSensor2D.addLine(&GyroYLine);
-    motionSensor2D.addLine(&GyroZLine);
-    
-    motionSensor3D.addLine(&AccelXLine);
-    motionSensor3D.addLine(&AccelYLine);
-    motionSensor3D.addLine(&AccelZLine);
-    motionSensor3D.addLine(&GyroXLine);
-    motionSensor3D.addLine(&GyroYLine);
-    motionSensor3D.addLine(&GyroZLine);
 
     
     naviMenu.setup(80, 900, ofColor(0,0,0,200));
@@ -234,6 +205,84 @@ void testApp::gotMessage(ofMessage msg){
 
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
+
+}
+
+void testApp::setupPlots(){
+    
+    touchProxiLine.setup("pressure", ofColor(255,0,255));
+    touchPressLine.setup("pressure", ofColor(255,0,255));
+    touchWheelLine.setup("pressure", ofColor(255,0,255));
+    touchGestureLine.setup("pressure", ofColor(255,0,255));
+    touchSleepLine.setup("pressure", ofColor(255,0,255));
+    
+    AccelXLine.setup("ACCEL X", ofColor(255,0,0));
+    AccelYLine.setup("ACCLE Y", ofColor(0,255,0));
+    AccelZLine.setup("ACCEL Z", ofColor(0,0,255));
+    compassLine.setup("COMPASS", ofColor(255,255,0));
+    
+    GyroXLine.setup("GYRO X", ofColor(255,255,0));
+    GyroYLine.setup("GYRO Y", ofColor(0,255,255));
+    GyroZLine.setup("GYRO Z", ofColor(255,0,255));
+    
+    pressureLine.setup("PRESSURE", ofColor(255,0,255));
+    altLine.setup("TEMP", ofColor(255,0,255));
+    
+    ambTempLine.setup("AMB TEMP", ofColor(255,0,255));
+    objTempLine.setup("OBJ TMEP", ofColor(255,0,255));
+    humidityLine.setup("HUMIDITY", ofColor(255,0,255));
+    
+    colorLine.setup("COLOR", ofColor(255,0,255));
+    luxLine.setup("LUX", ofColor(255,0,255));
+    
+    // setup before add the lines
+    // otherwise the button will not be shown
+    touchSensor.setup();
+    motionSensor2D.setup();
+    motionSensor3D.setup();
+    pressAltSensor.setup();
+    tempHumidSensor.setup();
+    colorSensor.setup();
+    luxSensor.setup();
+
+    
+    touchSensor.addLine(&touchProxiLine);
+    touchSensor.addLine(&touchPressLine);
+    touchSensor.addLine(&touchWheelLine);
+    touchSensor.addLine(&touchGestureLine);
+    touchSensor.addLine(&touchSleepLine);
+
+    
+    motionSensor2D.addLine(&AccelXLine);
+    motionSensor2D.addLine(&AccelYLine);
+    motionSensor2D.addLine(&AccelZLine);
+    motionSensor2D.addLine(&compassLine);
+    
+    
+    motionSensor2D.addGroup("COMPASS");
+    motionSensor2D.addLineToGroup("COMPASS", &compassLine);
+    
+    motionSensor2D.addGroup("ACCELEROMETER");
+    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelXLine);
+    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelYLine);
+    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelZLine);
+    
+
+    
+    motionSensor3D.addLine(&GyroXLine);
+    motionSensor3D.addLine(&GyroYLine);
+    motionSensor3D.addLine(&GyroZLine);
+    
+    pressAltSensor.addLine(&pressureLine);
+    pressAltSensor.addLine(&altLine);
+    
+    tempHumidSensor.addLine(&ambTempLine);
+    tempHumidSensor.addLine(&objTempLine);
+    tempHumidSensor.addLine(&humidityLine);
+    
+    colorSensor.addLine(&colorLine);
+    luxSensor.addLine(&luxLine);
+
 
 }
 
