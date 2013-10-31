@@ -42,6 +42,9 @@ void ofxPlot::setup(string name, float width, float height){
     button3DOn.setup(buttonSize, buttonSize, true, false);
     
     timeOffset = 0;
+    
+    bShowMenu = false;
+    bShowSlider = false;
 }
 
 void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){

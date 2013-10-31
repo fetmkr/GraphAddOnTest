@@ -25,6 +25,7 @@ void ofxPlotSlider::clearEvents(){
 //		ofRemoveListener(ofEvents().mouseDragged, this, &ofxPlotSlider::mouseDragged);
 	}
 	bWasSetup = false;
+    barPosX = 0.0;
 }
 
 void ofxPlotSlider::setup(float width){
