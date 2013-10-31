@@ -16,11 +16,6 @@
 		671B3F30181C12F200CCF71C /* CreEPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2A181C12F200CCF71C /* CreEPS.cpp */; };
 		671B3F31181C12F200CCF71C /* ofxVectorGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F2E181C12F200CCF71C /* ofxVectorGraphics.cpp */; };
 		671B3F37181C216900CCF71C /* ofxTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 671B3F35181C216900CCF71C /* ofxTimer.cpp */; };
-		6751362A1818E448007EC293 /* src_colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136211818E448007EC293 /* src_colors.cpp */; };
-		6751362B1818E448007EC293 /* svgtiny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136221818E448007EC293 /* svgtiny.cpp */; };
-		6751362C1818E448007EC293 /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136241818E448007EC293 /* svgtiny_gradient.cpp */; };
-		6751362D1818E448007EC293 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136261818E448007EC293 /* svgtiny_list.cpp */; };
-		6751362E1818E448007EC293 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136281818E448007EC293 /* ofxSvg.cpp */; };
 		6751364318192035007EC293 /* ofxPlotButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364218192035007EC293 /* ofxPlotButton.cpp */; };
 		6751364918196B3B007EC293 /* ofxPlotUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364818196B3B007EC293 /* ofxPlotUtil.cpp */; };
 		6751364F181999F5007EC293 /* MotionSensor2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364E181999F5007EC293 /* MotionSensor2D.cpp */; };
@@ -108,14 +103,6 @@
 		671B3F2F181C12F200CCF71C /* ofxVectorGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVectorGraphics.h; sourceTree = "<group>"; };
 		671B3F35181C216900CCF71C /* ofxTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimer.cpp; sourceTree = "<group>"; };
 		671B3F36181C216900CCF71C /* ofxTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimer.h; sourceTree = "<group>"; };
-		675136211818E448007EC293 /* src_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = src_colors.cpp; sourceTree = "<group>"; };
-		675136221818E448007EC293 /* svgtiny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny.cpp; sourceTree = "<group>"; };
-		675136231818E448007EC293 /* svgtiny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny.h; sourceTree = "<group>"; };
-		675136241818E448007EC293 /* svgtiny_gradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_gradient.cpp; sourceTree = "<group>"; };
-		675136251818E448007EC293 /* svgtiny_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svgtiny_internal.h; sourceTree = "<group>"; };
-		675136261818E448007EC293 /* svgtiny_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svgtiny_list.cpp; sourceTree = "<group>"; };
-		675136281818E448007EC293 /* ofxSvg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSvg.cpp; sourceTree = "<group>"; };
-		675136291818E448007EC293 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
 		6751364118192025007EC293 /* ofxPlotButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlotButton.h; sourceTree = "<group>"; };
 		6751364218192035007EC293 /* ofxPlotButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPlotButton.cpp; sourceTree = "<group>"; };
 		6751364718196B2C007EC293 /* ofxPlotUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlotUtil.h; sourceTree = "<group>"; };
@@ -283,54 +270,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		6751361D1818E448007EC293 /* ofxSvg */ = {
-			isa = PBXGroup;
-			children = (
-				6751361E1818E448007EC293 /* libs */,
-				675136271818E448007EC293 /* src */,
-			);
-			name = ofxSvg;
-			path = ../../../addons/ofxSvg;
-			sourceTree = "<group>";
-		};
-		6751361E1818E448007EC293 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				6751361F1818E448007EC293 /* svgTiny */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		6751361F1818E448007EC293 /* svgTiny */ = {
-			isa = PBXGroup;
-			children = (
-				675136201818E448007EC293 /* src */,
-			);
-			path = svgTiny;
-			sourceTree = "<group>";
-		};
-		675136201818E448007EC293 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				675136211818E448007EC293 /* src_colors.cpp */,
-				675136221818E448007EC293 /* svgtiny.cpp */,
-				675136231818E448007EC293 /* svgtiny.h */,
-				675136241818E448007EC293 /* svgtiny_gradient.cpp */,
-				675136251818E448007EC293 /* svgtiny_internal.h */,
-				675136261818E448007EC293 /* svgtiny_list.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		675136271818E448007EC293 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				675136281818E448007EC293 /* ofxSvg.cpp */,
-				675136291818E448007EC293 /* ofxSvg.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		67CC8941181AC0BC002AC1A4 /* ofxAssimpModelLoader */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,7 +387,6 @@
 				671B3F33181C216900CCF71C /* ofxTimer */,
 				671B3F28181C12F200CCF71C /* ofxVectorGraphics */,
 				67CC8941181AC0BC002AC1A4 /* ofxAssimpModelLoader */,
-				6751361D1818E448007EC293 /* ofxSvg */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -655,11 +593,6 @@
 				67C6A893180AC20A00B290AB /* ofxPlot.cpp in Sources */,
 				67C6A896180AC23400B290AB /* ofxPlotLine.cpp in Sources */,
 				67CDA0D918165479003FF7EE /* ofxPlotSlider.cpp in Sources */,
-				6751362A1818E448007EC293 /* src_colors.cpp in Sources */,
-				6751362B1818E448007EC293 /* svgtiny.cpp in Sources */,
-				6751362C1818E448007EC293 /* svgtiny_gradient.cpp in Sources */,
-				6751362D1818E448007EC293 /* svgtiny_list.cpp in Sources */,
-				6751362E1818E448007EC293 /* ofxSvg.cpp in Sources */,
 				6751364318192035007EC293 /* ofxPlotButton.cpp in Sources */,
 				6751364918196B3B007EC293 /* ofxPlotUtil.cpp in Sources */,
 				6751364F181999F5007EC293 /* MotionSensor2D.cpp in Sources */,

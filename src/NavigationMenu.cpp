@@ -216,5 +216,4 @@ void NavigationMenu::pressEventHandler(bool &bPress){
         ofNotifyEvent(visualTypeChanged, visualType);
     }
     
-    cout << "t test" << endl;
 }

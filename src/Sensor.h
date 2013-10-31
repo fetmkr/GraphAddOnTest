@@ -28,7 +28,7 @@ public:
 
     ofTrueTypeFont analFont;
     
-    ofxSVG etriLogoBlk;
+    ofImage etriLogoBlk;
 
     ofImage BGImg;
     

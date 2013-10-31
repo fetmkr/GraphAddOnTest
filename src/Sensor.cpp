@@ -18,7 +18,7 @@ Sensor::~Sensor(){
 
 void Sensor::setup(){
     analFont.loadFont("SimKBRg.ttf", 35);
-    etriLogoBlk.load("etri_logo_black.svg");
+    etriLogoBlk.loadImage("etri_logo_black.png");
     numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
     textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
     
@@ -74,7 +74,7 @@ void Sensor::drawAnalBG(string name){
     ofPushMatrix();
     ofTranslate(200, 125);
     ofScale(0.8, 0.8);
-    etriLogoBlk.draw();
+    etriLogoBlk.draw(0,0);
     ofPopMatrix();
     
     ofNoFill();

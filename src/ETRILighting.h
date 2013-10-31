@@ -9,7 +9,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxSvg.h"
 #include "ofxPlotUtil.h"
 #include "ofxPlot.h"
 #include "ofxPlotLine.h"
