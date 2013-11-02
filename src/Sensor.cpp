@@ -29,6 +29,7 @@ void Sensor::setup(){
     shortPlot.setTimeScale(1.0);
     shortPlot.showTimeValue(true);
     shortPlot.showSlider(false);
+    shortPlot.show3DButton(true);
     shortPlot.showMenu(true);
     
     longPlot.setup("long plot", 900, 160);
@@ -37,6 +38,7 @@ void Sensor::setup(){
     longPlot.setTimeScale(30.0);
     longPlot.showTimeValue(true);
     longPlot.showSlider(true);
+    longPlot.show3DButton(true);
     //longPlot.showMenu(true);
     
     NumOfGroups = 0;

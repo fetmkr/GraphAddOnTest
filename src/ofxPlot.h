@@ -43,7 +43,9 @@ public:
         
     void showSlider(bool bShow);
     void showMenu(bool bShow);
+    void show3DButton(bool bShow);
     bool bShowMenu;
+    bool bShow3DButton;
     
     void setMenuButton(float size, float xOffset);
     float buttonSize;

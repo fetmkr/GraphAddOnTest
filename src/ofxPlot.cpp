@@ -45,6 +45,7 @@ void ofxPlot::setup(string name, float width, float height){
     
     bShowMenu = false;
     bShowSlider = false;
+    bShow3DButton = true;
 }
 
 void ofxPlot::setGrid(ofColor rectColor, ofColor gridColor, GridOptionType option){
@@ -256,12 +257,14 @@ void ofxPlot::draw(float x, float y){
 
     }
     
-    if (bShowMenu) {
-        
-        float yOff;
-        yOff = graphHeight / ( 1+ graphLinesPtr.size());
-        
+    float yOff;
+    yOff = graphHeight / ( 1+ graphLinesPtr.size());
+    
+    if (bShow3DButton) {
         button3DOn.draw(xPos + graphWidth + buttonXOffsetPos, yPos + yOff/2);
+    }
+    
+    if (bShowMenu) {
 
         for (int i = 0; i < graphLinesPtr.size(); i++) {
             graphLinesPtr[i]->drawButton(xPos + graphWidth + buttonXOffsetPos , yPos + (i+1) * yOff + + yOff/2);
@@ -374,4 +377,7 @@ void ofxPlot::setMenuButton(float size ,float xOffset){
     button3DOn.resize(buttonSize, buttonSize);
 }
 
+void ofxPlot::show3DButton(bool bShow){
+    bShow3DButton = bShow;
+}
 
