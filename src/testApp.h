@@ -76,4 +76,8 @@ class testApp : public ofBaseApp{
         NavigationMenu naviMenu;
         ofxTCPServer TCP;
         vector <string> storeText;
+    
+        float luxData;
+private:
+    ~testApp();
 };

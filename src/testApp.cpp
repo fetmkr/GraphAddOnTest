@@ -61,6 +61,7 @@ void testApp::update(){
     xtemp = 0.0;
     ytemp = 0.0;
     ztemp = 0.0;
+    //luxData = 0.0;
     
     xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
     ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
@@ -72,6 +73,8 @@ void testApp::update(){
     GyroXLine.addData(xtemp);
     GyroYLine.addData(ytemp);
     GyroZLine.addData(ztemp);
+    
+    luxLine.addData(luxData);
     
 }
 
@@ -146,6 +149,30 @@ void testApp::draw(){
 			storeText[i] = str;
 		}
         
+        string nodelimStr;
+        
+        // take out the delimiter
+        nodelimStr = storeText[i].substr(0,storeText[i].length()-1);
+        
+        vector<string> splitItems = ofSplitString(nodelimStr, "@");
+        
+        if(splitItems.size()>4){
+            string idStr;
+            string dataStr;
+            
+            for (int i = 0 ; i < splitItems.size()-1; i++) {
+                
+                idStr = splitItems[i].substr(0,4);
+                
+                dataStr = splitItems[i].substr(5);
+                
+                if (idStr == "$LUX") {
+                    luxData = ofToFloat(dataStr);
+
+                }
+                
+            }
+        }
 		//draw the info text and the received text bellow it
 		ofDrawBitmapString(info, xPos, yPos);
 		ofDrawBitmapString(storeText[i], 25, yPos + 20);
@@ -283,6 +310,8 @@ void testApp::setupPlots(){
     colorSensor.addLine(&colorLine);
     luxSensor.addLine(&luxLine);
 
+    
+    luxData = 0.0;
 
 }
 
@@ -327,4 +356,9 @@ void testApp::changeScene(LightSensorType &scene){
 
 void testApp::changeMode(LightVisualType &mode){
     visualType = mode;
+}
+
+testApp::~testApp(){
+    cout << "tcp closed" << endl;
+    TCP.close();
 }
