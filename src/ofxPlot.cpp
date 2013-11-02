@@ -197,10 +197,10 @@ void ofxPlot::draw(float x, float y){
             float dataScale;
             
             if(graphLinesPtr[i]->getMax() > abs(graphLinesPtr[i]->getMin())){
-                dataScale = (graphHeight / 4) / graphLinesPtr[i]->getMax();
+                dataScale = (graphHeight / 3) / graphLinesPtr[i]->getMax();
             }
             else{
-                dataScale = (graphHeight / 4) / abs(graphLinesPtr[i]->getMin());
+                dataScale = (graphHeight / 3) / abs(graphLinesPtr[i]->getMin());
             }
             
             
