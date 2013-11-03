@@ -194,17 +194,17 @@ void ofxPlot::draw(float x, float y){
             
             // auto scaling data based on plot height
             
-            float dataScale;
-            
-            if(graphLinesPtr[i]->getMax() > abs(graphLinesPtr[i]->getMin())){
-                dataScale = (graphHeight / 3) / graphLinesPtr[i]->getMax();
-            }
-            else{
-                dataScale = (graphHeight / 3) / abs(graphLinesPtr[i]->getMin());
-            }
-            
-            
-            graphLinesPtr[i]->setScale(dataScale);
+//            float dataScale;
+//            
+//            if(graphLinesPtr[i]->getMax() > abs(graphLinesPtr[i]->getMin())){
+//                dataScale = (graphHeight / 3) / graphLinesPtr[i]->getMax();
+//            }
+//            else{
+//                dataScale = (graphHeight / 3) / abs(graphLinesPtr[i]->getMin());
+//            }
+//            
+//            
+//            graphLinesPtr[i]->setScale(dataScale);
             
             
             if(lineStyle != POINT_ONLY){

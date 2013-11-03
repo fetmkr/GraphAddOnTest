@@ -78,6 +78,17 @@ class testApp : public ofBaseApp{
         vector <string> storeText;
     
         float luxData;
+    
+        float accelXData;
+        float accelYData;
+        float accelZData;
+
+        float gyroXData;
+        float gyroYData;
+        float gyroZData;
+
+        float compassData;
+    
 private:
     ~testApp();
 };

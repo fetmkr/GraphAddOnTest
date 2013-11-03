@@ -42,6 +42,18 @@ void testApp::setup(){
     
     sensorType = SENSOR_TOUCH;
     
+    accelXData = 0.0;
+    accelYData = 0.0;
+    accelZData = 0.0;
+
+    gyroXData = 0.0;
+    gyroYData = 0.0;
+    gyroZData = 0.0;
+    
+    compassData = 0.0;
+    
+    luxData = 0.0;
+    
 }
 
 //--------------------------------------------------------------
@@ -53,28 +65,30 @@ void testApp::update(){
         
 		TCP.send(i, "hello client - you are connected on port - "+ofToString(TCP.getClientPort(i)) );
 	}
-    
-    
 
-    // fake data
-    float xtemp, ytemp,ztemp;
-    xtemp = 0.0;
-    ytemp = 0.0;
-    ztemp = 0.0;
-    //luxData = 0.0;
-    
-    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
-    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
-    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
+//    // fake data
+//    float xtemp, ytemp,ztemp;
+//    xtemp = 0.0;
+//    ytemp = 0.0;
+//    ztemp = 0.0;
+//    //luxData = 0.0;
+//    
+//    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
+//    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
+//    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
 
-    AccelXLine.addData(xtemp);
-    AccelYLine.addData(ytemp);
-    AccelZLine.addData(ztemp);
-    GyroXLine.addData(xtemp);
-    GyroYLine.addData(ytemp);
-    GyroZLine.addData(ztemp);
+    // set default data to 0.0
+    AccelXLine.addData(accelXData + 0.0);
+    AccelYLine.addData(accelYData+ 0.0);
+    AccelZLine.addData(accelZData+ 0.0);
     
-    luxLine.addData(luxData);
+    GyroXLine.addData(gyroXData+ 0.0);
+    GyroYLine.addData(gyroYData+ 0.0);
+    GyroZLine.addData(gyroZData+ 0.0);
+    
+    compassLine.addData(compassData+ 0.0);
+    
+    luxLine.addData(luxData+ 0.0);
     
 }
 
@@ -113,9 +127,6 @@ void testApp::draw(){
         default:
             break;
     }
-    
-    naviMenu.draw(0, 90);
-    
     
     ofPushStyle();
     for(unsigned int i = 0; i < (unsigned int)TCP.getLastID(); i++){
@@ -168,7 +179,27 @@ void testApp::draw(){
                 
                 if (idStr == "$LUX") {
                     luxData = ofToFloat(dataStr);
-
+                }
+                else if( idStr == "$ACX"){
+                    accelXData = ofToFloat(dataStr);
+                }
+                else if( idStr == "$ACY"){
+                    accelYData = ofToFloat(dataStr);
+                }
+                else if( idStr == "$ACZ"){
+                    accelZData = ofToFloat(dataStr);
+                }
+                else if( idStr == "$GYX"){
+                    gyroXData = ofToFloat(dataStr);
+                }
+                else if( idStr == "$GYY"){
+                    gyroYData = ofToFloat(dataStr);
+                }
+                else if( idStr == "$GYZ"){
+                    gyroZData = ofToFloat(dataStr);
+                }
+                else if( idStr == "$MAY"){
+                    compassData = ofToFloat(dataStr);
                 }
                 
             }
@@ -179,6 +210,10 @@ void testApp::draw(){
         
 	}
     ofPopStyle();
+    
+    naviMenu.draw(0, 90);
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -286,13 +321,13 @@ void testApp::setupPlots(){
     motionSensor2D.addLine(&compassLine);
     
     
-    motionSensor2D.addGroup("COMPASS");
-    motionSensor2D.addLineToGroup("COMPASS", &compassLine);
-    
-    motionSensor2D.addGroup("ACCELEROMETER");
-    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelXLine);
-    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelYLine);
-    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelZLine);
+//    motionSensor2D.addGroup("COMPASS");
+//    motionSensor2D.addLineToGroup("COMPASS", &compassLine);
+//    
+//    motionSensor2D.addGroup("ACCELEROMETER");
+//    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelXLine);
+//    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelYLine);
+//    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelZLine);
     
 
     
