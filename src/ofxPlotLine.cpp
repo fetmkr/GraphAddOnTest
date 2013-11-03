@@ -32,7 +32,7 @@ void ofxPlotLine::setup(string name, ofColor color){
     scaleFactor = 1.0;
     
     button.setup(50, 50, true, true);
-    groupIndex = 0;
+    groupName = "";
 }
 
 void ofxPlotLine::clear(){
@@ -58,7 +58,7 @@ void ofxPlotLine::addData(float data){
         nextIndex = 0;
     }
     
-//    lastData = data;
+    lastData = data;
     
     // update Min
     if (data <= minVal) {
@@ -137,11 +137,11 @@ void ofxPlotLine::drawButton(float x, float y){
 }
 
 
-void ofxPlotLine::setGroupIndex(int index){
-    groupIndex = index;
+void ofxPlotLine::setGroupName(string name){
+    groupName = name;
 }
 
-int ofxPlotLine::getGroupIndex(){
-    return groupIndex;
+string ofxPlotLine::getGroupName(){
+    return groupName;
 }
 

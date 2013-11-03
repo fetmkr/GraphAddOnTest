@@ -62,7 +62,16 @@ public:
     
     void draw(float x, float y);
 //    void addLine(ofPtr<ofxPlotLine> line);
+    
+    
     void addLine(ofxPlotLine* line);
+
+    void addGroup(string groupName);
+    vector<string> groups;
+    
+    void addLineToGroup(ofxPlotLine* line, string groupName);
+    vector<ofxPlotLine*> getLinesFromGroup(string groupName);
+    
     
     
     int getNumOfLines();

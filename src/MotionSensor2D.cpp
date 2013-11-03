@@ -95,6 +95,7 @@ void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType
     
     if (visualType == VISUAL_SIENCE){
         drawAnalBG("MOTION DATA ANALYSIS 2D");
+
         drawPlots();
     }
 

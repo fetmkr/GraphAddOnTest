@@ -303,6 +303,13 @@ void ofxPlot::addLine(ofxPlotLine* line){
     graphLinesPtr.push_back(line);
 }
 
+void ofxPlot::addGroup(string groupName){
+    groups.push_back(groupName);
+}
+
+void ofxPlot::addLineToGroup(ofxPlotLine* line, string groupName){
+    line->setGroupName(groupName);
+}
 
 int ofxPlot::getNumOfLines(){
     return graphLinesPtr.size();
@@ -394,5 +401,17 @@ void ofxPlot::setMenuButton(float size ,float xOffset){
 
 void ofxPlot::show3DButton(bool bShow){
     bShow3DButton = bShow;
+}
+
+vector<ofxPlotLine*> ofxPlot::getLinesFromGroup(string groupName){
+    vector<ofxPlotLine*> lines;
+    
+    for (int i = 0; i < graphLinesPtr.size(); i++) {
+        if (graphLinesPtr[i]->getGroupName() == groupName) {
+            lines.push_back(graphLinesPtr[i]);
+        }
+    }
+    
+    return lines;
 }
 

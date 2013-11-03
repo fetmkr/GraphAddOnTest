@@ -25,15 +25,16 @@ public:
     
     void addLine(ofxPlotLine* line);
     
-    map<string, int> lineGroup;
-    void addGroup(string name);
-    void addLineToGroup(string name, ofxPlotLine* line);
-    void drawDataGroup(float x, float y, int index);
-    
+    void addGroup(string groupName);
+    void addLineToGroup(ofxPlotLine* line, string groupName);
+       
     void drawPlots();
+    void drawGroupData(float x, float y);
+    void drawGroupData(float x, float y, string groupName);
 
     ofTrueTypeFont analFont;
     ofTrueTypeFont groupFont;
+    ofTrueTypeFont dataFont;
     
     ofImage etriLogoBlk;
 
@@ -45,7 +46,5 @@ public:
     ofxPlot shortPlot;
     ofxPlot longPlot;
     
-    int NumOfGroups;
     
-    vector<ofxPlotLine*> linesPtr;
 };

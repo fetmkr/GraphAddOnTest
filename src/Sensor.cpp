@@ -19,6 +19,8 @@ Sensor::~Sensor(){
 void Sensor::setup(){
     analFont.loadFont("SimKBRg.ttf", 35);
     groupFont.loadFont("SimKBRg.ttf", 17.5);
+    dataFont.loadFont("SimKBRg.ttf", 12);
+
     etriLogoBlk.loadImage("etri_logo_black.png");
     numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
     textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
@@ -41,7 +43,6 @@ void Sensor::setup(){
     longPlot.show3DButton(true);
     //longPlot.showMenu(true);
     
-    NumOfGroups = 0;
     
 }
 void Sensor::setBGImg(string path){
@@ -61,17 +62,20 @@ void Sensor::drawPlots(){
 void Sensor::addLine(ofxPlotLine* line){
     shortPlot.addLine(line);
     longPlot.addLine(line);
-    linesPtr.push_back(line);
 }
 
-void Sensor::addGroup(string name){
-    NumOfGroups++;
-    lineGroup[name] = NumOfGroups - 1;
+void Sensor::addGroup(string groupName){
+    shortPlot.addGroup(groupName);
+    longPlot.addGroup(groupName);
 }
 
-void Sensor::addLineToGroup(string name, ofxPlotLine* line){
-    line->setGroupIndex(lineGroup[name]);
+
+void Sensor::addLineToGroup(ofxPlotLine* line, string groupName){
+    shortPlot.addLineToGroup(line, groupName);
+    longPlot.addLineToGroup(line, groupName);
 }
+
+
 
 void Sensor::drawAnalBG(string name){
     // draw analysis window
@@ -139,40 +143,51 @@ void Sensor::drawAnalBG(string name){
     
     ofSetRectMode(OF_RECTMODE_CORNER);
     
-//    for (int i = 0; i < NumOfGroups; i++) {
-//        drawDataGroup(200 +900 + 20 + 128 + 20 + 5, 200 + i *200, i);
-//
-//    }
+    drawGroupData(200 +900 + 20 + 128 + 20, 200);
 
 
 }
 
-void Sensor::drawDataGroup(float x, float y, int groupIndex){
-    int NumOfLines = 0;
-    int Start = 0;
+
+
+void Sensor::drawGroupData(float x, float y, string groupName){
+    vector<ofxPlotLine*> lines;
+    lines = shortPlot.getLinesFromGroup(groupName);
+    float min;
+    float max;
+    float avg;
+    float lastVal;
     
-    // find the start
-    for (int i = 0; i < linesPtr.size(); i++) {
-        if (linesPtr[i]->getGroupIndex() == groupIndex) {
-            Start = i;
-            break;
-        }
-    }
-    
-    // know how many lines are in the group
-    for (int i = 0; i < linesPtr.size(); i++) {
-        if (linesPtr[i]->getGroupIndex() == groupIndex) {
-            NumOfLines++;
-        }
-    }
-    
-    // draw group name
-    
-    for (int i = Start; i < NumOfLines + Start; i++) {
-        // draw accordingly
-        ofSetColor(255, 255, 255);
-        groupFont.drawString(ofToString(i), x, y + 100*(i-Start));
+    for (int i = 0; i < lines.size(); i++) {
+        min = lines[i]->getMin();
+        max = lines[i]->getMax();
+        avg = lines[i]->getAvg(128);
+        lastVal = lines[i]->lastData;
+        ofSetColor(255);
+        groupFont.drawString(groupName, x, y + 40);
+        ofSetColor(0);
+        dataFont.drawString("MIN", x, y + 40 + 40 + 50 * i);
+        dataFont.drawString(ofToString(min), x, y + 40 + 60 + 50 * i);
+        dataFont.drawString("MAX", x + 70, y + 40 + 40 + 50 * i);
+        dataFont.drawString(ofToString(max), x + 70, y + 40 + 60 + 50 * i);
+        dataFont.drawString("AVG", x + 140, y + 40 + 40 + 50 * i);
+        dataFont.drawString(ofToString(avg), x + 140, y + 40 + 60 + 50 * i);
         
+        ofSetColor(255);
+        analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
+        analFont.drawString(ofToString(lastVal), x+275 + 50, y + 40 + 60 + 50 * i);
+        
+
+
+
     }
     
+}
+
+void Sensor::drawGroupData(float x, float y){
+    if(shortPlot.groups.size()>0){
+        for (int i = 0; i< shortPlot.groups.size(); i++) {
+            drawGroupData(x, y + 100*i, shortPlot.groups[i]);
+        }
+    }
 }

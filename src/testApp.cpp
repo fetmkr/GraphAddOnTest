@@ -40,7 +40,6 @@ void testApp::setup(){
     ofAddListener(naviMenu.sensorTypeChanged, this, &testApp::changeScene);
     ofAddListener(naviMenu.visualTypeChanged, this, &testApp::changeMode);
     
-    sensorType = SENSOR_TOUCH;
     
     accelXData = 0.0;
     accelYData = 0.0;
@@ -54,6 +53,8 @@ void testApp::setup(){
     
     luxData = 0.0;
     
+    sensorType = SENSOR_TOUCH;
+
 }
 
 //--------------------------------------------------------------
@@ -67,20 +68,24 @@ void testApp::update(){
 	}
 
 //    // fake data
-//    float xtemp, ytemp,ztemp;
-//    xtemp = 0.0;
-//    ytemp = 0.0;
-//    ztemp = 0.0;
-//    //luxData = 0.0;
-//    
-//    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
-//    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
-//    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
+    float xtemp, ytemp,ztemp;
+    xtemp = 0.0;
+    ytemp = 0.0;
+    ztemp = 0.0;
+    //luxData = 0.0;
+    
+    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
+    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
+    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
 
     // set default data to 0.0
-    AccelXLine.addData(accelXData + 0.0);
-    AccelYLine.addData(accelYData+ 0.0);
-    AccelZLine.addData(accelZData+ 0.0);
+//    AccelXLine.addData(accelXData + 0.0);
+//    AccelYLine.addData(accelYData+ 0.0);
+//    AccelZLine.addData(accelZData+ 0.0);
+    
+    AccelXLine.addData(xtemp + 0.0);
+    AccelYLine.addData(ytemp+ 0.0);
+    AccelZLine.addData(ztemp+ 0.0);
     
     GyroXLine.addData(gyroXData+ 0.0);
     GyroYLine.addData(gyroYData+ 0.0);
@@ -278,10 +283,10 @@ void testApp::setupPlots(){
     touchGestureLine.setup("pressure", ofColor(255,0,255));
     touchSleepLine.setup("pressure", ofColor(255,0,255));
     
-    AccelXLine.setup("ACCEL X", ofColor(255,0,0));
-    AccelYLine.setup("ACCLE Y", ofColor(0,255,0));
-    AccelZLine.setup("ACCEL Z", ofColor(0,0,255));
-    compassLine.setup("COMPASS", ofColor(255,255,0));
+    AccelXLine.setup("X", ofColor(255,0,0));
+    AccelYLine.setup("Y", ofColor(0,255,0));
+    AccelZLine.setup("Z", ofColor(0,0,255));
+    compassLine.setup("C", ofColor(255,255,0));
     
     GyroXLine.setup("GYRO X", ofColor(255,255,0));
     GyroYLine.setup("GYRO Y", ofColor(0,255,255));
@@ -315,25 +320,26 @@ void testApp::setupPlots(){
     touchSensor.addLine(&touchSleepLine);
 
     
+    motionSensor2D.addLine(&compassLine);
     motionSensor2D.addLine(&AccelXLine);
     motionSensor2D.addLine(&AccelYLine);
     motionSensor2D.addLine(&AccelZLine);
-    motionSensor2D.addLine(&compassLine);
-    
-    
-//    motionSensor2D.addGroup("COMPASS");
-//    motionSensor2D.addLineToGroup("COMPASS", &compassLine);
-//    
-//    motionSensor2D.addGroup("ACCELEROMETER");
-//    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelXLine);
-//    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelYLine);
-//    motionSensor2D.addLineToGroup("ACCELEROMETER", &AccelZLine);
-    
 
     
+    motionSensor2D.addGroup("COMPASS");
+    motionSensor2D.addGroup("ACCELEROMETER");
+    
+    motionSensor2D.addLineToGroup(&compassLine, "COMPASS");
+    
+    motionSensor2D.addLineToGroup(&AccelXLine, "ACCELEROMETER");
+    motionSensor2D.addLineToGroup(&AccelYLine, "ACCELEROMETER");
+    motionSensor2D.addLineToGroup(&AccelZLine, "ACCELEROMETER");
+    
+
     motionSensor3D.addLine(&GyroXLine);
     motionSensor3D.addLine(&GyroYLine);
     motionSensor3D.addLine(&GyroZLine);
+
     
     pressAltSensor.addLine(&pressureLine);
     pressAltSensor.addLine(&altLine);
