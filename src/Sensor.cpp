@@ -165,18 +165,30 @@ void Sensor::drawGroupData(float x, float y, string groupName){
         lastVal = lines[i]->lastData;
         ofSetColor(255);
         groupFont.drawString(groupName, x, y + 40);
+        
+//        ofSetColor(0);
+//        dataFont.drawString("MIN", x, y + 40 + 40 + 50 * i);
+//        dataFont.drawString(ofToString(min), x, y + 40 + 60 + 50 * i);
+//        dataFont.drawString("MAX", x + 70, y + 40 + 40 + 50 * i);
+//        dataFont.drawString(ofToString(max), x + 70, y + 40 + 60 + 50 * i);
+//        dataFont.drawString("AVG", x + 140, y + 40 + 40 + 50 * i);
+//        dataFont.drawString(ofToString(avg), x + 140, y + 40 + 60 + 50 * i);
+//        
+//        ofSetColor(255);
+//        analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
+//        analFont.drawString(ofToString(lastVal), x+275 + 50, y + 40 + 60 + 50 * i);
+        
         ofSetColor(0);
         dataFont.drawString("MIN", x, y + 40 + 40 + 50 * i);
-        dataFont.drawString(ofToString(min), x, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(min), x, y + 40 + 60 + 50 * i);
         dataFont.drawString("MAX", x + 70, y + 40 + 40 + 50 * i);
-        dataFont.drawString(ofToString(max), x + 70, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(max), x + 70, y + 40 + 60 + 50 * i);
         dataFont.drawString("AVG", x + 140, y + 40 + 40 + 50 * i);
-        dataFont.drawString(ofToString(avg), x + 140, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(avg), x + 140, y + 40 + 60 + 50 * i);
         
         ofSetColor(255);
         analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
-        analFont.drawString(ofToString(lastVal), x+275 + 50, y + 40 + 60 + 50 * i);
-        
+        analFont.drawString(niceFloatToString(lastVal), x+275 + 50, y + 40 + 60 + 50 * i);
 
 
 

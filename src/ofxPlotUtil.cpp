@@ -47,4 +47,32 @@ namespace ofxPlotUtil {
         
         return timeStamp;
     }
+    string niceFloatToString(float val){
+        int precision = 1000;
+        string signStr;
+        string dot = ".";
+        string intStr;
+        string fractStr;
+        
+        float intpart, fractpart;
+        
+        fractpart = modf (val , &intpart);
+        
+        if (val < 0.0) {
+            signStr = "-";
+        }
+        else{
+            signStr = " ";
+        }
+        
+        intStr = ofToString(abs(int(intpart)));
+        fractStr = ofToString(abs(int(fractpart*precision)));
+        
+        return (signStr + intStr + dot + fractStr);
+        
+    }
+    
+    string niceIntToString(int val){
+        
+    }
 }

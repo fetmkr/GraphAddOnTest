@@ -68,24 +68,27 @@ void testApp::update(){
 	}
 
 //    // fake data
-    float xtemp, ytemp,ztemp;
-    xtemp = 0.0;
-    ytemp = 0.0;
-    ztemp = 0.0;
-    //luxData = 0.0;
+//    float xtemp, ytemp,ztemp;
+//    xtemp = 0.0;
+//    ytemp = 0.0;
+//    ztemp = 0.0;
+//    //luxData = 0.0;
+//    
+//    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
+//    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
+//    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
     
-    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
-    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
-    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
+    //    AccelXLine.addData(xtemp + 0.0);
+    //    AccelYLine.addData(ytemp+ 0.0);
+    //    AccelZLine.addData(ztemp+ 0.0);
+    
 
     // set default data to 0.0
-//    AccelXLine.addData(accelXData + 0.0);
-//    AccelYLine.addData(accelYData+ 0.0);
-//    AccelZLine.addData(accelZData+ 0.0);
+    AccelXLine.addData(accelXData + 0.0);
+    AccelYLine.addData(accelYData+ 0.0);
+    AccelZLine.addData(accelZData+ 0.0);
     
-    AccelXLine.addData(xtemp + 0.0);
-    AccelYLine.addData(ytemp+ 0.0);
-    AccelZLine.addData(ztemp+ 0.0);
+
     
     GyroXLine.addData(gyroXData+ 0.0);
     GyroYLine.addData(gyroYData+ 0.0);

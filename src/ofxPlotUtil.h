@@ -12,4 +12,6 @@
 
 namespace ofxPlotUtil{
     string getTimeStamp(unsigned long long ms);
+    string niceFloatToString(float val);
+    string niceIntToString(int val);
 }
