@@ -180,15 +180,15 @@ void Sensor::drawGroupData(float x, float y, string groupName){
         
         ofSetColor(0);
         dataFont.drawString("MIN", x, y + 40 + 40 + 50 * i);
-        dataFont.drawString(niceFloatToString(min), x, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(min, PRECISION_3DIGIT), x, y + 40 + 60 + 50 * i);
         dataFont.drawString("MAX", x + 70, y + 40 + 40 + 50 * i);
-        dataFont.drawString(niceFloatToString(max), x + 70, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(max, PRECISION_3DIGIT), x + 70, y + 40 + 60 + 50 * i);
         dataFont.drawString("AVG", x + 140, y + 40 + 40 + 50 * i);
-        dataFont.drawString(niceFloatToString(avg), x + 140, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(avg, PRECISION_3DIGIT), x + 140, y + 40 + 60 + 50 * i);
         
         ofSetColor(255);
         analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
-        analFont.drawString(niceFloatToString(lastVal), x+275 + 50, y + 40 + 60 + 50 * i);
+        analFont.drawString(niceFloatToString(lastVal, PRECISION_3DIGIT), x+275 + 50, y + 40 + 60 + 50 * i);
 
 
 

@@ -47,8 +47,7 @@ namespace ofxPlotUtil {
         
         return timeStamp;
     }
-    string niceFloatToString(float val){
-        int precision = 1000;
+    string niceFloatToString(float val, PrecisionType precisionType){
         string signStr;
         string dot = ".";
         string intStr;
@@ -66,7 +65,7 @@ namespace ofxPlotUtil {
         }
         
         intStr = ofToString(abs(int(intpart)));
-        fractStr = ofToString(abs(int(fractpart*precision)));
+        fractStr = ofToString(abs(int(fractpart*precisionType)));
         
         return (signStr + intStr + dot + fractStr);
         
