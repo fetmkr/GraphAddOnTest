@@ -22,10 +22,10 @@ public:
     void drawButton(float x, float y);
     
     void addData(float data);
-    void setScale(float scale);
-    float getScale();
+    void setDrawScale(float scale);
+    float getDrawScale();
     
-    float scaleFactor;
+    float drawScaleFactor;
     
     float getElement(int index);
     
@@ -39,6 +39,16 @@ public:
     void resetMin();
     
     float getAvg(int NumOfSamples);
+    
+    
+    float maxValForDrawing;
+    float minValForDrawing;
+    
+    void setMaxForDrawing( float val);
+    float getMaxForDrawing();
+    
+    void setMinForDrawing( float val);
+    float getMinForDrawing();
     
     float maxVal;
     float minVal;

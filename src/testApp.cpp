@@ -40,7 +40,8 @@ void testApp::setup(){
     ofAddListener(naviMenu.sensorTypeChanged, this, &testApp::changeScene);
     ofAddListener(naviMenu.visualTypeChanged, this, &testApp::changeMode);
     
-    
+    compassData = 0.0;
+
     accelXData = 0.0;
     accelYData = 0.0;
     accelZData = 0.0;
@@ -49,7 +50,12 @@ void testApp::setup(){
     gyroYData = 0.0;
     gyroZData = 0.0;
     
-    compassData = 0.0;
+    pressureData = 0.0;
+    altData = 0.0;
+    
+    ambTempData = 0.0;
+    objTempData = 0.0;
+    humidData = 0.0;
     
     luxData = 0.0;
     
@@ -68,33 +74,38 @@ void testApp::update(){
 	}
 
 //    // fake data
-    float xtemp, ytemp,ztemp;
-    xtemp = 0.0;
-    ytemp = 0.0;
-    ztemp = 0.0;
-    //luxData = 0.0;
-    
-    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
-    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
-    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
-    
-    AccelXLine.addData(xtemp + 0.0);
-    AccelYLine.addData(ytemp+ 0.0);
-    AccelZLine.addData(ztemp+ 0.0);
+//    float xtemp, ytemp,ztemp;
+//    xtemp = 0.0;
+//    ytemp = 0.0;
+//    ztemp = 0.0;
+//    //luxData = 0.0;
+//    
+//    xtemp = xtemp + ofSignedNoise(30*ofGetElapsedTimef()*1.0f)*20.0f;
+//    ytemp = ytemp + ofSignedNoise(50*ofGetElapsedTimef()*1.0f)*40.0f;
+//    ztemp = ztemp + ofSignedNoise(10*ofGetElapsedTimef()*1.0f)*30.0f;
+//    
+//    AccelXLine.addData(xtemp + 0.0);
+//    AccelYLine.addData(ytemp+ 0.0);
+//    AccelZLine.addData(ztemp+ 0.0);
     
 
     // set default data to 0.0
-//    AccelXLine.addData(accelXData + 0.0);
-//    AccelYLine.addData(accelYData+ 0.0);
-//    AccelZLine.addData(accelZData+ 0.0);
-    
+    compassLine.addData(compassData+ 0.0);
 
+    AccelXLine.addData(accelXData + 0.0);
+    AccelYLine.addData(accelYData+ 0.0);
+    AccelZLine.addData(accelZData+ 0.0);
     
     GyroXLine.addData(gyroXData+ 0.0);
     GyroYLine.addData(gyroYData+ 0.0);
     GyroZLine.addData(gyroZData+ 0.0);
     
-    compassLine.addData(compassData+ 0.0);
+    pressureLine.addData(pressureData + 0.0);
+    altLine.addData(altData+0.0);
+    
+    ambTempLine.addData(ambTempData + 0.0);
+    objTempLine.addData(objTempData + 0.0);
+    humidityLine.addData(humidData + 0.0);
     
     luxLine.addData(luxData+ 0.0);
     
@@ -287,23 +298,62 @@ void testApp::setupPlots(){
     touchSleepLine.setup("pressure", ofColor(255,0,255));
     
     AccelXLine.setup("X", ofColor(255,0,0));
+    AccelXLine.setMinForDrawing(-20);
+    AccelXLine.setMaxForDrawing(20);
+    
     AccelYLine.setup("Y", ofColor(0,255,0));
+    AccelYLine.setMinForDrawing(-20);
+    AccelYLine.setMaxForDrawing(20);
+    
     AccelZLine.setup("Z", ofColor(0,0,255));
+    AccelZLine.setMinForDrawing(-20);
+    AccelZLine.setMaxForDrawing(20);
+    
     compassLine.setup("C", ofColor(255,255,0));
+    compassLine.setMinForDrawing(-50);
+    compassLine.setMaxForDrawing(50);
     
-    GyroXLine.setup("GYRO X", ofColor(255,255,0));
-    GyroYLine.setup("GYRO Y", ofColor(0,255,255));
-    GyroZLine.setup("GYRO Z", ofColor(255,0,255));
     
-    pressureLine.setup("PRESSURE", ofColor(255,0,255));
-    altLine.setup("TEMP", ofColor(255,0,255));
+    GyroXLine.setup("X", ofColor(255,255,0));
+    GyroXLine.setMinForDrawing(-5);
+    GyroXLine.setMaxForDrawing(5);
     
-    ambTempLine.setup("AMB TEMP", ofColor(255,0,255));
-    objTempLine.setup("OBJ TMEP", ofColor(255,0,255));
-    humidityLine.setup("HUMIDITY", ofColor(255,0,255));
+    GyroYLine.setup("Y", ofColor(0,255,255));
+    GyroYLine.setMinForDrawing(-5);
+    GyroYLine.setMaxForDrawing(5);
+
+    GyroZLine.setup("Z", ofColor(255,0,255));
+    GyroZLine.setMinForDrawing(-5);
+    GyroZLine.setMaxForDrawing(5);
+
     
-    colorLine.setup("COLOR", ofColor(255,0,255));
-    luxLine.setup("LUX", ofColor(255,0,255));
+    pressureLine.setup("P", ofColor(0,0,255));
+    pressureLine.setMinForDrawing(950);
+    pressureLine.setMaxForDrawing(1050);
+    
+    altLine.setup("A", ofColor(0,255,0));
+    altLine.setMinForDrawing(-20);
+    altLine.setMaxForDrawing(-10);
+    
+    ambTempLine.setup("A", ofColor(255,255,0));
+    ambTempLine.setMinForDrawing(-40);
+    ambTempLine.setMaxForDrawing(125);
+    
+    objTempLine.setup("O", ofColor(255,0,0));
+    objTempLine.setMinForDrawing(-40);
+    objTempLine.setMaxForDrawing(125);
+    
+    humidityLine.setup("H", ofColor(0,0,255));
+    humidityLine.setMinForDrawing(0);
+    humidityLine.setMaxForDrawing(100);
+    
+    colorLine.setup("C", ofColor(255,255,0));
+    colorLine.setMinForDrawing(0);
+    colorLine.setMaxForDrawing(255);
+    
+    luxLine.setup("L", ofColor(255,255,0));
+    luxLine.setMinForDrawing(0.96);
+    luxLine.setMaxForDrawing(64000);
     
     // setup before add the lines
     // otherwise the button will not be shown
@@ -343,20 +393,43 @@ void testApp::setupPlots(){
     motionSensor3D.addLine(&GyroYLine);
     motionSensor3D.addLine(&GyroZLine);
 
+    motionSensor3D.addGroup("GYRO");
+    motionSensor3D.addLineToGroup(&GyroXLine, "GYRO");
+    motionSensor3D.addLineToGroup(&GyroYLine, "GYRO");
+    motionSensor3D.addLineToGroup(&GyroZLine, "GYRO");
+
     
     pressAltSensor.addLine(&pressureLine);
     pressAltSensor.addLine(&altLine);
+    
+    pressAltSensor.addGroup("PRESSURE");
+    pressAltSensor.addGroup("ALTITUDE");
+    
+    pressAltSensor.addLineToGroup(&pressureLine, "PRESSURE");
+    pressAltSensor.addLineToGroup(&altLine, "ALTITUDE");
+
     
     tempHumidSensor.addLine(&ambTempLine);
     tempHumidSensor.addLine(&objTempLine);
     tempHumidSensor.addLine(&humidityLine);
     
-    colorSensor.addLine(&colorLine);
-    luxSensor.addLine(&luxLine);
+    tempHumidSensor.addGroup("AMB TEMP");
+    tempHumidSensor.addGroup("OBJ TEMP");
+    tempHumidSensor.addGroup("HUMIDITY");
+    
+    tempHumidSensor.addLineToGroup(&ambTempLine, "AMB TEMP");
+    tempHumidSensor.addLineToGroup(&objTempLine, "OBJ TEMP");
+    tempHumidSensor.addLineToGroup(&humidityLine, "HUMIDITY");
 
     
-    luxData = 0.0;
+    colorSensor.addLine(&colorLine);
+    colorSensor.addGroup("COLOR");
+    colorSensor.addLineToGroup(&colorLine, "COLOR");
 
+    
+    luxSensor.addLine(&luxLine);
+    luxSensor.addGroup("LUX");
+    luxSensor.addLineToGroup(&luxLine, "LUX");
 }
 
 void testApp::changeScene(LightSensorType &scene){

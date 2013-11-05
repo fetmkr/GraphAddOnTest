@@ -77,8 +77,9 @@ class testApp : public ofBaseApp{
         ofxTCPServer TCP;
         vector <string> storeText;
     
-        float luxData;
     
+        float compassData;
+
         float accelXData;
         float accelYData;
         float accelZData;
@@ -86,8 +87,17 @@ class testApp : public ofBaseApp{
         float gyroXData;
         float gyroYData;
         float gyroZData;
+    
+        float pressureData;
+        float altData;
+        
+        float ambTempData;
+        float objTempData;
+        float humidData;
+    
+        float luxData;
 
-        float compassData;
+
     
 private:
     ~testApp();

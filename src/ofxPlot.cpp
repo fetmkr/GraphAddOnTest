@@ -194,17 +194,17 @@ void ofxPlot::draw(float x, float y){
             
             // auto scaling data based on plot height
             
-//            float dataScale;
-//            
-//            if(graphLinesPtr[i]->getMax() > abs(graphLinesPtr[i]->getMin())){
-//                dataScale = (graphHeight / 3) / graphLinesPtr[i]->getMax();
-//            }
-//            else{
-//                dataScale = (graphHeight / 3) / abs(graphLinesPtr[i]->getMin());
-//            }
-//            
-//            
-//            graphLinesPtr[i]->setScale(dataScale);
+            float drawScale;
+            
+            if(graphLinesPtr[i]->getMaxForDrawing() > abs(graphLinesPtr[i]->getMinForDrawing())){
+                drawScale = (graphHeight / 3) / graphLinesPtr[i]->getMaxForDrawing();
+            }
+            else{
+                drawScale = (graphHeight / 3) / abs(graphLinesPtr[i]->getMinForDrawing());
+            }
+            
+            
+            graphLinesPtr[i]->setDrawScale(drawScale);
             
             
             if(lineStyle != POINT_ONLY){
@@ -215,7 +215,7 @@ void ofxPlot::draw(float x, float y){
                     // how can we draw the most recent data - > the last element is the recent one
                     // so draw from the last to the last - numofdisplaydata element 
                     drawLine.addVertex(ofPoint(graphWidth - timeStep * j
-                                               , i + graphLinesPtr[i]->getElement(j + recentIndex) * graphLinesPtr[i]->getScale()
+                                               , i + graphLinesPtr[i]->getElement(j + recentIndex) * graphLinesPtr[i]->getDrawScale()
                                                , getDrawPosZ(getNumOfVisibleLines(), drawIndex)));
                     
                 }
@@ -232,7 +232,7 @@ void ofxPlot::draw(float x, float y){
                 for (int j = 0; j< NumOfDisplayData; j++) {
                     
                     glVertex3f(graphWidth - timeStep * j
-                               , i + graphLinesPtr[i]->getElement(j + recentIndex) * graphLinesPtr[i]->getScale()
+                               , i + graphLinesPtr[i]->getElement(j + recentIndex) * graphLinesPtr[i]->getDrawScale()
                                , getDrawPosZ(getNumOfVisibleLines(), drawIndex));
                     
                 }
@@ -415,3 +415,14 @@ vector<ofxPlotLine*> ofxPlot::getLinesFromGroup(string groupName){
     return lines;
 }
 
+int ofxPlot::getNumOfLinesInGroup(string groupName){
+    vector<ofxPlotLine*> lines;
+    int lineCnt = 0;
+    for (int i = 0; i < graphLinesPtr.size(); i++) {
+        if (graphLinesPtr[i]->getGroupName() == groupName) {
+            lineCnt++;
+        }
+    }
+    
+    return lineCnt;
+}

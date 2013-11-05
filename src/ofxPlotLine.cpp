@@ -29,7 +29,9 @@ void ofxPlotLine::setup(string name, ofColor color){
     
     minVal = 0.0;
     maxVal = 0.0;
-    scaleFactor = 1.0;
+    minValForDrawing = 0.0;
+    maxValForDrawing = 0.0;
+    drawScaleFactor = 1.0;
     
     button.setup(50, 50, true, true);
     groupName = "";
@@ -123,12 +125,12 @@ float ofxPlotLine::getAvg(int NumOfSamples){
     return avg;
 }
 
-void ofxPlotLine::setScale(float scale){
-    scaleFactor = scale;
+void ofxPlotLine::setDrawScale(float scale){
+    drawScaleFactor = scale;
 }
 
-float ofxPlotLine::getScale(){
-    return scaleFactor;
+float ofxPlotLine::getDrawScale(){
+    return drawScaleFactor;
 }
 
 void ofxPlotLine::drawButton(float x, float y){
@@ -145,3 +147,19 @@ string ofxPlotLine::getGroupName(){
     return groupName;
 }
 
+
+void ofxPlotLine::setMaxForDrawing( float val){
+    maxValForDrawing = val;
+}
+
+float ofxPlotLine::getMaxForDrawing(){
+    return maxValForDrawing;
+}
+
+void ofxPlotLine::setMinForDrawing( float val){
+    minValForDrawing = val;
+}
+
+float ofxPlotLine::getMinForDrawing(){
+    return minValForDrawing;
+}

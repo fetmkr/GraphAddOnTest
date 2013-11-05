@@ -17,9 +17,9 @@ Sensor::~Sensor(){
 }
 
 void Sensor::setup(){
-    analFont.loadFont("SimKBRg.ttf", 35);
-    groupFont.loadFont("SimKBRg.ttf", 17.5);
-    dataFont.loadFont("SimKBRg.ttf", 12);
+    analFont.loadFont("SimKBRg.ttf", 36);
+    groupFont.loadFont("SimKBRg.ttf", 24);
+    dataFont.loadFont("SimKBRg.ttf", 18);
 
     etriLogoBlk.loadImage("etri_logo_black.png");
     numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
@@ -136,11 +136,11 @@ void Sensor::drawAnalBG(string name){
     ofRect(200 +900 + 20 + 128 + 20, 110, 6, 6);
     ofRect(200 +900 + 20 + 128 + 20 +460, 110, 6, 6);
     
-    ofSetColor(100);
-    ofLine(200 +900 + 20 + 128 + 20, 200, 200 +900 + 20 + 128 + 20 +460, 200);
-    ofRect(200 +900 + 20 + 128 + 20, 200, 4, 4);
-    ofRect(200 +900 + 20 + 128 + 20 +460, 200, 4, 4);
-    
+//    ofSetColor(100);
+//    ofLine(200 +900 + 20 + 128 + 20, 200, 200 +900 + 20 + 128 + 20 +460, 200);
+//    ofRect(200 +900 + 20 + 128 + 20, 200, 4, 4);
+//    ofRect(200 +900 + 20 + 128 + 20 +460, 200, 4, 4);
+
     ofSetRectMode(OF_RECTMODE_CORNER);
     
     drawGroupData(200 +900 + 20 + 128 + 20, 200);
@@ -158,6 +158,15 @@ void Sensor::drawGroupData(float x, float y, string groupName){
     float avg;
     float lastVal;
     
+    
+    ofSetColor(100);
+    ofSetRectMode(OF_RECTMODE_CENTER);
+    ofLine(x, y, x + 460, y);
+    ofRect(x, y, 4, 4);
+    ofRect(x +460, y, 4, 4);
+    ofSetRectMode(OF_RECTMODE_CORNER);
+
+    
     for (int i = 0; i < lines.size(); i++) {
         min = lines[i]->getMin();
         max = lines[i]->getMax();
@@ -166,17 +175,6 @@ void Sensor::drawGroupData(float x, float y, string groupName){
         ofSetColor(255);
         groupFont.drawString(groupName, x, y + 40);
         
-//        ofSetColor(0);
-//        dataFont.drawString("MIN", x, y + 40 + 40 + 50 * i);
-//        dataFont.drawString(ofToString(min), x, y + 40 + 60 + 50 * i);
-//        dataFont.drawString("MAX", x + 70, y + 40 + 40 + 50 * i);
-//        dataFont.drawString(ofToString(max), x + 70, y + 40 + 60 + 50 * i);
-//        dataFont.drawString("AVG", x + 140, y + 40 + 40 + 50 * i);
-//        dataFont.drawString(ofToString(avg), x + 140, y + 40 + 60 + 50 * i);
-//        
-//        ofSetColor(255);
-//        analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
-//        analFont.drawString(ofToString(lastVal), x+275 + 50, y + 40 + 60 + 50 * i);
         
         ofSetColor(0);
         dataFont.drawString("MIN", x, y + 40 + 40 + 50 * i);
@@ -190,16 +188,19 @@ void Sensor::drawGroupData(float x, float y, string groupName){
         analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
         analFont.drawString(niceFloatToString(lastVal, PRECISION_3DIGIT), x+275 + 50, y + 40 + 60 + 50 * i);
 
-
-
     }
     
 }
 
 void Sensor::drawGroupData(float x, float y){
+
     if(shortPlot.groups.size()>0){
         for (int i = 0; i< shortPlot.groups.size(); i++) {
-            drawGroupData(x, y + 100*i, shortPlot.groups[i]);
+            float gap = 0.0;
+            if(i > 0){
+                gap = (50 + shortPlot.getNumOfLinesInGroup(shortPlot.groups[i-1]) * 35.0 + 35) * i ;
+            }
+            drawGroupData(x, y + gap, shortPlot.groups[i]);
         }
     }
 }

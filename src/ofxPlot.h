@@ -71,6 +71,7 @@ public:
     
     void addLineToGroup(ofxPlotLine* line, string groupName);
     vector<ofxPlotLine*> getLinesFromGroup(string groupName);
+    int getNumOfLinesInGroup(string groupName);
     
     
     
