@@ -187,6 +187,11 @@ void Sensor::drawGroupData(float x, float y, string groupName){
         ofSetColor(255);
         analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
         analFont.drawString(niceFloatToString(lastVal, PRECISION_3DIGIT), x+275 + 50, y + 40 + 60 + 50 * i);
+        
+        ofSetColor(lines[i]->color);
+        ofSetCircleResolution(80);
+        ofFill();
+        ofCircle( x+235, y + 40 + 60 + 50 * i - analFont.getSize()/2, 7.5);
 
     }
     

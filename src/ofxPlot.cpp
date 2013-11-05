@@ -33,7 +33,7 @@ void ofxPlot::setup(string name, float width, float height){
     cam3D.enableOrtho();
     
     timeFont.loadFont("NewMedia Fett.ttf",8, true, true, true);
-
+    menuFont.loadFont("SimKBRg.ttf", 18);
     
     slider.setup(graphWidth);
 
@@ -276,13 +276,19 @@ void ofxPlot::draw(float x, float y){
     yOff = graphHeight / ( 1+ graphLinesPtr.size());
     
     if (bShow3DButton) {
-        button3DOn.draw(xPos + graphWidth + buttonXOffsetPos, yPos + yOff/2);
+        ofSetColor(0);
+        menuFont.drawString("3D ON", xPos + graphWidth + 30, yPos + 18 + menuFont.getSize()/ 2+ buttonSize / 2);
+        button3DOn.draw(xPos + graphWidth + buttonXOffsetPos, yPos + 18);
     }
     
     if (bShowMenu) {
 
         for (int i = 0; i < graphLinesPtr.size(); i++) {
-            graphLinesPtr[i]->drawButton(xPos + graphWidth + buttonXOffsetPos , yPos + (i+1) * yOff + + yOff/2);
+            ofSetColor(graphLinesPtr[i]->color);
+            ofSetCircleResolution(80);
+            ofFill();
+            ofCircle(xPos + graphWidth + 40, yPos + 18 + (i+1) * (yOff/2) + buttonSize / 2, 7.5);
+            graphLinesPtr[i]->drawButton(xPos + graphWidth + buttonXOffsetPos , yPos + 18 + (i+1) * (yOff/2));
         }
         
     }

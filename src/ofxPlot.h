@@ -110,6 +110,7 @@ public:
 
 //    vector< ofPtr<ofxPlotLine> > graphLinesPtr;
         ofTrueTypeFont timeFont;
+    ofTrueTypeFont menuFont;
     ofxPlotButton button3DOn;
 
 private:
