@@ -31,4 +31,14 @@ public:
     float posX;
     float posY;
 
+float brightLevel;
+float luxVal;
+float cupTemp;
+
+float streetRotY;
+float streetRotZ;
+
+
+void setDemoVal(float bright, float lux, float cupT, float RotY, float RotZ);
+
 };

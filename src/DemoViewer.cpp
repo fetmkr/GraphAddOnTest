@@ -36,11 +36,17 @@ void DemoViewer::setup(float x, float y){
     etriLogo.loadImage("etri_logo_color.png");
 
 
-
+    brightLevel = 0.0;
+    luxVal = 255.0;
+    cupTemp = 0.0;
+    streetRotY = 0.0;
+    streetRotZ = 0.0;
 }
 
 void DemoViewer::draw(LightDemoType demoType){
     
+    float light;
+    light = ofClamp(brightLevel + luxVal, 0.0, 255.0);
     ofPushStyle();
     ofSetColor(255, 255, 255);
     
@@ -53,25 +59,38 @@ void DemoViewer::draw(LightDemoType demoType){
     
     if (demoType == DEMO_INDOOR) {
         
+        ofSetColor(light, light, light);
         indoorBG.draw(posX, posY);
-        
+        ofSetColor(ofColor::fromHsb(ofMap(cupTemp*2.0, 0.0, 100.0, 60, 0),255 ,255));
         cupImg.draw(460+posX, 640+posY);
+        ofSetColor(255, 255, 255);
     }
     else if (demoType == DEMO_OUTDOOR){
+        ofSetColor(light, light, light);
         ofPushMatrix();
         ofTranslate(286 + posX, 728 + posY);
-        ofRotateZ(0);
+        ofRotateX(streetRotY);
+        ofRotateZ(streetRotZ * -1.0);
         streeLightImg.draw(0, 0);
         ofPopMatrix();
         
         ofPushMatrix();
         ofTranslate(1134 + posX, 728 + posY);
-        ofRotateZ(0);
+        ofRotateX(streetRotY);
+        ofRotateZ(streetRotZ * -1.0);
         streeLightImg.draw(0, 0);
         ofPopMatrix();
-        
         outdoorBG.draw(posX, posY);
+        ofSetColor(255, 255, 255);
     }
     
     ofPopStyle();
+}
+
+void DemoViewer::setDemoVal(float bright, float lux, float cupT, float RotY, float RotZ){
+    brightLevel = bright;
+    luxVal = lux;
+    cupTemp = cupT;
+    streetRotY = RotY;
+    streetRotZ = RotZ;
 }

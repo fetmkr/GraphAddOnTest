@@ -167,7 +167,7 @@ void testApp::draw(){
         
 		//calculate where to draw the text
 		int xPos = 15;
-		int yPos = 80 + (12 * i * 4);
+		int yPos = 20 + (12 * i * 4);
         
 		//get the ip and port of the client
 		string port = ofToString( TCP.getClientPort(i) );
@@ -243,6 +243,10 @@ void testApp::draw(){
                 }
                 else if (idStr == "$HUM" ){
                     humidData = ofToFloat(dataStr);
+                }
+                else if (idStr == "$TCH"){
+                    
+                    cout<< splitItems[i] << endl;
                 }
                 
             }
@@ -471,9 +475,11 @@ void testApp::updateGrpahics(){
     motionSensor2D.setAccelVal(accelXData, accelYData, accelZData);
     motionSensor2D.setCompassVal(compassData);
     motionSensor3D.setGyroVal(gyroXData, gyroYData, gyroZData);
-    luxSensor.setLuxVal(ofMap(luxData, 0.0, 2000, 0.0, 255));
+    luxSensor.setLuxVal(ofMap(luxData, 0.0, 1000, 0.0, 255));
     pressAltSensor.setPressAltVal(pressureData, altData);
     tempHumidSensor.setTempHumidVal(ambTempData, objTempData, humidData);
+    
+    demoViewer.setDemoVal(touchSensor.getBrightLevel(), ofMap(luxData, 0.0, 1000, 0.0, 255), objTempData, accelXData, accelYData);
 }
 
 

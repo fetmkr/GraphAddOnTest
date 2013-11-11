@@ -39,6 +39,8 @@ void TouchSensor::setup(){
     
     bCWShow = false;
     bCCWShow = false;
+    
+    brightLevel = 0.0;
 }
 
 void TouchSensor::draw(LightSensorType sensorType, LightVisualType visualType){
@@ -54,7 +56,8 @@ void TouchSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     ofSetColor(255, 0, 0);
     ofFill();
     ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
-    drawSlice(0, true);
+    // slice drawing
+    drawSlice(0, false);
     ofPopMatrix();
 
     ofSetColor(255, 255, 255);
@@ -130,5 +133,9 @@ void TouchSensor::drawCCWArrow(bool bShow, float msTime){
     ccwArrowTimer.setTimer(msTime);
     ccwArrowTimer.startTimer();
     bCCWShow = bShow;
+}
+
+float TouchSensor::getBrightLevel(){
+    return brightLevel;
 }
 

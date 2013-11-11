@@ -36,4 +36,7 @@ public:
 
     bool bCWShow;
     bool bCCWShow;
+    
+    float brightLevel;
+    float getBrightLevel();
 };
