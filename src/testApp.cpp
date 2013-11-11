@@ -392,13 +392,13 @@ void testApp::setupPlots(){
     colorSensor.setup();
     luxSensor.setup();
     
-    touchSensor.setInfo("TOUCH SENSOR", "lighting control gesture using touch sensor");
-    motionSensor2D.setInfo("MOTION SENSOR", "lighting control gesture using accelrelometer & magnetometer");
-    motionSensor3D.setInfo("MOTION SENSOR", "lighting control gesture using gyro sensor");
+    touchSensor.setInfo("TOUCH GESTURE", "lighting control gesture using touch sensor");
+    motionSensor2D.setInfo("MOTION GESTURE 1", "lighting control gesture using accelrelometer & magnetometer");
+    motionSensor3D.setInfo("MOTION GESTURE 2", "lighting control gesture using gyro sensor");
     pressAltSensor.setInfo("PRESSURE & ALTITUDE", "lighting congrol based on environmental data");
     tempHumidSensor.setInfo("TEMPERATURE & HUMIDITY", "lighting congrol based on environmental data");
-    colorSensor.setInfo("COLOR SENSOR", "adjusting color mood using color sensor");
-    luxSensor.setInfo("LUX SENSOR", "adjusting brightness using lux sensor");
+    colorSensor.setInfo("COLOR CONTROL", "adjusting color mood using color sensor");
+    luxSensor.setInfo("LUX CONTROL", "adjusting brightness using lux sensor");
 
     
     touchSensor.addLine(&touchProxiLine);
