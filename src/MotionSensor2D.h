@@ -19,6 +19,13 @@ public:
 
     void setup();
     void draw(LightSensorType sensorType, LightVisualType visualType);
+    
+    float accelX;
+    float accelY;
+    float accelZ;
+    float compassVal;
+    void setAccelVal(float x, float y, float z);
+    void setCompassVal(float val);
 
     ofImage compassImg;
     

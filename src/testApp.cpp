@@ -468,7 +468,8 @@ void testApp::setupPlots(){
 }
 
 void testApp::updateGrpahics(){
-    
+    motionSensor2D.setAccelVal(accelXData, accelYData, accelZData);
+    motionSensor2D.setCompassVal(compassData);
 }
 
 

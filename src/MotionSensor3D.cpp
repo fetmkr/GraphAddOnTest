@@ -34,6 +34,10 @@ void MotionSensor3D::setup(){
     //cam.setupPerspective();
     // how to set z position properly?? 
     cam.setPosition(0, 0, 500);
+    gyroX = 0.0;
+    gyroY = 0.0;
+    gyroZ = 0.0;
+    
 }
 
 void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType){
@@ -70,6 +74,7 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
     
     //ofRotateZ(-20);
     ofRotateY(-20);
+    
     ofPushMatrix();
     ofRotateX(-90);
     ofRotateZ(180);
@@ -98,4 +103,10 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
 
     }
     
+}
+
+void MotionSensor3D::setGyroVal(float x, float y, float z){
+    gyroX = x;
+    gyroY = y;
+    gyroZ = z;
 }

@@ -61,7 +61,7 @@ namespace ofxPlotUtil {
             signStr = "-";
         }
         else{
-            signStr = " ";
+            signStr = "";
         }
         
         intStr = ofToString(abs(int(intpart)));

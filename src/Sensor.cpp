@@ -22,7 +22,7 @@ void Sensor::setup(){
     dataFont.loadFont("SimKBRg.ttf", 18);
 
     etriLogo.loadImage("etri_logo_color.png");
-    numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
+    numberFont.loadFont("HelveticaNeueUltraLight.ttf", 26);
     textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
     
     shortPlot.setup("short plot", 900, 540);
@@ -180,20 +180,20 @@ void Sensor::drawGroupData(float x, float y, string groupName){
         
         ofSetColor(0);
         dataFont.drawString("MIN", x, y + 40 + 40 + 50 * i);
-        dataFont.drawString(niceFloatToString(min, PRECISION_3DIGIT), x, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(min, PRECISION_1DIGIT), x, y + 40 + 60 + 50 * i);
         dataFont.drawString("MAX", x + 70, y + 40 + 40 + 50 * i);
-        dataFont.drawString(niceFloatToString(max, PRECISION_3DIGIT), x + 70, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(max, PRECISION_1DIGIT), x + 70, y + 40 + 60 + 50 * i);
         dataFont.drawString("AVG", x + 140, y + 40 + 40 + 50 * i);
-        dataFont.drawString(niceFloatToString(avg, PRECISION_3DIGIT), x + 140, y + 40 + 60 + 50 * i);
+        dataFont.drawString(niceFloatToString(avg, PRECISION_1DIGIT), x + 140, y + 40 + 60 + 50 * i);
         
         ofSetColor(255);
-        analFont.drawString(lines[i]->name, x+275, y + 40 + 60 + 50 * i);
-        analFont.drawString(niceFloatToString(lastVal, PRECISION_3DIGIT), x+275 + 50, y + 40 + 60 + 50 * i);
+        analFont.drawString(lines[i]->name, x+250, y + 40 + 60 + 50 * i);
+        analFont.drawString(niceFloatToString(lastVal, PRECISION_3DIGIT), x+250 + 50, y + 40 + 60 + 50 * i);
         
         ofSetColor(lines[i]->color);
         ofSetCircleResolution(80);
         ofFill();
-        ofCircle( x+235, y + 40 + 60 + 50 * i - analFont.getSize()/2, 7.5);
+        ofCircle( x+230, y + 40 + 60 + 50 * i - analFont.getSize()/2, 7.5);
 
     }
     

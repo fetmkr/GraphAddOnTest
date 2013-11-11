@@ -26,4 +26,11 @@ public:
     ofRectangle viewport;
     ofCamera cam;
     ofLight light;
+    
+    float gyroX;
+    float gyroY;
+    float gyroZ;
+    
+    void setGyroVal(float x, float y, float z);
+
 };
