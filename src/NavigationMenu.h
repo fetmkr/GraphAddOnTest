@@ -63,5 +63,11 @@ public:
     
     ofEvent<LightSensorType> sensorTypeChanged;
     ofEvent<LightVisualType> visualTypeChanged;
-    void pressEventHandler(bool &bPress);
+    ofEvent<LightDemoType> demoTypeChanged;
+    void toggleButtonEventHandler(bool &bPress);
+    void dataButtonEventHandler(bool &bPress);
+    void indoorButtonEventHandler(bool &bPress);
+    void outdoorButtonEventHandler(bool &bPress);
+
+
 };

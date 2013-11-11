@@ -24,6 +24,7 @@
 		6751364918196B3B007EC293 /* ofxPlotUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364818196B3B007EC293 /* ofxPlotUtil.cpp */; };
 		6751364F181999F5007EC293 /* MotionSensor2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6751364E181999F5007EC293 /* MotionSensor2D.cpp */; };
 		675136561819A068007EC293 /* Sensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 675136551819A068007EC293 /* Sensor.cpp */; };
+		67A4E4ED1830C3E200588E56 /* DemoViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67A4E4EB1830C3E200588E56 /* DemoViewer.cpp */; };
 		67C6A893180AC20A00B290AB /* ofxPlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67C6A892180AC20A00B290AB /* ofxPlot.cpp */; };
 		67C6A896180AC23400B290AB /* ofxPlotLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67C6A895180AC23400B290AB /* ofxPlotLine.cpp */; };
 		67CC8978181AC0BC002AC1A4 /* assimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67CC896D181AC0BC002AC1A4 /* assimp.a */; };
@@ -127,6 +128,8 @@
 		6751365018199AD3007EC293 /* ETRILighting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETRILighting.h; sourceTree = "<group>"; };
 		675136541819A05A007EC293 /* Sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sensor.h; sourceTree = "<group>"; };
 		675136551819A068007EC293 /* Sensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sensor.cpp; sourceTree = "<group>"; };
+		67A4E4EB1830C3E200588E56 /* DemoViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DemoViewer.cpp; sourceTree = "<group>"; };
+		67A4E4EC1830C3E200588E56 /* DemoViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewer.h; sourceTree = "<group>"; };
 		67C6A891180AC1F600B290AB /* ofxPlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlot.h; sourceTree = "<group>"; };
 		67C6A892180AC20A00B290AB /* ofxPlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPlot.cpp; sourceTree = "<group>"; };
 		67C6A894180AC22200B290AB /* ofxPlotLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPlotLine.h; sourceTree = "<group>"; };
@@ -539,6 +542,8 @@
 				670B831A181F914800382C60 /* ofxDAQButton.h */,
 				67F799721820FC4A0028C43C /* NavigationMenu.cpp */,
 				67F799731820FC4A0028C43C /* NavigationMenu.h */,
+				67A4E4EB1830C3E200588E56 /* DemoViewer.cpp */,
+				67A4E4EC1830C3E200588E56 /* DemoViewer.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -667,6 +672,7 @@
 				6747D8B2182296D2005A37A6 /* ofxTCPManager.cpp in Sources */,
 				6747D8B3182296D2005A37A6 /* ofxTCPServer.cpp in Sources */,
 				6747D8B4182296D2005A37A6 /* ofxUDPManager.cpp in Sources */,
+				67A4E4ED1830C3E200588E56 /* DemoViewer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

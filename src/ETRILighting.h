@@ -29,8 +29,9 @@ enum LightSensorType{
 };
 
 enum LightDemoType{
-    DEMO_STREET = 0,
-    DEMO_INDOOR = 1
+    DEMO_NODEMO = 0,
+    DEMO_OUTDOOR = 1,
+    DEMO_INDOOR = 2
 };
 
 enum LightVisualType {

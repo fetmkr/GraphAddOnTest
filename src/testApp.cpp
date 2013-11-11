@@ -37,8 +37,11 @@ void testApp::setup(){
 
     
     naviMenu.setup(80, 900, ofColor(0,0,0,200));
-    ofAddListener(naviMenu.sensorTypeChanged, this, &testApp::changeScene);
-    ofAddListener(naviMenu.visualTypeChanged, this, &testApp::changeMode);
+    ofAddListener(naviMenu.sensorTypeChanged, this, &testApp::changeSensorType);
+    ofAddListener(naviMenu.visualTypeChanged, this, &testApp::changeVisualType);
+    ofAddListener(naviMenu.demoTypeChanged, this, &testApp::changeDemoType);
+    
+    demoViewer.setup(160, 90);
     
     compassData = 0.0;
 
@@ -60,6 +63,8 @@ void testApp::setup(){
     luxData = 0.0;
     
     sensorType = SENSOR_TOUCH;
+    visualType = VISUAL_GRAPHIC;
+    demoType = DEMO_NODEMO;
 
 }
 
@@ -220,6 +225,21 @@ void testApp::draw(){
                 else if( idStr == "$MAY"){
                     compassData = ofToFloat(dataStr);
                 }
+                else if (idStr == "$PRS" ){
+                    pressureData = ofToFloat(dataStr);
+                }
+                else if (idStr == "$ALT" ){
+                    altData = ofToFloat(dataStr);
+                }
+                else if (idStr == "$AMT" ){
+                    ambTempData = ofToFloat(dataStr);
+                }
+                else if (idStr == "$OBT" ){
+                    objTempData = ofToFloat(dataStr);
+                }
+                else if (idStr == "$HUM" ){
+                    humidData = ofToFloat(dataStr);
+                }
                 
             }
         }
@@ -232,6 +252,7 @@ void testApp::draw(){
     
     naviMenu.draw(0, 90);
     
+    demoViewer.draw(demoType);
     
 }
 
@@ -432,7 +453,7 @@ void testApp::setupPlots(){
     luxSensor.addLineToGroup(&luxLine, "LUX");
 }
 
-void testApp::changeScene(LightSensorType &scene){
+void testApp::changeSensorType(LightSensorType &scene){
     sensorType = scene;
     
     
@@ -471,9 +492,14 @@ void testApp::changeScene(LightSensorType &scene){
     
 }
 
-void testApp::changeMode(LightVisualType &mode){
+void testApp::changeVisualType(LightVisualType &mode){
     visualType = mode;
 }
+
+void testApp::changeDemoType(LightDemoType &demo){
+    demoType = demo;
+}
+
 
 testApp::~testApp(){
     cout << "tcp closed" << endl;

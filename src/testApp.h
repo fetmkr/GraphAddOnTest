@@ -11,6 +11,7 @@
 #include "LuxSensor.h"
 #include "TempHumidSensor.h"
 #include "NavigationMenu.h"
+#include "DemoViewer.h"
 #include "ofxNetwork.h"
 
 class testApp : public ofBaseApp{
@@ -33,8 +34,9 @@ class testApp : public ofBaseApp{
     
         void setupPlots();
     
-        void changeScene(LightSensorType &scene);
-        void changeMode(LightVisualType &mode);
+        void changeSensorType(LightSensorType &scene);
+        void changeVisualType(LightVisualType &mode);
+        void changeDemoType(LightDemoType &demo);
 
 
         LightSensorType sensorType;
@@ -76,6 +78,8 @@ class testApp : public ofBaseApp{
         NavigationMenu naviMenu;
         ofxTCPServer TCP;
         vector <string> storeText;
+    
+        DemoViewer demoViewer;
     
     
         float compassData;

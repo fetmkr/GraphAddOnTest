@@ -32,11 +32,13 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     tempHumidButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
     colorLuxButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
     
-    streeDemoButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
-    indoorDemoButton.setup(menuWidth, menuWidth, false, false, BUTTON_SHAPE_RECT);
-    
+    streeDemoButton.setup(menuWidth, menuWidth, true, false, BUTTON_SHAPE_RECT);
+    indoorDemoButton.setup(menuWidth, menuWidth, true, false, BUTTON_SHAPE_RECT);
     dataButton.setup(menuWidth, menuWidth, true, false, BUTTON_SHAPE_RECT);
-    ofAddListener(dataButton.pressEvent, this, &NavigationMenu::pressEventHandler);
+    
+    ofAddListener(streeDemoButton.pressEvent, this, &NavigationMenu::outdoorButtonEventHandler);
+    ofAddListener(indoorDemoButton.pressEvent, this, &NavigationMenu::indoorButtonEventHandler);
+    ofAddListener(dataButton.pressEvent, this, &NavigationMenu::dataButtonEventHandler);
     
     
     touchButton.showButton(true, false);
@@ -68,12 +70,14 @@ void NavigationMenu::setup(float w, float h, ofColor c){
     
     toggleButton.setup(50, 50, true, true, BUTTON_SHAPE_CIRCLE);
     toggleButton.showButton(false, false);
-    ofAddListener(toggleButton.pressEvent, this, &NavigationMenu::pressEventHandler);
+    ofAddListener(toggleButton.pressEvent, this, &NavigationMenu::toggleButtonEventHandler);
     
     bToggle = true;
 
     //default
     sensorType = SENSOR_TOUCH;
+    visualType = VISUAL_GRAPHIC;
+    demoType = DEMO_NODEMO;
     
     
 }
@@ -117,8 +121,6 @@ void NavigationMenu::draw(float x, float y){
         
         indoorDemoIcon.draw(0, menuHeight + y - menuWidth*3);
         streetDemoIcon.draw(0, menuHeight + y - menuWidth*2);
-        
-        
         dataIcon.draw(0, menuHeight + y - menuWidth);
     }
     
@@ -184,7 +186,7 @@ LightSensorType NavigationMenu::getSensorType(){
     return sensorType;
 }
 
-void NavigationMenu::pressEventHandler(bool &bPress){
+void NavigationMenu::toggleButtonEventHandler(bool &bPress){
     if(toggleButton.isPressed()){
         bToggle = true;
         if (sensorType == SENSOR_MOTION_3D){
@@ -206,14 +208,61 @@ void NavigationMenu::pressEventHandler(bool &bPress){
         ofNotifyEvent(sensorTypeChanged, sensorType);
     }
     
-    
+}
+
+void NavigationMenu::dataButtonEventHandler(bool &bPress){
     if(dataButton.isPressed()){
+        indoorDemoButton.setPressed(false);
+        streeDemoButton.setPressed(false);
+        
+        demoType = DEMO_NODEMO;
+        ofNotifyEvent(demoTypeChanged, demoType);
+        
         visualType = VISUAL_SIENCE;
         ofNotifyEvent(visualTypeChanged, visualType);
+        
     }
     else{
         visualType = VISUAL_GRAPHIC;
         ofNotifyEvent(visualTypeChanged, visualType);
     }
-    
+}
+
+void NavigationMenu::indoorButtonEventHandler(bool &bPress){
+    if(indoorDemoButton.isPressed()){
+        streeDemoButton.setPressed(false);
+        dataButton.setPressed(false);
+        
+        visualType = VISUAL_GRAPHIC;
+        ofNotifyEvent(visualTypeChanged, visualType);
+        
+        demoType = DEMO_INDOOR;
+        ofNotifyEvent(demoTypeChanged, demoType);
+        
+    }
+    else{
+        demoType = DEMO_NODEMO;
+        ofNotifyEvent(demoTypeChanged, demoType);
+        
+    }
+
+}
+void NavigationMenu::outdoorButtonEventHandler(bool &bPress){
+    if (streeDemoButton.isPressed()) {
+        indoorDemoButton.setPressed(false);
+        dataButton.setPressed(false);
+        
+        visualType = VISUAL_GRAPHIC;
+        ofNotifyEvent(visualTypeChanged, visualType);
+        
+        demoType = DEMO_OUTDOOR;
+        ofNotifyEvent(demoTypeChanged, demoType);
+        
+    }
+    else{
+        demoType = DEMO_NODEMO;
+        ofNotifyEvent(demoTypeChanged, demoType);
+        
+    }
+
 }
