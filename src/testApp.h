@@ -34,8 +34,10 @@ class testApp : public ofBaseApp{
     
         void setupPlots();
     
-        void changeSensorType(LightSensorType &scene);
-        void changeVisualType(LightVisualType &mode);
+        void updateGrpahics();
+    
+        void changeSensorType(LightSensorType &sensor);
+        void changeVisualType(LightVisualType &visual);
         void changeDemoType(LightDemoType &demo);
 
 
@@ -100,6 +102,7 @@ class testApp : public ofBaseApp{
         float humidData;
     
         float luxData;
+    
 
 
     

@@ -21,7 +21,7 @@ void Sensor::setup(){
     groupFont.loadFont("SimKBRg.ttf", 24);
     dataFont.loadFont("SimKBRg.ttf", 18);
 
-    etriLogoBlk.loadImage("etri_logo_black.png");
+    etriLogo.loadImage("etri_logo_color.png");
     numberFont.loadFont("HelveticaNeueUltraLight.ttf", 25);
     textFont.loadFont("HelveticaNeueUltraLight.ttf", 23.5);
     
@@ -42,6 +42,9 @@ void Sensor::setup(){
     longPlot.showSlider(true);
     longPlot.show3DButton(true);
     //longPlot.showMenu(true);
+    
+    titleStr = "";
+    infoStr = "";
     
     
 }
@@ -93,7 +96,7 @@ void Sensor::drawAnalBG(string name){
     ofPushMatrix();
     ofTranslate(200, 125);
     ofScale(0.8, 0.8);
-    etriLogoBlk.draw(0,0);
+    etriLogo.draw(0,0);
     ofPopMatrix();
     
     ofNoFill();
@@ -144,7 +147,6 @@ void Sensor::drawAnalBG(string name){
     ofSetRectMode(OF_RECTMODE_CORNER);
     
     drawGroupData(200 +900 + 20 + 128 + 20, 200);
-
 
 }
 
@@ -208,4 +210,20 @@ void Sensor::drawGroupData(float x, float y){
             drawGroupData(x, y + gap, shortPlot.groups[i]);
         }
     }
+}
+
+void Sensor::setInfo(string title, string info){
+    titleStr = title;
+    infoStr=info;
+    titleBox = analFont.getStringBoundingBox(titleStr, 0, 0);
+    infoBox = dataFont.getStringBoundingBox(infoStr, 0, 0);
+}
+
+void Sensor::drawInfo(float x, float y){
+
+    ofSetColor(255, 255, 255);
+    etriLogo.draw(x, y);
+    ofSetColor(0, 0, 0);
+    analFont.drawString(titleStr, ofGetWindowWidth()/2 -titleBox.getWidth()/2, y + titleBox.getHeight());
+    dataFont.drawString(infoStr, ofGetWindowWidth()/2-infoBox.getWidth()/2, y+  etriLogo.getHeight());
 }

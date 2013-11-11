@@ -43,12 +43,13 @@ void TouchSensor::setup(){
 
 void TouchSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {
-        
+        drawInfo(200, 125);
     }
     
     ofPushStyle();
     ofSetColor(255, 255, 255);
     
+
     ofPushMatrix();
     ofSetColor(255, 0, 0);
     ofFill();

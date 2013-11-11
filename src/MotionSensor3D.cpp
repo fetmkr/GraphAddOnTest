@@ -38,7 +38,7 @@ void MotionSensor3D::setup(){
 
 void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {
-        
+        drawInfo(200, 125);   
     }
 
     

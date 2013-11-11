@@ -20,9 +20,15 @@ public:
     void setup(float x, float y);
     void draw(LightDemoType demoType);
 
-ofImage indoorBG;
-ofImage outdoorBG;
-float posX;
-float posY;
+    ofImage indoorBG;
+    ofImage cupImg;
+
+    ofImage outdoorBG;
+    ofImage streeLightImg;
+    ofImage etriLogo;
+
+
+    float posX;
+    float posY;
 
 };

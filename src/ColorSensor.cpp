@@ -30,9 +30,7 @@ void ColorSensor::reset(){
 }
 
 void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
-    if (visualType == VISUAL_GRAPHIC) {
-        
-    }
+
     
     ofPushStyle();
     ofSetColor(255, 255, 255);
@@ -75,10 +73,15 @@ void ColorSensor::draw(LightSensorType sensorType, LightVisualType visualType){
    
     ofPopStyle();
     
+    if (visualType == VISUAL_GRAPHIC) {
+        drawInfo(200, 125);
+    }
+    
     if (visualType == VISUAL_SIENCE){
         drawAnalBG("COLOR DATA ANALYSIS");
         drawPlots();
     }
+    
     
 }
 

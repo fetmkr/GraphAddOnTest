@@ -31,12 +31,19 @@ public:
     void drawPlots();
     void drawGroupData(float x, float y);
     void drawGroupData(float x, float y, string groupName);
+    
+    string titleStr;
+    string infoStr;
+    ofRectangle titleBox;
+    ofRectangle infoBox;
+    void setInfo(string title, string info);
+    void drawInfo(float x, float y);
 
     ofTrueTypeFont analFont;
     ofTrueTypeFont groupFont;
     ofTrueTypeFont dataFont;
     
-    ofImage etriLogoBlk;
+    ofImage etriLogo;
 
     ofImage BGImg;
     

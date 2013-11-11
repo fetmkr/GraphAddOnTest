@@ -26,7 +26,7 @@ void PressAltSensor::setup(){
 
 void PressAltSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {
-        
+        drawInfo(200, 125);
     }
     
     ofPushStyle();

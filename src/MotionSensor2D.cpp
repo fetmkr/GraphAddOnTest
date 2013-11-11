@@ -28,7 +28,7 @@ void MotionSensor2D::setup(){
 
 void MotionSensor2D::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {
-        
+        drawInfo(200, 125);
     }
     ofPushStyle();
     

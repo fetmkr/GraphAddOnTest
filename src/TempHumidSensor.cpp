@@ -27,7 +27,7 @@ void TempHumidSensor::setup(){
 
 void TempHumidSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     if (visualType == VISUAL_GRAPHIC) {
-        
+        drawInfo(200, 125);
     }
     
     ofPushStyle();

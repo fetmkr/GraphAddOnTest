@@ -27,9 +27,7 @@ void LuxSensor::setup(){
 }
 
 void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
-    if (visualType == VISUAL_GRAPHIC) {
-        
-    }
+
     
     ofPushStyle();
     ofSetColor(255, 255, 255);
@@ -70,7 +68,10 @@ void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     ofPopMatrix();
     
     ofPopStyle();
-    
+    if (visualType == VISUAL_GRAPHIC) {
+        drawInfo(200, 125);
+        
+    }
     if (visualType == VISUAL_SIENCE){
         drawAnalBG("LUX DATA ANALYSIS");
         drawPlots();

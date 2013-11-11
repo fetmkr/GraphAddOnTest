@@ -43,6 +43,8 @@ void testApp::setup(){
     
     demoViewer.setup(160, 90);
     
+
+    
     compassData = 0.0;
 
     accelXData = 0.0;
@@ -113,6 +115,8 @@ void testApp::update(){
     humidityLine.addData(humidData + 0.0);
     
     luxLine.addData(luxData+ 0.0);
+    
+    updateGrpahics();
     
 }
 
@@ -250,6 +254,8 @@ void testApp::draw(){
 	}
     ofPopStyle();
     
+    
+    
     naviMenu.draw(0, 90);
     
     demoViewer.draw(demoType);
@@ -385,6 +391,14 @@ void testApp::setupPlots(){
     tempHumidSensor.setup();
     colorSensor.setup();
     luxSensor.setup();
+    
+    touchSensor.setInfo("TOUCH SENSOR", "lighting control gesture using touch sensor");
+    motionSensor2D.setInfo("MOTION SENSOR", "lighting control gesture using accelrelometer & magnetometer");
+    motionSensor3D.setInfo("MOTION SENSOR", "lighting control gesture using gyro sensor");
+    pressAltSensor.setInfo("PRESSURE & ALTITUDE", "lighting congrol based on environmental data");
+    tempHumidSensor.setInfo("TEMPERATURE & HUMIDITY", "lighting congrol based on environmental data");
+    colorSensor.setInfo("COLOR SENSOR", "adjusting color mood using color sensor");
+    luxSensor.setInfo("LUX SENSOR", "adjusting brightness using lux sensor");
 
     
     touchSensor.addLine(&touchProxiLine);
@@ -453,8 +467,13 @@ void testApp::setupPlots(){
     luxSensor.addLineToGroup(&luxLine, "LUX");
 }
 
-void testApp::changeSensorType(LightSensorType &scene){
-    sensorType = scene;
+void testApp::updateGrpahics(){
+    
+}
+
+
+void testApp::changeSensorType(LightSensorType &sensor){
+    sensorType = sensor;
     
     
     switch (sensorType) {
@@ -492,8 +511,8 @@ void testApp::changeSensorType(LightSensorType &scene){
     
 }
 
-void testApp::changeVisualType(LightVisualType &mode){
-    visualType = mode;
+void testApp::changeVisualType(LightVisualType &visual){
+    visualType = visual;
 }
 
 void testApp::changeDemoType(LightDemoType &demo){
