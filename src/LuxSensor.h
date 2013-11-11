@@ -25,4 +25,7 @@ public:
     bool bDragStarted;
     void updateLightIntensity(float val);
     
+float luxVal;
+void setLuxVal(float val);
+
 };

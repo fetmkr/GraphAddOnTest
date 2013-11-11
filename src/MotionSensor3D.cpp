@@ -72,9 +72,10 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
     ofPopMatrix();
     
     
-    //ofRotateZ(-20);
-    ofRotateY(-20);
-    
+    ofRotateY(gyroZ * -10.0); // around screen Y axis: pitch
+    ofRotateX(gyroY * -10.0); // around screen X axis: roll
+    ofRotateZ(gyroX * -10.0); // around screen Z axis: pitch
+
     ofPushMatrix();
     ofRotateX(-90);
     ofRotateZ(180);
@@ -96,7 +97,20 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
 //    ofRect(viewport);
     
     ofPopStyle();
-        
+    
+    ofPushStyle();
+    ofSetColor(0, 0, 0);
+    ofRectangle gyroXRect = numberFont.getStringBoundingBox(niceFloatToString(gyroX, PRECISION_3DIGIT), 0, 0);
+    ofRectangle gyroYRect = numberFont.getStringBoundingBox(niceFloatToString(gyroY, PRECISION_3DIGIT), 0, 0);
+    ofRectangle gyroZRect = numberFont.getStringBoundingBox(niceFloatToString(gyroZ, PRECISION_3DIGIT), 0, 0);
+    
+    numberFont.drawString(niceFloatToString(gyroX, PRECISION_3DIGIT), 580 - gyroXRect.getWidth()/2, 790);
+    numberFont.drawString(niceFloatToString(gyroY, PRECISION_3DIGIT), 960 - gyroYRect.getWidth()/2, 790);
+    numberFont.drawString(niceFloatToString(gyroZ, PRECISION_3DIGIT), 1360 - gyroZRect.getWidth()/2, 790);
+
+
+    ofPopStyle();
+    
     if (visualType == VISUAL_SIENCE){
         drawAnalBG("MOTION DATA ANALYSIS 3D");
         drawPlots();
@@ -106,7 +120,7 @@ void MotionSensor3D::draw(LightSensorType sensorType, LightVisualType visualType
 }
 
 void MotionSensor3D::setGyroVal(float x, float y, float z){
-    gyroX = x;
-    gyroY = y;
-    gyroZ = z;
+    gyroX = x; // yaw
+    gyroY = y; // roll
+    gyroZ = z; // pitch 
 }

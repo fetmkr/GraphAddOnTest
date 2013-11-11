@@ -21,4 +21,8 @@ public:
     void draw(LightSensorType sensorType, LightVisualType visualType);
     
     ofImage arrowImg;
+    
+    float pressureVal;
+    float altVal;
+    void setPressAltVal(float press, float alt);
 };

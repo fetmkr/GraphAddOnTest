@@ -470,6 +470,10 @@ void testApp::setupPlots(){
 void testApp::updateGrpahics(){
     motionSensor2D.setAccelVal(accelXData, accelYData, accelZData);
     motionSensor2D.setCompassVal(compassData);
+    motionSensor3D.setGyroVal(gyroXData, gyroYData, gyroZData);
+    luxSensor.setLuxVal(ofMap(luxData, 0.0, 2000, 0.0, 255));
+    pressAltSensor.setPressAltVal(pressureData, altData);
+    tempHumidSensor.setTempHumidVal(ambTempData, objTempData, humidData);
 }
 
 

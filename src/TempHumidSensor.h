@@ -21,4 +21,11 @@ public:
     void drawBar(float x, float y, float w, float val, ofColor c);
     
     ofImage gageImg;
+    
+    float ambTempVal;
+    float objTempVal;
+    float humidVal;
+    
+    void setTempHumidVal(float ambT, float objT, float hum);
+    
 };

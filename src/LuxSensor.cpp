@@ -23,6 +23,7 @@ void LuxSensor::setup(){
     lightIntensity = 0.0;
     prevLightLevel = 0.0;
     bDragStarted = false;
+    luxVal = 0;
 
 }
 
@@ -31,7 +32,7 @@ void LuxSensor::draw(LightSensorType sensorType, LightVisualType visualType){
     
     ofPushStyle();
     ofSetColor(255, 255, 255);
-    ofSetColor(100, 100, 100); // change the color based on data
+    ofSetColor(luxVal, luxVal, luxVal); // change the color based on data
     ofRect(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
     
     
@@ -82,4 +83,8 @@ void LuxSensor::updateLightIntensity(float val){
     lightIntensity = prevLightLevel + (-1.0)*(val / 2.0); // the val is divided by two for higher resolution;
     lightIntensity = ofClamp(lightIntensity, 0.0, 255.0);
 //    cout << lightIntensity << endl;
+}
+
+void LuxSensor::setLuxVal(float val){
+    luxVal = val;
 }
